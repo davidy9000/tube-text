@@ -1,6 +1,6 @@
-export const ADD_NOTES = 'ADD_NOTES';
-export const EDIT_NOTES = 'EDIT_NOTES';
-export const DELETE_NOTES = 'DELETE_NOTES';
+export const ADD_NOTE = 'ADD_NOTE';
+export const EDIT_NOTE = 'EDIT_NOTE';
+export const DELETE_NOTE = 'DELETE_NOTE';
 export const FETCH_NOTES = 'FETCH_NOTES';
 
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
