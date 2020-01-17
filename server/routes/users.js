@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { Player } = require('../database/models');
+const { User , StudySession } = require('../database/models');
 
 router.get('/', function(req, res, next) {
-  Player.findAll()
-    .then(players => res.json(players))
+  User.findAll({include: [StudySession]})
+    .then(user => res.json(user))
     .catch(err => console.log(err))
 });
 
