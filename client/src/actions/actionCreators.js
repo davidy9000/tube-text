@@ -1,28 +1,46 @@
+import * as types from './actionTypes';
+
 // ACTION CREATOR;
-const fetchNotes = (notes) => {
+const fetchNotes = (all_notes) => {
     return {
         type: FETCH_NOTES,
-        payload: notes
+        payload: all_notes
     }
 }
 
-const removeNote = (note_id) => {
+const deleteNote = (note_id) => {
     return {
-        type: REMOVE_NOTE,
+        type: DELETE_NOTE,
         payload: note_id
     }
 }
 
 const addNotes = (note) => {
     return {
-        type: ADD_NNOTES,
+        type: ADD_NOTES,
         payload: note
     }
 }
 
-const editNotes = (note_id) => {
+const editNote = (note_id) => {
     return {
-        type: EDIT_NOTES,
+        type: EDIT_NOTE,
         payload: note_id
     }
+}
+
+export const fetchNotesThunk = (all_notes) => (dispatch) => {
+    console.log("fetch thunk");
+}
+
+export const addNotesThunk = (note) => (dispatch) => {
+    console.log("add thunk");
+}
+
+export const deleteNoteThunk = (note_id) => (dispatch) => {
+    console.log("delete thunk");
+}
+
+export const editNoteThunk = (note_id) => (dispatch) => {
+    console.log("edit thunk");
 }
