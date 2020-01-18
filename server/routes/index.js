@@ -6,22 +6,20 @@ const usersRouter = require('./users_controller');
 const studySessionsRouter = require('./study_session_controller');
 const noteRouter = require('./notes_controller');
 
-router.get('/allusersstudy', usersRouter.findUserStudySessions);
-router.get('/users', usersRouter.findUsers);
-
-//	Reference Router to find notes associated with a single study session
-// router.get('/thing1', usersRouter.thing1);
+router.use('/users', usersRouter);
+router.use('/studysessions', studySessionsRouter);
+router.use('/notes', noteRouter);
 
 //StudySession
 //CRUD OPERATION: CREATE (Add)
 // HTTP VERB: POST;
-router.post('/studysession/add', studySessionsRouter.addStudySession);
+// router.post('/studysession/add', studySessionRouter.addStudySession);
 
 
-//NOTES
-//CRUD OPERATION: CREATE (Add)
-// HTTP VERB: POST;
-router.post('/notes/add', noteRouter.addNote);
+// //NOTES
+// //CRUD OPERATION: CREATE (Add)
+// // HTTP VERB: POST;
+// router.post('/notes/add', noteRouter.addNote);
 
 
 // Error handling middleware;
