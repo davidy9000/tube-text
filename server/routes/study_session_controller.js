@@ -55,6 +55,4 @@ function getAllSessionsOfUser(req, res, next) {
 //     .catch(err=>next(err));
 // };
 
-module.exports = {
-	addStudySession
-}
+module.exports = router;
