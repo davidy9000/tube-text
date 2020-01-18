@@ -10,7 +10,7 @@ const Note = db.define("note", {
         autoIncrement: true
     },
 
-    vidTimestamp: {
+    videoTimestamp: {
         type: Sequelize.INTEGER,
         allowNull: false
     },

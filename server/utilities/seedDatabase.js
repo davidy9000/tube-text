@@ -1,4 +1,4 @@
-const { User, StudySession} = require('../database/models');
+const { User, StudySession, Note } = require('../database/models');
 
 const seedDatabase = async () => {
 	const JohnDoe = await User.create({
@@ -10,26 +10,37 @@ const seedDatabase = async () => {
 	const stud_sess = await Promise.all([
 		StudySession.create({
 			videoUrl: "https://youtube.com/",
-			notesArr: [
-				{
-					time: 120,
-					note_string: "This is interesting"
-				},
-				{
-					time: 153,
-					note_string: "This is boring"
-				},
-				{
-					time: 453,
-					note_string: "Why am I doing this"
-				}
-			],
-			studySessionName: "Some test"
+			studySessionName: "Some test",
+			studySessionDescription: "Some description"
+		}),
+		StudySession.create({
+			videoUrl: "https://google.com/",
+			studySessionName: "Some test Google",
+			studySessionDescription: "Some description Google"
 		})
 	]);
 
-	for (let i=0; i<stud_sess.length; i++) {
+	const some_notes = await Promise.all([
+		Note.create({
+			videoTimestamp: 123,
+			noteRecord: "I don't care"
+		}),
+		Note.create({
+			videoTimestamp: 344,
+			noteRecord: "AAAAA"
+		}),
+		Note.create({
+			videoTimestamp: 545,
+			noteRecord: "REALLY?"
+		})
+	]);
+
+	for(let i=0; i<stud_sess.length; i++){
 		await stud_sess[i].setUser(JohnDoe);
+	}
+
+	for (let i=0; i<some_notes.length; i++) {
+		await some_notes[i].setStudySession(1);
 	}
 }
 
