@@ -11,7 +11,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 /**
  * Need our reducers to combine into a single root reducer
  */
-import allNotes from "./reducers/allNotes";
+// import allNotes from "./reducers/allNotes";
 import userSessions from './reducers/userSessions';
 
 /**
@@ -20,7 +20,7 @@ import userSessions from './reducers/userSessions';
  * Creating a middleware to handle async calls
  * Creating the store that houses our state (single-source-of-truth)
  */
-const rootReducer = combineReducers({allNotes, userSessions});
+const rootReducer = combineReducers({userSessions});
 const logger = createLogger({ collapsed: true });
 const middleware = composeWithDevTools(applyMiddleware(thunkMiddleware, logger));
 const store = createStore(rootReducer, middleware);
