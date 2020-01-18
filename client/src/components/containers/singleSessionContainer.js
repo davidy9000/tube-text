@@ -9,7 +9,7 @@ class SingleSessionContainer extends Component {
     }
     render() {
         return(
-            <SingleSessionView/>
+            <SingleSessionView allNotes = {this.props.allNotes} />
         )
     }
 }
