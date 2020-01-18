@@ -15,10 +15,6 @@ const StudySession = db.define("study_session", {
 		allowNull: false
 	},
 
-	notesArr: {
-        type: Sequelize.JSON,
-    },
-
     studySessionName: {
         type: Sequelize.STRING,
 	},
