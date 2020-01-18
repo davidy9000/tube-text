@@ -1,5 +1,7 @@
 import * as types from './actionTypes';
 import { bindActionCreators } from 'redux';
+import axios from 'axios';
+
 
 const test_arr = [
     {
@@ -39,10 +41,10 @@ const test_arr = [
 //     }
 // }
 
-const fetchSessions = (user_id) => {
+const fetchSessions = (all_sessions) => {
     return{
         type: types.FETCH_SESSIONS,
-        payload: user_id
+        payload: all_sessions
     }
 }
 
@@ -63,7 +65,14 @@ const fetchSessions = (user_id) => {
 //     console.log("edit thunk");
 // }
 
-export const fetchSessionsThunk = (user_id) => (dispatch) => {
+export const fetchSessionsThunk = () => (dispatch) => {
+    axios.get('http://localhost:1234/api/studysessions/users/1')
+    .then((response) =>{
+        dispatch(fetchSessions(response.data));
+    })
+    .then((error)=>{
+        console.log(error);
+    });
     console.log("fetch sessions thunk");
-    dispatch(fetchSessions(test_arr));
+    // dispatch(fetchSessions(test_arr));
 }

@@ -9,14 +9,14 @@ class SingleUserContainer extends Component {
     }
     render(){
         return(
-            <SingleUserView array = {this.props.sessions}/>
+            <SingleUserView sessions = {this.props.userSessions}/>
         )
     }
 }
 
 const mapState = (state) => {
     return({
-        sessions: state.userSessions
+        userSessions: state.userSessions
     })
 }
 
