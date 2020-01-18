@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SingleUserView = (props) => {
-    const {array} = props;
+    const {sessions} = props;
     return (
         <div className="App">
-            {array.map((user)=>{
-            return <p>{user.Name}</p>
+            {sessions.map((session)=>{
+            return <p>{session.studySessionName}</p>
             })}
             {/* {array} */}
         </div>
