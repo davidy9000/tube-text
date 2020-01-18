@@ -2,7 +2,7 @@ import * as types from './actionTypes';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
 
-
+//test array for fetch
 const test_arr = [
     {
         Name: "student 1"
@@ -11,6 +11,14 @@ const test_arr = [
         Name: "student 2"
     }
 ]
+
+//test for add
+const test_note = {
+    studySessionId: 2,
+    videoTimestamp: 888,
+    noteRecord: "MOOOP"
+
+}
 
 // ACTION CREATOR;
 const fetchNotes = (all_notes) => {
@@ -27,12 +35,12 @@ const fetchNotes = (all_notes) => {
 //     }
 // }
 
-// const addNote = (note) => {
-//     return {
-//         type: types.ADD_NOTE,
-//         payload: note
-//     }
-// }
+const addNote = (note) => {
+    return {
+        type: types.ADD_NOTE,
+        payload: note
+    }
+}
 
 // const editNote = (note_id) => {
 //     return {
@@ -65,6 +73,7 @@ const fetchSessions = (all_sessions) => {
 //     console.log("edit thunk");
 // }
 
+//SESSIONS
 export const fetchSessionsThunk = () => (dispatch) => {
     axios.get('http://localhost:1234/api/studysessions/users/1')
     .then((response) =>{
@@ -77,6 +86,8 @@ export const fetchSessionsThunk = () => (dispatch) => {
     
 }
 
+//NOTES
+
 export const fetchNotesThunk = () => (dispatch) => {
     axios.get('http://localhost:1234/api/notes/studysessions/1')
     .then((response) => {
@@ -88,4 +99,18 @@ export const fetchNotesThunk = () => (dispatch) => {
 
     console.log("fetch notes thunk");
     
+}
+
+//Tony and Billie's comments - in the UI we need to make sure user input is valid before we allow it to go to backend
+//NOTE: add note to parameter later when we actually implement this
+export const addNotesThunk = () => (dispatch) => {
+    axios.post('http://localhost:1234/api/notes/add', test_note)
+    .then((response) => response.data)
+    //response.data and note are the same value (b/c of anonymous arrow function)
+    .then((note) => dispatch(addNote(note)))
+    .catch((error)=>{
+        console.log(error);
+    });
+
+    console.log("add thunk");
 }
