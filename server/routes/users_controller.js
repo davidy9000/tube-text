@@ -18,7 +18,7 @@ router.get('/studysessions', findAllUserStudySessions);
 //	Example Usage: /1  ===> gets the user whose id=1
 router.get('/:id', findUser);
 
-
+/************************ Get function *****************/
 //	Get User by Id
 function findUser(req, res, next) {
 	User.findById(req.params.id)
