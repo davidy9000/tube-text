@@ -1,3 +1,4 @@
+//	This is how the table of StudySession is set up
 const Sequelize = require('sequelize');
 const db = require('../db');
 
@@ -20,7 +21,11 @@ const StudySession = db.define("study_session", {
 
     studySessionName: {
         type: Sequelize.STRING,
-    }
+	},
+	
+	studySessionDescription: {
+		type: Sequelize.STRING
+	}
 
 });
 

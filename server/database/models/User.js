@@ -1,3 +1,4 @@
+//	This is how the table of User is set up
 const Sequelize = require('sequelize');
 const db = require('../db');
 
