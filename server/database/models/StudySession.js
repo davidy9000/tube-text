@@ -2,7 +2,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const StudySession = db.define("study_session", {
+const StudySession = db.define("StudySession", {
 
 	studySessionId: {
 		type: Sequelize.INTEGER,
