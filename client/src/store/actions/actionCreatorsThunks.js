@@ -1,4 +1,5 @@
 import * as types from './actionTypes';
+import { bindActionCreators } from 'redux';
 
 // ACTION CREATOR;
 const fetchNotes = (all_notes) => {
@@ -29,6 +30,14 @@ const editNote = (note_id) => {
     }
 }
 
+const fetchSessions = (user_id) => {
+    return{
+        type: types.FETCH_SESSIONS,
+        payload: uder_id.sessions
+    }
+}
+
+//THUNKS
 export const fetchNotesThunk = (all_notes) => (dispatch) => {
     console.log("fetch thunk");
 }
@@ -43,4 +52,8 @@ export const deleteNoteThunk = (note_id) => (dispatch) => {
 
 export const editNoteThunk = (note_id) => (dispatch) => {
     console.log("edit thunk");
+}
+
+export const fetchSessionsThunk = (user_id) => (dispatch) => {
+    console.log("fetch sessions thunk");
 }
