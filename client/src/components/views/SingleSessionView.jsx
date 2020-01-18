@@ -6,7 +6,7 @@ const SingleSessionView = (props) => {
     return (
         <div className="App">
             {allNotes.map((notes)=>{
-            return <p>{notes.studySessionName}</p>
+            return <p>{notes.noteRecord}</p>
             })}
           
         </div>
