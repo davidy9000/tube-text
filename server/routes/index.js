@@ -15,7 +15,7 @@ router.get('/users', usersRouter.findUsers);
 //StudySession
 //CRUD OPERATION: CREATE (Add)
 // HTTP VERB: POST;
-router.post('/studysession/add', studySessionRouter.addStudySession);
+router.post('/studysession/add', studySessionsRouter.addStudySession);
 
 
 //NOTES
