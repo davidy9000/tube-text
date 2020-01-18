@@ -13,13 +13,13 @@ router.use('/notes', noteRouter);
 //StudySession
 //CRUD OPERATION: CREATE (Add)
 // HTTP VERB: POST;
-router.post('/studysession/add', studySessionRouter.addStudySession);
+// router.post('/studysession/add', studySessionRouter.addStudySession);
 
 
-//NOTES
-//CRUD OPERATION: CREATE (Add)
-// HTTP VERB: POST;
-router.post('/notes/add', noteRouter.addNote);
+// //NOTES
+// //CRUD OPERATION: CREATE (Add)
+// // HTTP VERB: POST;
+// router.post('/notes/add', noteRouter.addNote);
 
 
 // Error handling middleware;
