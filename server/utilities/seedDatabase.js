@@ -42,6 +42,13 @@ const seedDatabase = async () => {
 	for (let i=0; i<some_notes.length; i++) {
 		await some_notes[i].setStudySession(1);
 	}
+
+	const test1 = await Note.create({
+		videoTimestamp: 343,
+		noteRecord: "JJJJJJ"
+	});
+
+	await test1.setStudySession(2);
 }
 
 module.exports = seedDatabase;
