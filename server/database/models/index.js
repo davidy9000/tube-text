@@ -2,11 +2,16 @@
 
 const User = require('./User');
 const StudySession = require('./StudySession');
+const Note = require('./Note');
+
+Note.belongsTo(StudySession);
+StudySession.hasMany(Note);
 
 StudySession.belongsTo(User);
 User.hasMany(StudySession);
 
 module.exports = {
 	User,
-	StudySession
+	StudySession,
+	Note
 };
