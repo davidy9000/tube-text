@@ -2,9 +2,9 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const StudySession = db.define("StudySession", {
+const StudySession = db.define("studySession", {
 
-	studySessionId: {
+	id: {
 		type: Sequelize.INTEGER,
 		primaryKey: true,
 		autoIncrement: true

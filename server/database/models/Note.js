@@ -4,7 +4,7 @@ const db = require('../db');
 
 const Note = db.define("note", {
     
-    noteId: {
+    id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
