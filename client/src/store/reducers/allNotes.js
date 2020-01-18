@@ -1,4 +1,3 @@
-// import { fetchNotesThunk } from '../store/actions/actionCreators';
 import * as type from '../actions/actionTypes';
 
 export default (state = [], action) => {

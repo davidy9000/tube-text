@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SingleUserView from '../views/singleUserView';
+import SingleUserView from '../views/SingleUserView';
 import { connect } from 'react-redux';
 import { fetchSessionsThunk } from '../../store/actions/actionCreatorsThunks';
 

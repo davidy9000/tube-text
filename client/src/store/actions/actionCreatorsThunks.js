@@ -13,12 +13,12 @@ const test_arr = [
 ]
 
 // ACTION CREATOR;
-// const fetchNotes = (all_notes) => {
-//     return {
-//         type: types.FETCH_NOTES,
-//         payload: all_notes
-//     }
-// }
+const fetchNotes = (all_notes) => {
+    return {
+        type: types.FETCH_NOTES,
+        payload: all_notes
+    }
+}
 
 // const deleteNote = (note_id) => {
 //     return {
@@ -74,5 +74,18 @@ export const fetchSessionsThunk = () => (dispatch) => {
         console.log(error);
     });
     console.log("fetch sessions thunk");
-    // dispatch(fetchSessions(test_arr));
+    
+}
+
+export const fetchNotesThunk = () => (dispatch) => {
+    axios.get('http://localhost:1234/api/notes/studysessions/1')
+    .then((response) => {
+        dispatch(fetchNotes(response.data));
+    })
+    .then((error)=>{
+        console.log(error);
+    });
+
+    console.log("fetch notes thunk");
+    
 }
