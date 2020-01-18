@@ -3,7 +3,45 @@ const express = require("express");
 const router = express.Router();
 const { User, StudySession, Note } = require("../database/models");
 
-//	
+/**************** Get routes for User table ****************/
+//	Gets all users in the User table
+router.get('/', findAllUsers);
+
+//	Gets all users and all of their respective sessions and all of their respective notes
+router.get('/studysessions/notes', findAllUsersStudyNote);
+
+//	Gets all users and all of their respective sessions
+router.get('/studysessions', findAllUserStudySessions);
+
+//	Gets a single user by the userId
+//	Usage: replace :id with the id or pk of the desired user
+//	Example Usage: /1  ===> gets the user whose id=1
+router.get('/:id', findUser);
+
+
+//	Get User by Id
+function findUser(req, res, next) {
+	User.findById(req.params.id)
+		.then(user => res.json(user))
+		.catch(err => next(err));
+};
+
+//	SELECT * FROM users;
+function findAllUsers (req, res, next) {
+	User.findAll()
+    	.then(user => res.json(user))
+    	.catch(err => next(err));
+};
+
+
+//	Get All Users and Study Sessions
+function findAllUserStudySessions (req, res, next) {
+	User.findAll({ include: [StudySession]})
+		.then(studySess => res.json(studySess))
+		.catch(err => next(err));
+};
+
+//	Get All Users, Study Sessions and Notes
 function findAllUsersStudyNote (req, res, next) {
   	User.findAll({ include: [{
 		  model: StudySession,
@@ -14,35 +52,6 @@ function findAllUsersStudyNote (req, res, next) {
 	})
     	.then(user => res.json(user))
     	.catch(err => next(err));
-}
-
-/********* REFERENCE FUNCTION: DO NOT USE ********/
-//	Get a specific note of a study session (for the edit note)
-//	SELECT * FROM notes WHERE "StudySessionStudySessionId" = 1;
-function thing1(req, res, next) {
-	Note.findAll({ 
-		include: [StudySession], 
-		where: {
-			studySessionId: 1
-		}
-	})
-		.then(found => res.json(found))
-		.catch(err=>next(err));
-}
-
-function findUsers (req, res, next) {
-	User.findAll()
-    	.then(user => res.json(user))
-    	.catch(err => next(err));
 };
 
-function findUserStudySessions (req, res, next) {
-	User.findAll({ include: [StudySession]})
-		.then(studySess => res.json(studySess))
-		.catch(err => next(err));
-};
-// Export our router, so that it can be imported to construct our apiRouter;
-// module.exports = router;
-module.exports = {
-	findUsers, findUserStudySessions, findAllUsersStudyNote, thing1
-}
+module.exports = router;

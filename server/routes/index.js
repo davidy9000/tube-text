@@ -6,11 +6,9 @@ const usersRouter = require('./users_controller');
 const studySessionsRouter = require('./study_session_controller');
 const noteRouter = require('./notes_controller');
 
-router.get('/allusersstudy', usersRouter.findUserStudySessions);
-router.get('/users', usersRouter.findUsers);
-
-//	Reference Router to find notes associated with a single study session
-// router.get('/thing1', usersRouter.thing1);
+router.use('/users', usersRouter);
+router.use('/studysessions', studySessionsRouter);
+router.use('/notes', noteRouter);
 
 // Error handling middleware;
 router.use((req, res, next) => {
