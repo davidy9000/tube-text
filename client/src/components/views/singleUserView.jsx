@@ -8,11 +8,9 @@ const SingleUserView = (props) => {
             {sessions.map((session)=>{
             return <p>{session.studySessionName}</p>
             })}
-            {/* {array} */}
+          
         </div>
-        // <div>
-        //     Hello World
-        // </div>
+
     )
 }
 
