@@ -12,6 +12,18 @@ router.get('/users', usersRouter.findUsers);
 //	Reference Router to find notes associated with a single study session
 // router.get('/thing1', usersRouter.thing1);
 
+//StudySession
+//CRUD OPERATION: CREATE (Add)
+// HTTP VERB: POST;
+router.post('/studysession/add', studySessionRouter.addStudySession);
+
+
+//NOTES
+//CRUD OPERATION: CREATE (Add)
+// HTTP VERB: POST;
+router.post('/notes/add', noteRouter.addNote);
+
+
 // Error handling middleware;
 router.use((req, res, next) => {
 	const error = new Error("Not Found, Please Check URL!");
