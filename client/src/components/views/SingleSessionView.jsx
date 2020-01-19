@@ -1,36 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const SingleSessionView = (props) => {
-    const {allNotes, addNotesThunk, handleSubmit, } = props;
-
-    handleSubmit(this.getId, this.getTimeStamp, this.getNoteRecord);
-
-    // handleChange=(event)=>{
-
-    // }
-    
-    // handleSubmit=()=>{
-
-    // }
-
-
-    // addNotesThunk()
-    //onChanges on the input field
+    const { handleChange, handleSubmit, allNotes } = props;
     return (
         <div className="App">
             {allNotes.map((notes)=>{
             return <p>{notes.noteRecord}</p>
             })}
-            
+
             <form onSubmit={handleSubmit}>
                 {/* Temporary Study Session field */}
-                Study Session: <input type="text" onChange ={(input)=>this.getId = input} ></input>
+                Study Session: <input type="text" name = "studySessionId" onChange ={handleChange} ></input>
                 <br/>
                 {/* Temporary TimeStamp field */}
-                TimeStamp: <input type="text" onChange={(input)=>this.getTimeStamp = input} ></input>
+                TimeStamp: <input type="text" name = "videoTimestamp" onChange={handleChange} ></input>
                 <br/>
-                Note: <input type="text" onChange={(input)=>this.getNoteRecord = input} ></input>
+                Note: <input type="text" name = "noteRecord"onChange={handleChange} ></input>
                 <br/>
                 <input type="submit"></input>
 
