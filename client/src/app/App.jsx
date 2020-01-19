@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-// import SingleUserContainer from '../components/containers/SingleUserContainer'
+import SingleUserContainer from '../components/containers/singleUserContainer'
 import SingleSessionContainer from '../components/containers/singleSessionContainer';
 
 
@@ -8,8 +8,8 @@ import SingleSessionContainer from '../components/containers/singleSessionContai
 class App extends Component {
   render(){
     return (
-        // <SingleUserContainer/>
-        <SingleSessionContainer />
+        <SingleUserContainer/>
+        // <SingleSessionContainer />
     );
   }
 }

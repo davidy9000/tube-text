@@ -1,15 +1,47 @@
 import React, { Component } from 'react';
-import SingleUserView from '../views/SingleUserView';
+import SingleUserView from '../views/singleUserView';
 import { connect } from 'react-redux';
-import { fetchSessionsThunk } from '../../store/actions/actionCreatorsThunks';
+import { fetchSessionsThunk , addStudySessionThunk } from '../../store/actions/actionCreatorsThunks';
 
 class SingleUserContainer extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            videoUrl: "",
+            studySessionName: "",
+            studySessionDescription: "",
+            userId: 0
+        }
+    }
+
+    handleChange=(event)=>{
+        // console.log("I am changing input", [event.target.name], event.target.value)
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleSubmit=(event)=>{
+        event.preventDefault();
+        let study_sess = {
+            videoUrl: this.state.videoUrl,
+            studySessionName: this.state.studySessionName,
+            studySessionDescription: this.state.studySessionDescription,
+            userId: this.state.userId
+        }
+        console.log("I am handling stud sess submit: ", study_sess)
+        this.props.addStudySessionThunk(study_sess);
+    }
+
     componentDidMount() {
         this.props.fetchSessionsThunk();
     }
     render(){
         return(
-            <SingleUserView sessions = {this.props.userSessions}/>
+            <SingleUserView sessions = {this.props.userSessions}
+                handleChange = {this.handleChange} 
+                handleSubmit={this.handleSubmit}
+            />
         )
     }
 }
@@ -22,7 +54,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
     return({
-        fetchSessionsThunk: () => dispatch(fetchSessionsThunk())
+        fetchSessionsThunk: () => dispatch(fetchSessionsThunk()),
+        addStudySessionThunk: (study_sess) => dispatch(addStudySessionThunk(study_sess)),
     })
 }
 

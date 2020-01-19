@@ -1,6 +1,6 @@
 //SESSIONS
 export const FETCH_SESSIONS = 'FETCH_SESSIONS';
-// export const ADD_SESSION = 'ADD_SESSION'
+export const ADD_STUDY_SESSION = 'ADD_STUDY_SESSION';
 
 //NOTES
 export const FETCH_NOTES = 'FETCH_NOTES';
