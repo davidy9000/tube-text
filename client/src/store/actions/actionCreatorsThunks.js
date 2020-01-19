@@ -119,8 +119,10 @@ export const addNotesThunk = (note) => (dispatch) => {
 }
 
 export const deleteNoteThunk = (note_id) => (dispatch) =>{
-    axios.delete(`http://localhost:1234/api/notes/delete/${note_id}`)
-    .then((response) => response.data)
+    axios.delete('http://localhost:1234/api/notes/delete/1')
+    .then((response) => {
+        console.log('response is: ', response.data);
+    })
     .then((noteid) => dispatch(deleteNote(noteid)))
     .catch((error) => {console.log(error)})
 }
