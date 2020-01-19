@@ -28,8 +28,8 @@ class SingleSessionContainer extends Component {
     handleSubmit=(event)=>{
         event.preventDefault();
         let note = {
-            studySessionId: this.state.id,
-            videoTimestamp: this.state.timeStamp,
+            studySessionId: this.state.studySessionId,
+            videoTimestamp: this.state.videoTimestamp,
             noteRecord: this.state.noteRecord
         }
         console.log("I am handling submit: ", note)
