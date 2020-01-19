@@ -105,7 +105,10 @@ export const fetchNotesThunk = () => (dispatch) => {
 //NOTE: add note to parameter later when we actually implement this
 export const addNotesThunk = () => (dispatch) => {
     axios.post('http://localhost:1234/api/notes/add', test_note)
-    .then((response) => response.data)
+    .then((response) => {
+        console.log(response.data);
+        return response.data;
+    })
     //response.data and note are the same value (b/c of anonymous arrow function)
     .then((note) => dispatch(addNote(note)))
     .catch((error)=>{

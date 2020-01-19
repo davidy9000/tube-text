@@ -2,7 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SingleSessionView = (props) => {
-    const {allNotes, addNotesThunk} = props;
+    const {allNotes, addNotesThunk, handleSubmit, } = props;
+
+    handleSubmit(this.getId, this.getTimeStamp, this.getNoteRecord);
+
+    // handleChange=(event)=>{
+
+    // }
+    
+    // handleSubmit=()=>{
+
+    // }
 
 
     // addNotesThunk()
@@ -15,12 +25,12 @@ const SingleSessionView = (props) => {
             
             <form onSubmit={handleSubmit}>
                 {/* Temporary Study Session field */}
-                Study Session: <input type="text" required ></input>
+                Study Session: <input type="text" onChange ={(input)=>this.getId = input} ></input>
                 <br/>
                 {/* Temporary TimeStamp field */}
-                TimeStamp: <input type="text" required ></input>
+                TimeStamp: <input type="text" onChange={(input)=>this.getTimeStamp = input} ></input>
                 <br/>
-                Note: <input type="text" required ></input>
+                Note: <input type="text" onChange={(input)=>this.getNoteRecord = input} ></input>
                 <br/>
                 <input type="submit"></input>
 
