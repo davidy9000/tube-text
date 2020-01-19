@@ -103,9 +103,12 @@ export const fetchNotesThunk = () => (dispatch) => {
 
 //Tony and Billie's comments - in the UI we need to make sure user input is valid before we allow it to go to backend
 //NOTE: add note to parameter later when we actually implement this
-export const addNotesThunk = () => (dispatch) => {
-    axios.post('http://localhost:1234/api/notes/add', test_note)
-    .then((response) => response.data)
+export const addNotesThunk = (note) => (dispatch) => {
+    axios.post('http://localhost:1234/api/notes/add', note)
+    .then((response) => {
+        console.log("the data is: ", response.data);
+        return response.data;
+    })
     //response.data and note are the same value (b/c of anonymous arrow function)
     .then((note) => dispatch(addNote(note)))
     .catch((error)=>{
