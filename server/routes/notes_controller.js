@@ -73,7 +73,7 @@ function addNote(req, res, next) {
 /******************* Delete Function *********************/
 function deleteNote(req, res, next){
     Note.destroy(
-        {where: {id: req.params.id},}
+        {where: {id: req.params.id}}
         )
     .then((response) => res.sendStatus(204))
     .catch((err) => next(err));
@@ -87,9 +87,7 @@ function editNote(req, res, next) {
         {where: {id: req.params.id}}
         )
     .then((response) => res.sendStatus(200))
-    .catch((err) => next(err));
-    
+    .catch((err) => next(err));   
 };
-
 
 module.exports = router;
