@@ -42,12 +42,12 @@ const addNote = (note) => {
     }
 }
 
-// const editNote = (note_id) => {
-//     return {
-//         type: types.EDIT_NOTE,
-//         payload: note_id
-//     }
-// }
+const editNote = (note) => {
+    return {
+        type: types.EDIT_NOTE,
+        payload: note
+    }
+}
 
 const fetchSessions = (all_sessions) => {
     return{
@@ -57,21 +57,6 @@ const fetchSessions = (all_sessions) => {
 }
 
 //THUNKS
-// export const fetchNotesThunk = (all_notes) => (dispatch) => {
-//     console.log("fetch thunk");
-// }
-
-// export const addNotesThunk = (note) => (dispatch) => {
-//     console.log("add thunk");
-// }
-
-// export const deleteNoteThunk = (note_id) => (dispatch) => {
-//     console.log("delete thunk");
-// }
-
-// export const editNoteThunk = (note_id) => (dispatch) => {
-//     console.log("edit thunk");
-// }
 
 //SESSIONS
 export const fetchSessionsThunk = () => (dispatch) => {
@@ -121,12 +106,17 @@ export const addNotesThunk = (note) => (dispatch) => {
 export const deleteNoteThunk = (note_id) => (dispatch) =>{
     console.log("thunk note id:", note_id);
     axios.delete(`http://localhost:1234/api/notes/delete/${note_id}`)
-    .then((response) => {
-        console.log('response is: ', response);
-        console.log('response data is: ', response.data);
-    })
     .then((noteid) => dispatch(deleteNote(note_id)))
     .catch((error) => {console.log(error)})
 
     console.log("delete thunk");
+}
+
+export const editNoteThunk = (note) => (dispatch) => {
+    console.log("edit thunk");
+
+    axios.put(`http://localhost:1234/api/notes/edit/${note.id}`, note)
+    .then(() => dispatch(editNote(note)))
+    .catch((error) => {console.log(error)})
+    
 }
