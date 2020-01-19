@@ -23,6 +23,10 @@ router.post('/add', addNote);
 /******************* Delete Router *********************/
 router.delete('/delete/:id', deleteNote);
 
+/******************* Edit Router *********************/
+router.put('/edit/:id', editNote);
+
+
 /*********************** Get functions *******************/
 //  Get note by Id
 function getNote(req, res, next) {
@@ -68,11 +72,22 @@ function addNote(req, res, next) {
 
 /******************* Delete Function *********************/
 function deleteNote(req, res, next){
-    Note.destroy({
-        where: {id: req.params.id},
-    }).then((response) => res.sendStatus(204))
+    Note.destroy(
+        {where: {id: req.params.id}}
+        )
+    .then((response) => res.sendStatus(204))
     .catch((err) => next(err));
 
+};
+
+/******************* Edit Function *********************/
+function editNote(req, res, next) {
+    Note.update(
+        {noteRecord: "updates booooo"},
+        {where: {id: req.params.id}}
+        )
+    .then((response) => res.sendStatus(200))
+    .catch((err) => next(err));   
 };
 
 module.exports = router;
