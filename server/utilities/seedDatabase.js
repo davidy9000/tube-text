@@ -7,6 +7,12 @@ const seedDatabase = async () => {
 		email: "john.doe@gmail.com"
 	});
 
+	const JaneDoe = await User.create({
+		userName: "doejane",
+		pass: "idsnofio",
+		email: "idk@janedoe.com"
+	});
+
 	const stud_sess = await Promise.all([
 		StudySession.create({
 			videoUrl: "https://youtube.com/",
@@ -49,6 +55,20 @@ const seedDatabase = async () => {
 	});
 
 	await test1.setStudySession(2);
+
+	const randStudSess = await StudySession.create({
+		videoUrl: "https://facebook.com/",
+		studySessionName: "Some test facebook",
+		studySessionDescription: "Some description facebook"
+	})
+	await randStudSess.setUser(2);
+
+	const test2 = await Note.create({
+		videoTimestamp: 438,
+		noteRecord: "RANDOM TEST DATA AGAIN"
+	});
+
+	await test2.setStudySession(3);
 }
 
 module.exports = seedDatabase;
