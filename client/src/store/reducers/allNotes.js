@@ -6,6 +6,8 @@ export default (state = [], action) => {
             return action.payload;
         case type.ADD_NOTE:
             return [...state, action.payload];
+        case type.DELETE_NOTE:
+            return state.filter((note) => note.id!=action.payload);
         default:
             return state;
     }
