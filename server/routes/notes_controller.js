@@ -70,7 +70,7 @@ function addNote(req, res, next) {
 function deleteNote(req, res, next){
     Note.destroy({
         where: {id: req.params.id},
-    }).then((response) => res.status(204).json(req.params.id))
+    }).then((response) => res.sendStatus(204))
     .catch((err) => next(err));
 
 };

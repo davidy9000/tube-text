@@ -36,16 +36,11 @@ class SingleSessionContainer extends Component {
         this.props.addNotesThunk(note);
     }
     
-    handleDelete=(event)=>{
-        event.preventDefault();
-        console.log("I'm handle delete");
-    }
-
-
     componentDidMount(){
         console.log("I am mounted");
         this.props.fetchNotesThunk();
     }
+
     render() {
         return(
             <SingleSessionView allNotes = {this.props.allNotes} 
