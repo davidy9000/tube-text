@@ -38,7 +38,7 @@ class SingleSessionContainer extends Component {
     
     handleDelete=(event)=>{
         event.preventDefault();
-        
+        console.log("I'm handle delete");
     }
 
 
@@ -52,7 +52,7 @@ class SingleSessionContainer extends Component {
             // addNotesThunk = {this.props.addNotesThunk} 
             handleChange = {this.handleChange} 
             handleSubmit={this.handleSubmit}
-            deleteNote = {this.deleteNoteThunk}/>
+            deleteNote = {this.props.deleteNoteThunk}/>
         )
     }
 }

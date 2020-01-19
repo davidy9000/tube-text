@@ -7,7 +7,7 @@ const SingleSessionView = (props) => {
     return (
         <div className="App">
             {allNotes.map((note)=>{
-            return <p onClick = {deleteNote(note.id)}>{note.noteRecord}</p>
+            return <button onClick = {() => deleteNote(note.id)} id = {note.id}>{note.noteRecord}</button>
             })}
 
             <form onSubmit={handleSubmit}>

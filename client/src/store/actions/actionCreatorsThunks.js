@@ -125,4 +125,6 @@ export const deleteNoteThunk = (note_id) => (dispatch) =>{
     })
     .then((noteid) => dispatch(deleteNote(noteid)))
     .catch((error) => {console.log(error)})
+
+    console.log("delete thunk");
 }

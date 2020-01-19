@@ -68,32 +68,11 @@ function addNote(req, res, next) {
 
 /******************* Delete Function *********************/
 function deleteNote(req, res, next){
-    
-    // Note.findById(req.params.id)
-    // .then(
-    // (note) => Note.destroy((Note.finddByID(req.params.id)){
-        // (Note.findById(req.params.id))
     Note.destroy({
         where: {id: req.params.id},
     }).then((response) => res.status(204).json(req.params.id))
     .catch((err) => next(err));
-    // res.status(204).json(Note);
 
-    // Note.findById(req.params.id)
-    // .then((singleNote) => Note.destroy({
-    //     where: {id:singleNote.Noteid}
-    // }))
-
-    // .then((response) => 
-    // {
-    //     res.send("Got a delete request");
-    //     return res.status(204);
-    // })
-    // .catch((error)=> next(error))
-    // res.send("Got a delete request");
-    // Note.findById(req.params.id)
 };
-
-
 
 module.exports = router;
