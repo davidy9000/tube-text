@@ -14,7 +14,7 @@ class SingleSessionContainer extends Component {
     }
 
     handleChange=(event)=>{
-        console.log("I am changing input", [event.target.name], event.target.value)
+        // console.log("I am changing input", [event.target.name], event.target.value)
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -32,12 +32,12 @@ class SingleSessionContainer extends Component {
             videoTimestamp: this.state.videoTimestamp,
             noteRecord: this.state.noteRecord
         }
-        console.log("I am handling submit: ", note)
+        // console.log("I am handling submit: ", note)
         this.props.addNotesThunk(note);
     }
     
     componentDidMount(){
-        console.log("I am mounted");
+        // console.log("I am mounted");
         this.props.fetchNotesThunk();
     }
 

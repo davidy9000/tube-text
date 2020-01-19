@@ -45,6 +45,13 @@ const addStudySession = (study_session) => {
     }
 }
 
+const currentStudySession = (study_session) => {
+    return {
+        type: types.CURRENT_STUDY_SESSION,
+        payload: study_session
+    }
+}
+
 //THUNKS
 
 //SESSIONS
@@ -71,6 +78,11 @@ export const addStudySessionThunk = (study_session) => (dispatch) => {
         console.log(error);
     })
     console.log("add study session thunk");
+}
+
+export const currStudySessionThunk = (study_session) => (dispatch) => {
+    let resolvedActionObject = currentStudySession(study_session);
+    dispatch(resolvedActionObject);
 }
 
 //NOTES
