@@ -28,12 +28,12 @@ const fetchNotes = (all_notes) => {
     }
 }
 
-// const deleteNote = (note_id) => {
-//     return {
-//         type: types.DELETE_NOTE,
-//         payload: note_id
-//     }
-// }
+const deleteNote = (note_id) => {
+    return {
+        type: types.DELETE_NOTE,
+        payload: note_id
+    }
+}
 
 const addNote = (note) => {
     return {
@@ -116,4 +116,11 @@ export const addNotesThunk = (note) => (dispatch) => {
     });
 
     console.log("add thunk");
+}
+
+export const deleteNoteThunk = (note_id) => (dispatch) =>{
+    axios.delete(`http://localhost:1234/api/notes/delete/${note_id}`)
+    .then((response) => response.data)
+    .then((noteid) => dispatch(deleteNote(noteid)))
+    .catch((error) => {console.log(error)})
 }

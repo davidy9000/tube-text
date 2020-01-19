@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SingleSessionView from '../views/SingleSessionView';
 import { connect } from 'react-redux';
-import { fetchNotesThunk, addNotesThunk } from '../../store/actions/actionCreatorsThunks';
+import { fetchNotesThunk, addNotesThunk, deleteNoteThunk } from '../../store/actions/actionCreatorsThunks';
 
 class SingleSessionContainer extends Component {
     constructor(props){
@@ -63,6 +63,7 @@ const mapDispatch = (dispatch) => {
     return({
         fetchNotesThunk: () => dispatch(fetchNotesThunk()),
         addNotesThunk: (note) => dispatch(addNotesThunk(note))
+        // deleteNoteThunk: (note_id)=>dispatch(deleteNote(note_id))
     })
 }
 

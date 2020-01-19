@@ -4,7 +4,7 @@ export const FETCH_SESSIONS = 'FETCH_SESSIONS';
 
 //NOTES
 // export const EDIT_NOTE = 'EDIT_NOTE';
-// export const DELETE_NOTE = 'DELETE_NOTE';
+export const DELETE_NOTE = 'DELETE_NOTE';
 export const FETCH_NOTES = 'FETCH_NOTES';
 export const ADD_NOTE = 'ADD_NOTE';
 
