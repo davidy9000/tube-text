@@ -1,13 +1,26 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 
+//TEMPORARY FOR TESTING
+const fakeObject = {
+    id: 2,
+    videoTimestamp: 123,
+    noteRecord: "NEWEST TEST"
+}
+
 const SingleSessionView = (props) => {
-    const { allNotes, handleChange, handleSubmit, deleteNote } = props;
+    const { allNotes, handleChange, handleSubmit, deleteNote, editNote } = props;
     console.log("The Hangle Change is: ", handleChange);
     return (
         <div className="App">
             {allNotes.map((note)=>{
-            return <p onClick = {() => deleteNote(note.id)} id = {note.id}>{note.noteRecord}</p>
+            return (
+                <div>
+                    <p>{note.noteRecord}</p>
+                    <button onClick = {() => deleteNote(note.id)} id = {note.id}>Delete {note.noteRecord}</button>
+                    <button onClick = {() => editNote(fakeObject)}>{note.noteRecord}</button>
+                </div>
+                )
             })}
 
             <form onSubmit={handleSubmit}>

@@ -8,6 +8,16 @@ export default (state = [], action) => {
             return [...state, action.payload];
         case type.DELETE_NOTE:
             return state.filter((note) => note.id!=action.payload);
+        case type.EDIT_NOTE:
+            return state.map((note) => {
+                if (note.id === action.payload.id) {
+                    return {
+                        ...note,
+                        noteRecord: action.payload.noteRecord
+                    }
+                } 
+                else return note;
+            })
         default:
             return state;
     }

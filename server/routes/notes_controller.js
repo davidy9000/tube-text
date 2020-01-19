@@ -83,7 +83,6 @@ function deleteNote(req, res, next){
 /******************* Edit Function *********************/
 function editNote(req, res, next) {
     Note.update(
-        // req.body.noteRecord}
         {noteRecord: req.param('noteRecord')},
         {where: {id: req.params.id}}
         )
