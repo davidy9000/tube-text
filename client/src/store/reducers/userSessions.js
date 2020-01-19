@@ -7,6 +7,8 @@ export default(state = [], action) =>{
     switch(action.type){
         case (type.FETCH_SESSIONS):
             return (action.payload);
+        case (type.ADD_STUDY_SESSION):
+            return [...state, action.payload];
         default:
             return state; 
     }

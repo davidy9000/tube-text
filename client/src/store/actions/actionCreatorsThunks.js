@@ -2,24 +2,6 @@ import * as types from './actionTypes';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
 
-//test array for fetch
-const test_arr = [
-    {
-        Name: "student 1"
-    },
-    {
-        Name: "student 2"
-    }
-]
-
-//test for add
-const test_note = {
-    studySessionId: 2,
-    videoTimestamp: 888,
-    noteRecord: "MOOOP"
-
-}
-
 // ACTION CREATOR;
 const fetchNotes = (all_notes) => {
     return {
@@ -56,6 +38,13 @@ const fetchSessions = (all_sessions) => {
     }
 }
 
+const addStudySession = (study_session) => {
+    return {
+        type: types.ADD_STUDY_SESSION,
+        payload: study_session
+    }
+}
+
 //THUNKS
 
 //SESSIONS
@@ -67,8 +56,21 @@ export const fetchSessionsThunk = () => (dispatch) => {
     .then((error)=>{
         console.log(error);
     });
-    console.log("fetch sessions thunk");
+    console.log("fetch study sessions thunk");
     
+}
+
+export const addStudySessionThunk = (study_session) => (dispatch) => {
+    axios.post('http://localhost:1234/api/studysessions/add', study_session)
+    .then((response) => {
+        console.log("the study session data is: ", response.data);
+        return response.data;
+    })
+    .then((study_session) => dispatch(addStudySession(study_session)))
+    .catch((error) => {
+        console.log(error);
+    })
+    console.log("add study session thunk");
 }
 
 //NOTES
@@ -100,7 +102,7 @@ export const addNotesThunk = (note) => (dispatch) => {
         console.log(error);
     });
 
-    console.log("add thunk");
+    console.log("add note thunk");
 }
 
 export const deleteNoteThunk = (note_id) => (dispatch) =>{
@@ -109,11 +111,11 @@ export const deleteNoteThunk = (note_id) => (dispatch) =>{
     .then((noteid) => dispatch(deleteNote(note_id)))
     .catch((error) => {console.log(error)})
 
-    console.log("delete thunk");
+    console.log("delete note thunk");
 }
 
 export const editNoteThunk = (note) => (dispatch) => {
-    console.log("edit thunk");
+    console.log("edit note thunk");
 
     axios.put(`http://localhost:1234/api/notes/edit/${note.id}`, note)
     .then(() => dispatch(editNote(note)))

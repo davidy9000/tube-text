@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 
-//TEMPORARY FOR TESTING
+//TEMPORARY FOR EDIT TESTING
 const fakeObject = {
     id: 2,
     videoTimestamp: 123,
