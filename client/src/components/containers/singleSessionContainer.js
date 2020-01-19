@@ -35,18 +35,19 @@ class SingleSessionContainer extends Component {
         console.log("I am handling submit: ", note)
         this.props.addNotesThunk(note);
     }
-
-
+    
     componentDidMount(){
         console.log("I am mounted");
         this.props.fetchNotesThunk();
     }
+
     render() {
         return(
             <SingleSessionView allNotes = {this.props.allNotes} 
             // addNotesThunk = {this.props.addNotesThunk} 
             handleChange = {this.handleChange} 
-            handleSubmit={this.handleSubmit}/>
+            handleSubmit={this.handleSubmit}
+            deleteNote = {this.props.deleteNoteThunk}/>
         )
     }
 }
@@ -62,8 +63,8 @@ const mapDispatch = (dispatch) => {
     console.log("I am in dipsathc");
     return({
         fetchNotesThunk: () => dispatch(fetchNotesThunk()),
-        addNotesThunk: (note) => dispatch(addNotesThunk(note))
-        // deleteNoteThunk: (note_id)=>dispatch(deleteNote(note_id))
+        addNotesThunk: (note) => dispatch(addNotesThunk(note)),
+        deleteNoteThunk: (note_id)=>dispatch(deleteNoteThunk(note_id))
     })
 }
 

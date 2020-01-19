@@ -2,12 +2,12 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 
 const SingleSessionView = (props) => {
-    const { allNotes, handleChange, handleSubmit } = props;
+    const { allNotes, handleChange, handleSubmit, deleteNote } = props;
     console.log("The Hangle Change is: ", handleChange);
     return (
         <div className="App">
-            {allNotes.map((notes)=>{
-            return <p>{notes.noteRecord}</p>
+            {allNotes.map((note)=>{
+            return <p onClick = {() => deleteNote(note.id)} id = {note.id}>{note.noteRecord}</p>
             })}
 
             <form onSubmit={handleSubmit}>
