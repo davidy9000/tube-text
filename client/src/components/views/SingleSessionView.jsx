@@ -2,7 +2,8 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 
 const SingleSessionView = (props) => {
-    const { handleChange, handleSubmit, allNotes } = props;
+    const { allNotes, handleChange, handleSubmit } = props;
+    console.log("The Hangle Change is: ", handleChange);
     return (
         <div className="App">
             {allNotes.map((notes)=>{
@@ -11,12 +12,15 @@ const SingleSessionView = (props) => {
 
             <form onSubmit={handleSubmit}>
                 {/* Temporary Study Session field */}
-                Study Session: <input type="text" name = "studySessionId" onChange ={handleChange} ></input>
+                <label>Study Session: </label>
+                <input type="text" name = "studySessionId" onChange ={handleChange} ></input>
                 <br/>
                 {/* Temporary TimeStamp field */}
-                TimeStamp: <input type="text" name = "videoTimestamp" onChange={handleChange} ></input>
+                <label>TimeStamp: </label>
+                <input type="text" name = "videoTimestamp" onChange={handleChange} ></input>
                 <br/>
-                Note: <input type="text" name = "noteRecord"onChange={handleChange} ></input>
+                <label>Note: </label>
+                <input type="text" name = "noteRecord"onChange={handleChange} ></input>
                 <br/>
                 <input type="submit"></input>
 

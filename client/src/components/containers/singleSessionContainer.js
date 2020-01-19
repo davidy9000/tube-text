@@ -45,8 +45,8 @@ class SingleSessionContainer extends Component {
         return(
             <SingleSessionView allNotes = {this.props.allNotes} 
             // addNotesThunk = {this.props.addNotesThunk} 
-            handleChange = {this.props.handleChange} 
-            handleSubmit={this.props.handleSubmit}/>
+            handleChange = {this.handleChange} 
+            handleSubmit={this.handleSubmit}/>
         )
     }
 }
