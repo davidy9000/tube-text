@@ -45,7 +45,7 @@ const SingleSessionView = (props) => {
                             <Grid item xs={6}>
                                 <div className="fake-video">
                                     <Youtube
-                                        videoUrl = {videoUrl}
+                                        videoId = {videoUrl}
                                     />
                                 </div>
                             </Grid>
