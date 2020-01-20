@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import NewStudySessionView from '../views/newStudySessionView'
 import { connect } from 'react-redux';
 import { fetchSessionsThunk , addStudySessionThunk , currStudySessionThunk } from '../../store/actions/actionCreatorsThunks';
+import { compose } from 'redux';
+import {withRouter} from 'react-router-dom';
 
 class NewStudySessionContainer extends Component {
     constructor(props){
@@ -30,6 +32,8 @@ class NewStudySessionContainer extends Component {
             userId: this.state.userId
         }
         this.props.addStudySessionThunk(study_sess);
+        this.props.history.push("/");
+
     }
 
     // componentDidMount() {
@@ -46,7 +50,8 @@ class NewStudySessionContainer extends Component {
                     </Toolbar>
                 </AppBar> */}
 
-                <NewStudySessionView sessions = {this.props.userSessions}
+                <NewStudySessionView 
+                    // sessions = {this.props.userSessions}
                     handleChange = {this.handleChange} 
                     handleSubmit={this.handleSubmit}
                     // currentStudySession={this.props.currStudySessionThunk}
@@ -56,11 +61,11 @@ class NewStudySessionContainer extends Component {
     }
 }
 
-// const mapState = (state) => {
-//     return({
-//         userSessions: state.userSessions,
-//     })
-// }
+const mapState = (state) => {
+    return({
+        userSessions: state.userSessions,
+    })
+}
 
 const mapDispatch = (dispatch) => {
     return({
@@ -70,4 +75,7 @@ const mapDispatch = (dispatch) => {
     })
 }
 
-export default connect(/*mapState, */mapDispatch)(NewStudySessionContainer);
+export default compose(
+    withRouter,
+    connect(mapState, mapDispatch)
+  )(NewStudySessionContainer);

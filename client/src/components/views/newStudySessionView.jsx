@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/newStudySessionStyle.css'
+import Button from '@material-ui/core/Button';
+
 
 // import { makeStyles } from '@material-ui/core/styles';
 // import AppBar from '@material-ui/core/AppBar';
@@ -19,28 +22,37 @@ const NewStudySessionView = (props) => {
 
     const {/*sessions,*/ handleChange, handleSubmit, /*currentStudySession*/ } = props;
     return (
-        <form onSubmit={handleSubmit}>
-                <label>Video URL: </label>
+        <div className="new-session-container">
+            <div className="new-session-box">
+                <div class = 'title'>New Session</div>
+                <form onSubmit={handleSubmit}>
+                <label style= {{color:'#11153e'}}>Video URL: </label>
                 <input type="text" name = "videoUrl" onChange ={handleChange} ></input>
                 <br/>
+                <br/>
 
-                <label>Study Session Name: </label>
+                <label style= {{color:'#11153e'}}>Study Session Name: </label>
                 <input type="text" name = "studySessionName" onChange={handleChange} ></input>
                 <br/>
+                <br/>
 
-                <label>Study Session Description: </label>
-                <input type="text" name = "studySessionDescription" onChange={handleChange} ></input>
+
+                <label style= {{color:'#11153e'}}>Study Session Description: </label>
+                <input id="description" type="text" name = "studySessionDescription" onChange={handleChange} ></input>
                 <br/>
                 <br/>
 
-                <label>User Id: </label>
+                <label style= {{color:'#11153e'}}>User Id: </label>
                 <input type="text" name = "userId" onChange={handleChange} ></input>
                 <br/>
+                <br/>
 
-                <input type="submit">
+                <Button type = 'submit'>submit</Button> 
                     {/* <Link to=""></Link> */}
-                </input>
-        </form>
+                {/* </input> */}
+            </form>
+            </div>
+        </div>
     )
 }
 
