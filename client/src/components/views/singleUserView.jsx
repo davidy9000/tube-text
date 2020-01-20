@@ -1,10 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+// import List from '@material-ui/core/List';
+// import ListItem from '@material-ui/core/ListItem';
+// import Grid from '@material-ui/core/Grid';
+
+
+
 // import IconButton from '@material-ui/core/IconButton';
 // import MenuIcon from '@material-ui/icons/Menu';
 
@@ -41,12 +51,13 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: '#11153e',
         minHeight: 10,
         height: 35,
+        shadows: ['none'],
     },
     customizeToolBar:{
         minHeight: 35,
         height: 35,
     },
-    customButton:{
+    customNavButton:{
         // backgroundColor: '#d24d4d',
         "&:hover": {
             backgroundColor: '#d24d4d'
@@ -60,19 +71,45 @@ const useStyles = makeStyles(theme => ({
         fontSize: '11px',
         borderRadius: 100,
         textTransform: 'none',
-    
     },
     customNewSession:{
         "&:hover": {
             backgroundColor: '#cddc39'
         },
+        display: 'flex',
         // justify: 'flex-end'
         // flexGrow: 1,
-        textAlign: 'right',
+        // textAlign: 'right',
         textTransform: 'none',
+        // justify: 'center',
+    },  
+    card: {
+        // display: 'flex',
+        minWidth: 200,
+        width: '50%',
+        textAlign: 'center',
+        // justifyContent: 'center'
+        // position: 'center',
+        
+    },
+    // bullet: {
+    //     display: 'inline-block',
+    //     margin: '0 2px',
+    //     transform: 'scale(0.8)',
+    // },
+    cardTitle: {
+        fontSize: 20,
+        color: '#11153e',
+    },
+    pos: {
+        marginBottom: 12,
     },
     customViewSession:{
-        
+        position: 'center',
+        justifyContent: 'center',
+        "&:hover": {
+            backgroundColor: '#cddc39'
+        },
     },
 }));
 
@@ -81,34 +118,89 @@ const style = {
     textDecoration: 'none'
 };
 
+
 const SingleUserView = (props) => {
     const classes = useStyles();
-    const {sessions, /*handleChange, handleSubmit , */currentStudySession } = props;
+    // const bull = <span className={classes.bullet}>•</span>;
+
+    const {sessions, handleChange, handleSubmit ,currentStudySession } = props;
     return (
         <div className="App">
-            <AppBar position="static" className = {classes.customizeAppBar}>
+            {/* <AppBar position="static" className = {classes.customizeAppBar}>
                 <Toolbar className = {classes.customizeToolBar}>
-                    {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                    { <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <MenuIcon />
-                    </IconButton> */}
+                    </IconButton> }
                     <Typography variant="h6" className={classes.title} color = "inherit">
                         TubeText
                     </Typography>
-                    <Button className = {classes.customButton}>Sign Out</Button>
+                    <Button className = {classes.customNavButton}>Sign Out</Button>
                 </Toolbar>
-            </AppBar>
+            </AppBar> */}
 
-            <Button className = {classes.customNewSession}>New Study Session</Button>
-
-            {sessions.map((session)=>{
+            {/* <Link style = { style } to={`/study_sessions/add_session`}> */}
+                <Button className = {classes.customNewSession} justifyContent="flex-end">New Study Session</Button>
+            {/* </Link> */}
+            {/* {sessions.map((session)=>{
                 return <div className = "study-session" onClick={() => currentStudySession(session)}>
-                    {/* <button onClick={() => currentStudySession(session)}>View Session</button> */}
+                    { <button onClick={() => currentStudySession(session)}>View Session</button> }
                     <p>{session.studySessionName}</p>
                     <Link style = { style } to={`/study_sessions/${session.id}`}>
                         <Button >View Session</Button>
                     </Link>
                 </div>
+            })} */}
+
+            {sessions.map((session)=> {
+                return (
+                    <div className = "study-session" onClick={() => currentStudySession(session)}>
+                        {/* <List>
+                            <ListItem alignItems= 'center'> */}
+                                <Card className={classes.card}>
+                                    <CardContent>
+                                        <Typography className={classes.cardTitle} color="textSecondary" gutterBottom>
+                                        {session.studySessionName}
+                                        </Typography>
+                                        <Typography>
+                                            {session.studySessionDescription}
+                                        </Typography>
+                                    </CardContent>
+                                    <CardActions>
+                                        <Link style = { style } to={`/study_sessions/${session.id}`}>
+                                            <Button className = {classes.customViewSession}>View Session</Button>
+                                        </Link>
+                                    </CardActions>
+                                </Card>
+                            {/* </ListItem>
+                        </List> */}
+                        <br></br>
+                    </div>
+                )
             })}
+{/* 
+            // return (
+            //     <Card className={classes.card}>
+            //     <CardContent>
+            //         <Typography className={classes.cardTitle} color="textSecondary" gutterBottom>
+            //         Word of the Day
+            //         </Typography>
+            //         <Typography variant="h5" component="h2">
+            //         be{bull}nev{bull}o{bull}lent
+            //         </Typography>
+            //         <Typography className={classes.pos} color="textSecondary">
+            //         adjective
+            //         </Typography>
+            //         <Typography variant="body2" component="p">
+            //         well meaning and kindly.
+            //         <br />
+            //         {'"a benevolent smile"'}
+            //         </Typography>
+            //     </CardContent>
+            //     <CardActions>
+            //         <Button size="small">Learn More</Button>
+            //     </CardActions>
+            //     </Card>
+            // ) */}
           
             {/* <form onSubmit={handleSubmit}>
                 <label>Video URL: </label>
@@ -129,8 +221,7 @@ const SingleUserView = (props) => {
                 <br/>
 
                 <input type="submit"></input>
-
-            </form> */}
+            </form>  */}
         </div>
     )
 }
