@@ -29,16 +29,13 @@ class SingleSessionContainer extends Component {
     //take the state and pass it to the thunk in this function
 
     onClickEdit=(noteId) => {
-        
+        console.log("The Note ID is: ", noteId);
         this.setState({
-            editNoteState: !this.state.editNoteState,
+            // editNoteState: !this.state.editNoteState,
             editId: noteId
-        })
-
-        
-
-        console.log("editnote state!" + this.state.editNoteState);
-        console.log("editId" + this.state.editId);
+        }, () => editNoteThunk(this.state.editId));
+        // console.log("editnote state!" + this.state.editNoteState);
+        // console.log("editId: " + this.state.editId);
     }
 
     handleSubmit=(event)=>{
@@ -117,11 +114,11 @@ class SingleSessionContainer extends Component {
             handleChange = {this.handleChange} 
             handleSubmit={this.handleSubmit}
             onClickEdit={this.onClickEdit}
-            editNoteState={this.state.editNoteState}
+            // editNoteState={this.state.editNoteState}
             
 
             deleteNote = {this.props.deleteNoteThunk}
-            editNote = {this.props.editNoteThunk}
+            // editNote = {this.props.editNoteThunk}
 
             videoUrl = {this.props.currStudySession.videoUrl}
             videoOnReady = {this.videoOnReady}

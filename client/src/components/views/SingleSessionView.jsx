@@ -262,7 +262,7 @@ const SingleSessionView = (props) => {
                                                             <div className="note-buttons">
                                                                 
                                                                 <div className="edit-note">
-                                                                    <Button onClick = {() => editNote(fakeObject)} >
+                                                                    <Button onClick = {() => onClickEdit(note.id)} >
                                                                     {/* <Button onClick={onClickEdit}> */}
 
                                                                             <IconButton aria-label="create" disabled color="secondary">
