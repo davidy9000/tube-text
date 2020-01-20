@@ -58,7 +58,8 @@
 /* Grid */
 
 .main-grid {
-    /* height: 100vh; */
+    height: 100vh;
+    /* border: 1px solid white; */
 }
 
 .Grid {
