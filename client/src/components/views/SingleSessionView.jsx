@@ -28,7 +28,7 @@ const fakeObject = {
 
 const SingleSessionView = (props) => {
     const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl,
-    opts, videoOnReady, videoOnPlay, videoStateChange } = props;
+    opts, videoOnReady, videoOnPlay, videoStateChange, videoOnPause } = props;
     // console.log("The Hangle Change is: ", handleChange);
     return (
         <div className="overall-container">
@@ -56,9 +56,10 @@ const SingleSessionView = (props) => {
                                 
                                     <Youtube
                                         videoId = {videoUrl}
-                                        opts={opts}
+                                        // opts={opts}
                                         // onReady={videoOnReady}
                                         onPlay={videoOnPlay}
+                                        onPause={videoOnPause}
                                         onStateChange={videoStateChange}
                                     />
                                 
@@ -73,9 +74,9 @@ const SingleSessionView = (props) => {
                                 <form onSubmit={handleSubmit}>
                                     {/* Temporary TimeStamp field */}
                                     <br/>
-                                    <label>TimeStamp: </label><br/>
+                                    {/* <label>TimeStamp: </label><br/>
                                     <input type="text" name = "videoTimestamp" onChange={handleChange} ></input>
-                                    <br/><br/>
+                                    <br/><br/> */}
                                     <label>Note: </label><br/>
                                     {/* <input type="text" name = "noteRecord"onChange={handleChange} ></input> */}
                                     <br/>

@@ -11,7 +11,7 @@ const Note = db.define("note", {
     },
 
     videoTimestamp: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DOUBLE,
         allowNull: false
     },
 

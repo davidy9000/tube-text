@@ -11,6 +11,7 @@ class SingleSessionContainer extends Component {
             videoTimestamp: 0,
             noteRecord: ""
         }
+        this.playerInterval = null;
     }
 
     handleChange=(event)=>{
@@ -27,12 +28,13 @@ class SingleSessionContainer extends Component {
 
     handleSubmit=(event)=>{
         event.preventDefault();
+        console.log(this.playerInterval)
         let note = {
             studySessionId: this.props.currStudySession.id,
             videoTimestamp: this.state.videoTimestamp,
             noteRecord: this.state.noteRecord
         }
-        // console.log("I am handling submit: ", note)
+        console.log("I am handling submit: ", note)
         this.props.addNotesThunk(note);
     }
 
@@ -40,21 +42,48 @@ class SingleSessionContainer extends Component {
         // access to player in all event handlers via event.target
         // event.target.playVideoAt(50) // 50 seconds
         const player = event.target
-        this.setState({
-          playerObj: player
-        })
-        player.seekTo(50)
-        console.log(event.target)
+        // player.seekTo(50)
+        // console.log(event.target)
+
+        //   if(videotime !== oldTime) {
+        //     onProgress(videotime);
+        //   }
     }
-    videoOnPlay (event) {
+
+    //  getTime = () => {
+    //     console.log(player.getCurrentTime());
+    //     this.setState({
+    //         videoTimestamp: player.getCurrentTime()
+    //     })
+    // }
+    
+    videoOnPlay = (event) => {
         // access to player in all event handlers via event.target
         // event.target.playVideoAt(50) // 50 seconds
         const player = event.target
+        player.playVideo()
         /// console.log(player.getCurrentTime())
+        
+        this.playerInterval = setInterval( () => {
+            console.log(player.getCurrentTime());
+            this.setState({
+                videoTimestamp: player.getCurrentTime()
+            })
+        }, 1000)
     }
+
+    videoOnPause = (event) => {
+        const player = event.target
+        // console.log("pausing")
+        player.pauseVideo()
+        clearInterval(this.playerInterval);
+        // console.log(this.playerInterval)
+        // clearInterval(this.state.videoTimestamp)
+    }
+
     videoStateChange (event) {
         const player = event.target
-        console.log(player.getCurrentTime())
+        // console.log(player.getCurrentTime())
     }
     
     componentDidMount(){
@@ -63,13 +92,13 @@ class SingleSessionContainer extends Component {
     }
 
     render() {
-        const opts = {
-            height: '390',
-            width: '640',
-            playerVars: { // https://developers.google.com/youtube/player_parameters
-              autoplay: 1
-            }
-        }
+        // const opts = {
+        //     height: '390',
+        //     width: '640',
+        //     playerVars: { // https://developers.google.com/youtube/player_parameters
+        //       autoplay: 1
+        //     }
+        // }
 
         return(
             <SingleSessionView allNotes = {this.props.allNotes} 
@@ -83,6 +112,7 @@ class SingleSessionContainer extends Component {
             videoOnReady = {this.videoOnReady}
             videoOnPlay = {this.videoOnPlay}
             videoStateChange = {this.videoStateChange}
+            videoOnPause = {this.videoOnPause}
             />
         )
     }

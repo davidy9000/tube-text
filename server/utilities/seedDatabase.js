@@ -28,15 +28,15 @@ const seedDatabase = async () => {
 
 	const some_notes = await Promise.all([
 		Note.create({
-			videoTimestamp: 123,
+			videoTimestamp: 123.43924,
 			noteRecord: "I don't care"
 		}),
 		Note.create({
-			videoTimestamp: 344,
+			videoTimestamp: 344.43904,
 			noteRecord: "AAAAA"
 		}),
 		Note.create({
-			videoTimestamp: 545,
+			videoTimestamp: 545.0243214,
 			noteRecord: "REALLY?"
 		})
 	]);
@@ -50,7 +50,7 @@ const seedDatabase = async () => {
 	}
 
 	const test1 = await Note.create({
-		videoTimestamp: 343,
+		videoTimestamp: 343.3943,
 		noteRecord: "JJJJJJ"
 	});
 
@@ -64,7 +64,7 @@ const seedDatabase = async () => {
 	await randStudSess.setUser(2);
 
 	const test2 = await Note.create({
-		videoTimestamp: 438,
+		videoTimestamp: 438.9343724983,
 		noteRecord: "RANDOM TEST DATA AGAIN"
 	});
 
