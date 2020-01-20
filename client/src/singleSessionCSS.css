@@ -2,16 +2,35 @@
 /* For the notes */
 .individual-note {
     border: 1px solid black;
-    padding: 20px;
-    width: 550px;
+    padding: 0px 0px 0px 0px;
+    width: 575px;
     background-color: white;
     color: black;
-    
     
 }
 
 .notes-wrapper {
     border: 1px solid white;
+}
+
+.note-buttons {
+    /* border: 1px solid black; */
+    overflow: hidden;
+}
+
+.delete-note {
+    float: right;
+
+}
+
+.edit-note {
+    float: left;
+    position: relative;
+    /* margin: 10px 15px 15px 10px; */
+}
+
+.note-record {
+    padding: 0px 20px 10px 20px;
 }
 
 /* For the Video */
@@ -30,11 +49,11 @@
 }
 
 .Container {
-    border: 1px solid white;
+    /* border: 1px solid white; */
 }
 
 .Box {
-    border: 1px solid white;
+    /* border: 1px solid white; */
 }
 
 /* Grid */
@@ -44,7 +63,7 @@
 }
 
 .Grid {
-    border: 1px solid white;
+    /* border: 1px solid white; */
 }
 
 .notes-grid {
@@ -55,7 +74,7 @@
 
 .form-grid {
    
-    border: 1px solid white;
+    /* border: 1px solid white; */
     width: 650px;
     margin: 0 auto;
     /* padding: 0px 100px;

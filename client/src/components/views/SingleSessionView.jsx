@@ -7,6 +7,10 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import CreateIcon from '@material-ui/icons/Create';
 
 // import { palette, spacing, typography } from '@material-ui/system';
 // import styled from 'styled-components';
@@ -21,7 +25,7 @@ import Youtube from 'react-youtube';
 
 //TEMPORARY FOR EDIT TESTING
 const fakeObject = {
-    id: 2,
+    id: 1,
     videoTimestamp: 123,
     noteRecord: "NEWEST TEST"
 }
@@ -77,10 +81,10 @@ const SingleSessionView = (props) => {
                                     <input type="text" name = "videoTimestamp" onChange={handleChange} ></input>
                                     <br/><br/>
                                     <label>Note: </label><br/>
-                                    {/* <input type="text" name = "noteRecord"onChange={handleChange} ></input> */}
+                                    <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input>
                                     <br/>
-                                    <TextareaAutosize aria-label="minimum height" rowsMin={3} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
-                                    style={{ minWidth: 400}}/>
+                                    {/* <TextareaAutosize aria-label="minimum height" rowsMin={3} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                    style={{ minWidth: 400, maxHeight: 200, overflow: 'auto'}}/> */}
                                     <br/>
                                     <input className="note-record" type="submit"></input>
 
@@ -107,10 +111,29 @@ const SingleSessionView = (props) => {
                                             alignItems="center">
                                                 <Grid item xs={3} className="notes-grid">
                                                     <div className="individual-note">
-                                                        <button onClick = {() => deleteNote(note.id)} id = {note.id}>Delete {note.noteRecord}</button>
-                                                        <button onClick = {() => editNote(fakeObject)}>{note.noteRecord}</button>
-                                                        <p>{note.noteRecord}</p>
-                                                        
+                                                        <div className="note-buttons">
+                                                            
+                                                            <div className="edit-note">
+                                                                <Button onClick = {() => editNote(fakeObject)} >
+                                                                        <IconButton aria-label="create" disabled color="secondary">
+                                                                            <CreateIcon />
+                                                                        </IconButton>
+                                                                </Button>
+                                                                {/* <button onClick = {() => editNote(fakeObject)}>{note.noteRecord}</button> */}
+                                                            </div>
+
+                                                            <div className="delete-note">
+                                                                <Button onClick = {() => deleteNote(note.id)} id = {note.id}>
+                                                                    <IconButton aria-label="delete" disabled color="primary">
+                                                                        <DeleteIcon />
+                                                                    </IconButton>
+                                                                </Button>
+                                                                {/* <button onClick = {() => deleteNote(note.id)} id = {note.id}>Delete {note.noteRecord}</button> */}
+                                                            </div>
+                                                        </div>
+                                                        <div className="note-record">
+                                                            <p>{note.noteRecord}</p>
+                                                        </div>
                                                     </div>
                                                 </Grid>
                                             </ListItem>
