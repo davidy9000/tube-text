@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import SingleUserView from '../views/singleUserView';
+// import SingleUserView from '../views/singleUserView';
+import NewStudySessionView from '../views/newStudySessionView'
 import { connect } from 'react-redux';
 import { fetchSessionsThunk , addStudySessionThunk , currStudySessionThunk } from '../../store/actions/actionCreatorsThunks';
 
-// import AppBar from '@material-ui/core/AppBar'
-// import Toolbar from '@material-ui/core/Toolbar'
-// import Typography from '@material-ui/core/Typography'
-
-class SingleUserContainer extends Component {
+class NewStudySessionContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -35,9 +32,9 @@ class SingleUserContainer extends Component {
         this.props.addStudySessionThunk(study_sess);
     }
 
-    componentDidMount() {
-        this.props.fetchSessionsThunk();
-    }
+    // componentDidMount() {
+    //     this.props.fetchSessionsThunk();
+    // }
     render(){
         return(
             <div>
@@ -49,28 +46,28 @@ class SingleUserContainer extends Component {
                     </Toolbar>
                 </AppBar> */}
 
-                <SingleUserView sessions = {this.props.userSessions}
+                <NewStudySessionView sessions = {this.props.userSessions}
                     handleChange = {this.handleChange} 
                     handleSubmit={this.handleSubmit}
-                    currentStudySession={this.props.currStudySessionThunk}
+                    // currentStudySession={this.props.currStudySessionThunk}
                 />
             </div>
         )
     }
 }
 
-const mapState = (state) => {
-    return({
-        userSessions: state.userSessions,
-    })
-}
+// const mapState = (state) => {
+//     return({
+//         userSessions: state.userSessions,
+//     })
+// }
 
 const mapDispatch = (dispatch) => {
     return({
-        fetchSessionsThunk: () => dispatch(fetchSessionsThunk()),
+        // fetchSessionsThunk: () => dispatch(fetchSessionsThunk()),
         addStudySessionThunk: (study_sess) => dispatch(addStudySessionThunk(study_sess)),
-        currStudySessionThunk: (study_sess) => dispatch(currStudySessionThunk(study_sess))
+        // currStudySessionThunk: (study_sess) => dispatch(currStudySessionThunk(study_sess))
     })
 }
 
-export default connect(mapState, mapDispatch)(SingleUserContainer);
+export default connect(/*mapState, */mapDispatch)(NewStudySessionContainer);
