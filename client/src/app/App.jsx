@@ -135,17 +135,21 @@ const App = (props) => {
 
         return (
             <div>
-				<AppBar position="static" className = {classes.customizeAppBar}>
-                <Toolbar className = {classes.customizeToolBar}>
-                    {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
-                    </IconButton> */}
-                    <Typography variant="h6" className={classes.title} color = "inherit">
-                        TubeText
-                    </Typography>
-                    <Button className = {classes.customNavButton}>Sign Out</Button>
-                </Toolbar>
-            	</AppBar>
+                <div style={{borderBottom: '5px solid white'}}>
+                    <AppBar position="static" className = {classes.customizeAppBar}>
+                    <Toolbar className = {classes.customizeToolBar}>
+                        {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                            <MenuIcon />
+                        </IconButton> */}
+                        <Typography variant="h6" className={classes.title} color = "inherit">
+                            TubeText
+                        </Typography>
+                        <Button className = {classes.customNavButton}>Sign Out</Button>
+                    </Toolbar>
+                    </AppBar>
+                </div>
+                {/* <div className="separate-nav" style={{backgroundColor: "white"}}></div> */}
+
 				<Router>
 					<Switch>
 						{/* <div className="App">
