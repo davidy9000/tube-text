@@ -10,7 +10,7 @@ const fakeObject = {
 
 const SingleSessionView = (props) => {
     const { allNotes, handleChange, handleSubmit, deleteNote, editNote } = props;
-    console.log("The Hangle Change is: ", handleChange);
+    // console.log("The Hangle Change is: ", handleChange);
     return (
         <div className="App">
             {allNotes.map((note)=>{
@@ -24,10 +24,6 @@ const SingleSessionView = (props) => {
             })}
 
             <form onSubmit={handleSubmit}>
-                {/* Temporary Study Session field */}
-                {/* <label>Study Session: </label>
-                <input type="text" name = "studySessionId" onChange ={handleChange} ></input>
-                <br/> */}
                 {/* Temporary TimeStamp field */}
                 <label>TimeStamp: </label>
                 <input type="text" name = "videoTimestamp" onChange={handleChange} ></input>

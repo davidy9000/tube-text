@@ -55,7 +55,7 @@ class SingleSessionContainer extends Component {
 }
 
 const mapState = (state) => {
-    console.log("I am in state");
+    // console.log("I am in state");
     return({
         allNotes: state.allNotes,
         currStudySession: state.currentStudySession
@@ -63,7 +63,7 @@ const mapState = (state) => {
 }
 
 const mapDispatch = (dispatch) => {
-    console.log("I am in dipsathc");
+    // console.log("I am in dipsathc");
     return({
         fetchNotesThunk: (stud_sess_id) => dispatch(fetchNotesThunk(stud_sess_id)),
         addNotesThunk: (note) => dispatch(addNotesThunk(note)),
