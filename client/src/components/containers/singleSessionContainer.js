@@ -28,7 +28,7 @@ class SingleSessionContainer extends Component {
     handleSubmit=(event)=>{
         event.preventDefault();
         let note = {
-            studySessionId: this.state.studySessionId,
+            studySessionId: this.props.currStudySession.id,
             videoTimestamp: this.state.videoTimestamp,
             noteRecord: this.state.noteRecord
         }

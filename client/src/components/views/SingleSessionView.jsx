@@ -25,9 +25,9 @@ const SingleSessionView = (props) => {
 
             <form onSubmit={handleSubmit}>
                 {/* Temporary Study Session field */}
-                <label>Study Session: </label>
+                {/* <label>Study Session: </label>
                 <input type="text" name = "studySessionId" onChange ={handleChange} ></input>
-                <br/>
+                <br/> */}
                 {/* Temporary TimeStamp field */}
                 <label>TimeStamp: </label>
                 <input type="text" name = "videoTimestamp" onChange={handleChange} ></input>
