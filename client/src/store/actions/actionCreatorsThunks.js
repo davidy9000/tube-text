@@ -63,21 +63,21 @@ export const fetchSessionsThunk = () => (dispatch) => {
     .then((error)=>{
         console.log(error);
     });
-    console.log("fetch study sessions thunk");
+    // console.log("fetch study sessions thunk");
     
 }
 
 export const addStudySessionThunk = (study_session) => (dispatch) => {
     axios.post('http://localhost:1234/api/studysessions/add', study_session)
     .then((response) => {
-        console.log("the study session data is: ", response.data);
+        // console.log("the study session data is: ", response.data);
         return response.data;
     })
     .then((study_session) => dispatch(addStudySession(study_session)))
     .catch((error) => {
         console.log(error);
     })
-    console.log("add study session thunk");
+    // console.log("add study session thunk");
 }
 
 export const currStudySessionThunk = (study_session) => (dispatch) => {
@@ -87,8 +87,8 @@ export const currStudySessionThunk = (study_session) => (dispatch) => {
 
 //NOTES
 
-export const fetchNotesThunk = () => (dispatch) => {
-    axios.get('http://localhost:1234/api/notes/studysessions/1')
+export const fetchNotesThunk = (stud_sess_id) => (dispatch) => {
+    axios.get(`http://localhost:1234/api/notes/studysessions/${stud_sess_id}`)
     .then((response) => {
         dispatch(fetchNotes(response.data));
     })
@@ -96,7 +96,7 @@ export const fetchNotesThunk = () => (dispatch) => {
         console.log(error);
     });
 
-    console.log("fetch notes thunk");
+    // console.log("fetch notes thunk");
     
 }
 
@@ -105,7 +105,7 @@ export const fetchNotesThunk = () => (dispatch) => {
 export const addNotesThunk = (note) => (dispatch) => {
     axios.post('http://localhost:1234/api/notes/add', note)
     .then((response) => {
-        console.log("the data is: ", response.data);
+        // console.log("the data is: ", response.data);
         return response.data;
     })
     //response.data and note are the same value (b/c of anonymous arrow function)
@@ -114,20 +114,20 @@ export const addNotesThunk = (note) => (dispatch) => {
         console.log(error);
     });
 
-    console.log("add note thunk");
+    // console.log("add note thunk");
 }
 
 export const deleteNoteThunk = (note_id) => (dispatch) =>{
-    console.log("thunk note id:", note_id);
+    // console.log("thunk note id:", note_id);
     axios.delete(`http://localhost:1234/api/notes/delete/${note_id}`)
     .then((noteid) => dispatch(deleteNote(note_id)))
     .catch((error) => {console.log(error)})
 
-    console.log("delete note thunk");
+    // console.log("delete note thunk");
 }
 
 export const editNoteThunk = (note) => (dispatch) => {
-    console.log("edit note thunk");
+    // console.log("edit note thunk");
 
     axios.put(`http://localhost:1234/api/notes/edit/${note.id}`, note)
     .then(() => dispatch(editNote(note)))

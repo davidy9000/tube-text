@@ -38,7 +38,7 @@ class SingleSessionContainer extends Component {
     
     componentDidMount(){
         // console.log("I am mounted");
-        this.props.fetchNotesThunk();
+        this.props.fetchNotesThunk(this.props.currStudySession.id);
     }
 
     render() {
@@ -57,14 +57,15 @@ class SingleSessionContainer extends Component {
 const mapState = (state) => {
     console.log("I am in state");
     return({
-        allNotes: state.allNotes
+        allNotes: state.allNotes,
+        currStudySession: state.currentStudySession
     })
 }
 
 const mapDispatch = (dispatch) => {
     console.log("I am in dipsathc");
     return({
-        fetchNotesThunk: () => dispatch(fetchNotesThunk()),
+        fetchNotesThunk: (stud_sess_id) => dispatch(fetchNotesThunk(stud_sess_id)),
         addNotesThunk: (note) => dispatch(addNotesThunk(note)),
         deleteNoteThunk: (note_id) => dispatch(deleteNoteThunk(note_id)),
         editNoteThunk: (note) => dispatch(editNoteThunk(note))
