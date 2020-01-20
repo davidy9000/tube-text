@@ -35,6 +35,27 @@ class SingleSessionContainer extends Component {
         // console.log("I am handling submit: ", note)
         this.props.addNotesThunk(note);
     }
+
+    videoOnReady (event) {
+        // access to player in all event handlers via event.target
+        // event.target.playVideoAt(50) // 50 seconds
+        const player = event.target
+        this.setState({
+          playerObj: player
+        })
+        player.seekTo(50)
+        console.log(event.target)
+    }
+    videoOnPlay (event) {
+        // access to player in all event handlers via event.target
+        // event.target.playVideoAt(50) // 50 seconds
+        const player = event.target
+        /// console.log(player.getCurrentTime())
+    }
+    videoStateChange (event) {
+        const player = event.target
+        console.log(player.getCurrentTime())
+    }
     
     componentDidMount(){
         // console.log("I am mounted");
@@ -42,6 +63,14 @@ class SingleSessionContainer extends Component {
     }
 
     render() {
+        const opts = {
+            height: '390',
+            width: '640',
+            playerVars: { // https://developers.google.com/youtube/player_parameters
+              autoplay: 1
+            }
+        }
+
         return(
             <SingleSessionView allNotes = {this.props.allNotes} 
             // addNotesThunk = {this.props.addNotesThunk} 
@@ -49,6 +78,11 @@ class SingleSessionContainer extends Component {
             handleSubmit={this.handleSubmit}
             deleteNote = {this.props.deleteNoteThunk}
             editNote = {this.props.editNoteThunk}
+
+            videoUrl = {this.props.currStudySession.videoUrl}
+            videoOnReady = {this.videoOnReady}
+            videoOnPlay = {this.videoOnPlay}
+            videoStateChange = {this.videoStateChange}
             />
         )
     }
