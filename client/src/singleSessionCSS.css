@@ -1,6 +1,6 @@
 /* Overall Container */
 .overall-container {
-    background-color: #11153e;
+    /* background-color: #11153e; */
     color: white;
     width: 100vw;
 }
@@ -15,7 +15,8 @@
 
 /* For the notes */
 .individual-note {
-    border: 1px solid black;
+    border: 1px solid #cddc39;
+    border-radius: 4px;
     padding: 0px 0px 0px 0px;
     width: 575px;
     background-color: white;
@@ -68,6 +69,7 @@
     /* border: 1px solid green; */
     /* margin: 0 auto;
     width: 300px; */
+    
 }
 
 .form-grid {

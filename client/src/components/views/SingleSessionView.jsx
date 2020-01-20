@@ -47,7 +47,7 @@ const SingleSessionView = (props) => {
 
                 {/* Responsive Desktop View */}
                 <Desktop>
-                
+
                     {/* Divides first two grids to be rows */}
                     <Grid className="main-grid"
                     container 
@@ -105,7 +105,7 @@ const SingleSessionView = (props) => {
                             justify="center" 
                             alignItems="center">
 
-                                <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: 'white'}}>
+                                <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
                                     
                                     <List className="List">
     
@@ -224,7 +224,7 @@ const SingleSessionView = (props) => {
                             justify="center" 
                             alignItems="center">
 
-                                <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: 'white'}}>
+                                <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
                                     
                                     <List className="List">
     

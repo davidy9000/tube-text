@@ -39,6 +39,7 @@ import CardContent from '@material-ui/core/CardContent';
 //   });
 
 const useStyles = makeStyles(theme => ({
+    
     root: {
       flexGrow: 1,
     },
@@ -148,6 +149,8 @@ const App = (props) => {
                     </Toolbar>
                     </AppBar>
                 </div>
+                <br/>
+                  
                 {/* <div className="separate-nav" style={{backgroundColor: "white"}}></div> */}
 
 				<Router>
