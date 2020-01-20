@@ -49,13 +49,6 @@ class SingleSessionContainer extends Component {
         //     onProgress(videotime);
         //   }
     }
-
-    //  getTime = () => {
-    //     console.log(player.getCurrentTime());
-    //     this.setState({
-    //         videoTimestamp: player.getCurrentTime()
-    //     })
-    // }
     
     videoOnPlay = (event) => {
         // access to player in all event handlers via event.target
