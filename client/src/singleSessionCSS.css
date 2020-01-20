@@ -53,6 +53,17 @@
     width: 300px; */
 }
 
+.form-grid {
+   
+    border: 1px solid white;
+    width: 650px;
+    margin: 0 auto;
+    /* padding: 0px 100px;
+     */
+    
+    
+}
+
 /* Form */
 
 form {

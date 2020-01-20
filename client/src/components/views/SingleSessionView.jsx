@@ -44,17 +44,16 @@ const SingleSessionView = (props) => {
                 container direction="row"
                 justify="center"
                 alignItems="center" 
-                wrap="wrap" > 
+                 > 
 
                         {/* 1/2 Large Grid */}
                         <Grid className="Grid" 
                         container direction="column"
                         item xs={6} 
-                        justify="center" 
-                        alignItems="center">
+                       >
 
                             <Grid item xs={6}>
-                                <div className="fake-video">
+                                
                                     <Youtube
                                         videoId = {videoUrl}
                                         opts={opts}
@@ -62,22 +61,26 @@ const SingleSessionView = (props) => {
                                         onPlay={videoOnPlay}
                                         onStateChange={videoStateChange}
                                     />
-                                </div>
+                                
                             </Grid>
 
 
 
-                            <Grid item xs={6}>
+                            <Grid item xs={12} className="form-grid"
+                            
+                            
+                            >
                                 <form onSubmit={handleSubmit}>
                                     {/* Temporary TimeStamp field */}
+                                    <br/>
                                     <label>TimeStamp: </label><br/>
                                     <input type="text" name = "videoTimestamp" onChange={handleChange} ></input>
-                                    <br/>
+                                    <br/><br/>
                                     <label>Note: </label><br/>
                                     {/* <input type="text" name = "noteRecord"onChange={handleChange} ></input> */}
                                     <br/>
                                     <TextareaAutosize aria-label="minimum height" rowsMin={3} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
-                                    style={{ minWidth: 400, }}/>
+                                    style={{ minWidth: 400}}/>
                                     <br/>
                                     <input className="note-record" type="submit"></input>
 
