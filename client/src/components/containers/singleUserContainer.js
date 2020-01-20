@@ -3,6 +3,10 @@ import SingleUserView from '../views/singleUserView';
 import { connect } from 'react-redux';
 import { fetchSessionsThunk , addStudySessionThunk , currStudySessionThunk } from '../../store/actions/actionCreatorsThunks';
 
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+
 class SingleUserContainer extends Component {
     constructor(props){
         super(props)
@@ -36,11 +40,21 @@ class SingleUserContainer extends Component {
     }
     render(){
         return(
-            <SingleUserView sessions = {this.props.userSessions}
-                handleChange = {this.handleChange} 
-                handleSubmit={this.handleSubmit}
-                currentStudySession={this.props.currStudySessionThunk}
-            />
+            <div>
+                <AppBar position="static">
+                    <Toolbar>
+                        <Typography variant="title" color="inherit">
+                        React & Material-UI Sample Application
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+
+                <SingleUserView sessions = {this.props.userSessions}
+                    handleChange = {this.handleChange} 
+                    handleSubmit={this.handleSubmit}
+                    currentStudySession={this.props.currStudySessionThunk}
+                />
+            </div>
         )
     }
 }
