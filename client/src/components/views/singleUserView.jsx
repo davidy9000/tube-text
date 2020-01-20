@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+// import AppBar from '@material-ui/core/AppBar';
+// import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -74,13 +74,15 @@ const useStyles = makeStyles(theme => ({
     },
     customNewSession:{
         "&:hover": {
-            backgroundColor: '#cddc39'
+            backgroundColor: '#cddc39',
+            color: '#11153e'
         },
         display: 'flex',
         // justify: 'flex-end'
         // flexGrow: 1,
         // textAlign: 'right',
         textTransform: 'none',
+        color: 'white',
         // justify: 'center',
     },  
     card: {
@@ -138,9 +140,9 @@ const SingleUserView = (props) => {
                 </Toolbar>
             </AppBar> */}
 
-            {/* <Link style = { style } to={`/study_sessions/add_session`}> */}
-                <Button className = {classes.customNewSession} justifyContent="flex-end">New Study Session</Button>
-            {/* </Link> */}
+            <Link style = { style } to={`/study_sessions/add_session`}>
+                <Button className = {classes.customNewSession} >New Study Session</Button>
+            </Link>
             {/* {sessions.map((session)=>{
                 return <div className = "study-session" onClick={() => currentStudySession(session)}>
                     { <button onClick={() => currentStudySession(session)}>View Session</button> }

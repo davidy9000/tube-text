@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SingleUserContainer from '../components/containers/singleUserContainer'
 import SingleSessionContainer from '../components/containers/singleSessionContainer';
-// import NewStudySessionContainer from '../components/containers/newStudySessionContainer';
+import NewStudySessionContainer from '../components/containers/newStudySessionContainer';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,9 +10,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+// import Card from '@material-ui/core/Card';
+// import CardActions from '@material-ui/core/CardActions';
+// import CardContent from '@material-ui/core/CardContent';
 // import List from '@material-ui/core/List';
 // import ListItem from '@material-ui/core/ListItem';
 // import Grid from '@material-ui/core/Grid';
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
       flexGrow: 1,
-      textAlign: 'center',
+      textAlign: 'left',
     //   minHeight: 1,
     //   height: 30,
     },
@@ -117,21 +117,21 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const style = {
-    // color: 'white',
-    textDecoration: 'none'
-};
+// const style = {
+//     // color: 'white',
+//     textDecoration: 'none'
+// };
 
 
 
 // class App extends Component {
-const App = (props) => {
+const App = () => {
     // render(){
 		const classes = useStyles();
 
 		const SingleUserComponent = () => <SingleUserContainer/>
         const SingleStudySessionComponent = () => <SingleSessionContainer />
-		// const NewStudySessionComponent = () => <NewStudySessionContainer/>
+		const NewStudySessionComponent = () => <NewStudySessionContainer/>
 
         return (
             <div>
@@ -151,8 +151,11 @@ const App = (props) => {
 						{/* <div className="App">
 							<div className="App-header"> */}
 								<Route exact path="/" render={SingleUserComponent}/>
+								{/* Be sure to put add_session before the :sessionId becasue :sessionId is a wildcard
+								and basically anything that has study_sessions/ ... will lead to the single session component
+								instead of the actual path wanted */}
+								<Route exact path ="/study_sessions/add_session" render={NewStudySessionComponent}/>
 								<Route exact path="/study_sessions/:sessionId" render={SingleStudySessionComponent}/>
-								{/* <Route exat path ="/study_sessions/add_session" render={NewStudySessionComponent}/> */}
 							{/* </div>
 						</div> */}
 					</Switch>
