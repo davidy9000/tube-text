@@ -11,6 +11,8 @@ import '../../singleSessionCSS.css';
 
 // const Box = styled.div`${palette}${spacing}${typography}`;
 
+import Youtube from 'react-youtube';
+
 
 //TEMPORARY FOR EDIT TESTING
 const fakeObject = {
@@ -20,7 +22,7 @@ const fakeObject = {
 }
 
 const SingleSessionView = (props) => {
-    const { allNotes, handleChange, handleSubmit, deleteNote, editNote } = props;
+    const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl } = props;
     // console.log("The Hangle Change is: ", handleChange);
     return (
         <div className="overall-container">
@@ -41,7 +43,11 @@ const SingleSessionView = (props) => {
                         alignItems="center">
 
                             <Grid item xs={6}>
-                                <div className="fake-video"></div>
+                                <div className="fake-video">
+                                    <Youtube
+                                        videoId={videoUrl}
+                                    />
+                                </div>
                             </Grid>
 
                             <Grid item xs={6}>

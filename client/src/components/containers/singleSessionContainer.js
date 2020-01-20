@@ -49,6 +49,7 @@ class SingleSessionContainer extends Component {
             handleSubmit={this.handleSubmit}
             deleteNote = {this.props.deleteNoteThunk}
             editNote = {this.props.editNoteThunk}
+            videoUrl = {this.props.currStudySession.videoUrl}
             />
         )
     }
