@@ -27,7 +27,8 @@ const fakeObject = {
 }
 
 const SingleSessionView = (props) => {
-    const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl } = props;
+    const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl,
+    opts, videoOnReady, videoOnPlay, videoStateChange } = props;
     // console.log("The Hangle Change is: ", handleChange);
     return (
         <div className="overall-container">
@@ -56,6 +57,10 @@ const SingleSessionView = (props) => {
                                 <div className="fake-video">
                                     <Youtube
                                         videoId = {videoUrl}
+                                        opts={opts}
+                                        // onReady={videoOnReady}
+                                        onPlay={videoOnPlay}
+                                        onStateChange={videoStateChange}
                                     />
                                 </div>
                             </Grid>
