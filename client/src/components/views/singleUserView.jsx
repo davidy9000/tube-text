@@ -6,7 +6,9 @@ const SingleUserView = (props) => {
     return (
         <div className="App">
             {sessions.map((session)=>{
-                return <div className = "all-study-sessions" onClick={() => currentStudySession(session)}>{session.studySessionName}</div>
+                return <div className = "all-study-sessions" onClick={() => currentStudySession(session)}>
+                    <Link to={`/study_sessions/${session.id}`}>{session.studySessionName}</Link>
+                </div>
             })}
           
             <form onSubmit={handleSubmit}>
