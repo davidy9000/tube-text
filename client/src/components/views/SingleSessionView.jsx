@@ -75,15 +75,17 @@ const SingleSessionView = (props) => {
                                         />
                                     
                                 </Grid>
+                                <br/>
+                               
 
                                 <Grid item xs={12} className="form-grid"
                                      >
                                     <form onSubmit={handleSubmit}>
                                         <label>Note: </label><br/>
-                                        <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input>
+                                        {/* <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input> */}
                                         <br/>
-                                        {/* <TextareaAutosize aria-label="minimum height" rowsMin={3} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
-                                        style={{ minWidth: 400, maxHeight: 200, overflow: 'auto'}}/> */}
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        style={{ minWidth: 600, overflow: 'auto'}}/>
                                         <br/>
                                         <input className="note-record" type="submit"></input>
 
@@ -101,7 +103,7 @@ const SingleSessionView = (props) => {
                             justify="center" 
                             alignItems="center">
 
-                                <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
+                                <Paper style={{minHeight: 700, minWidth: 600, maxHeight: 700, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
                                     
                                     <List className="List">
     
@@ -116,8 +118,8 @@ const SingleSessionView = (props) => {
                                                             <div className="note-buttons">
                                                                 
                                                                 <div className="edit-note">
-                                                                    <Button onClick = {() => editNote(fakeObject)} >
-                                                                    {/* <Button onClick={onClickEdit}> */}
+                                                                    {/* <Button onClick = {() => editNote(fakeObject)} > */}
+                                                                    <Button onClick={() => onClickEdit(note.id)} id = {note.id}>
 
                                                                             <IconButton aria-label="create" disabled color="secondary">
                                                                                 <CreateIcon />
@@ -136,7 +138,7 @@ const SingleSessionView = (props) => {
                                                                 </div>
                                                             </div>
                                                             <div className="note-record">
-                                                                <p>{note.videoTimestamp}</p>
+                                                                <a href="https://www.youtube.com/watch?v=ZS_kXvOeQ5Y&feature=emb_rel_pause"><p>{note.videoTimestamp}</p></a>
                                                                 <p>{note.noteRecord}</p>
                                                             </div>
                                                         </div>
