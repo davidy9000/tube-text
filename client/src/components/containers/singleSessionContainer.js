@@ -34,7 +34,7 @@ class SingleSessionContainer extends Component {
             videoTimestamp: this.state.videoTimestamp,
             noteRecord: this.state.noteRecord
         }
-        console.log("I am handling submit: ", note)
+        // console.log("I am handling submit: ", note)
         this.props.addNotesThunk(note);
     }
 
@@ -65,11 +65,13 @@ class SingleSessionContainer extends Component {
         /// console.log(player.getCurrentTime())
         
         this.playerInterval = setInterval( () => {
-            console.log(player.getCurrentTime());
+            // console.log(player.getCurrentTime());
             this.setState({
                 videoTimestamp: player.getCurrentTime()
             })
-        }, 1000)
+        }, 750)
+
+        // console.log("vid on play, state: ", player.getPlayerState())
     }
 
     videoOnPause = (event) => {
@@ -77,6 +79,7 @@ class SingleSessionContainer extends Component {
         // console.log("pausing")
         player.pauseVideo()
         clearInterval(this.playerInterval);
+        // console.log("vid on pause, state: ", player.getPlayerState())
         // console.log(this.playerInterval)
         // clearInterval(this.state.videoTimestamp)
     }
