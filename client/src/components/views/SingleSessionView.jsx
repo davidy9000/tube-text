@@ -65,7 +65,8 @@ const SingleSessionView = (props) => {
                                     <label>Note: </label><br/>
                                     {/* <input type="text" name = "noteRecord"onChange={handleChange} ></input> */}
                                     <br/>
-                                    <TextareaAutosize aria-label="minimum height" rowsMin={3} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} />
+                                    <TextareaAutosize aria-label="minimum height" rowsMin={3} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                    style={{ minWidth: 400, }}/>
                                     <br/>
                                     <input className="note-record" type="submit"></input>
 
