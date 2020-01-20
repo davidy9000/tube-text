@@ -9,7 +9,8 @@ class SingleSessionContainer extends Component {
         this.state = {
             studySessionId: 0,
             videoTimestamp: 0,
-            noteRecord: ""
+            noteRecord: "",
+            editNoteState: false
         }
     }
 
@@ -24,6 +25,14 @@ class SingleSessionContainer extends Component {
 
     //make handleSubmit function
     //take the state and pass it to the thunk in this function
+
+    onClickEdit=(event) => {
+        event.preventDefault();
+        this.setState({
+            editNoteState: !this.state.editNoteState
+        })
+        console.log("editnote state!" + this.state.editNoteState);
+    }
 
     handleSubmit=(event)=>{
         event.preventDefault();
@@ -76,6 +85,9 @@ class SingleSessionContainer extends Component {
             // addNotesThunk = {this.props.addNotesThunk} 
             handleChange = {this.handleChange} 
             handleSubmit={this.handleSubmit}
+            onClickEdit={this.onClickEdit}
+            editNoteState={this.state.editNoteState}
+
             deleteNote = {this.props.deleteNoteThunk}
             editNote = {this.props.editNoteThunk}
 
