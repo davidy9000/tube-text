@@ -44,6 +44,8 @@ const SingleSessionView = (props) => {
     return (
         <div className="overall-container">
             <Fragment>
+
+                {/* Responsive Desktop View */}
                 <Desktop>
                 
                     {/* Divides first two grids to be rows */}
@@ -58,8 +60,10 @@ const SingleSessionView = (props) => {
                             <Grid className="Grid" 
                             container direction="column"
                             item xs={6} 
+                            justify="center"
+                            alignItems="center" 
                             >
-                                <Grid item xs={6}>
+                                <Grid item xs={12}>
                                     
                                         <Youtube
                                             videoId = {videoUrl}
@@ -159,7 +163,120 @@ const SingleSessionView = (props) => {
 
                 {/* RESPONSIVE TABLET VIEW */}
                 <Tablet>
-                    <div>Tablet ?????</div>
+                    
+                    {/* Divides first two grids to be rows */}
+                    <Grid className="main-grid"
+                    container 
+                    container spacing={1} 
+                    container direction="row"
+                    justify="center"
+                    alignItems="center" 
+                    > 
+                            {/* 1/2 Large Grid */}
+                            <Grid className="Grid" 
+                            container direction="column"
+                            item xs={12} 
+                            justify="center"
+                            alignItems="center" 
+                            >
+                                <Grid item xs={6}>
+                                    
+                                        <Youtube
+                                            videoId = {videoUrl}
+                                            opts={opts}
+                                            // onReady={videoOnReady}
+                                            onPlay={videoOnPlay}
+                                            onStateChange={videoStateChange}
+                                        />
+                                    
+                                </Grid>
+
+                                <Grid item xs={12} className="form-grid"
+                                     >
+                                    <form onSubmit={handleSubmit}>
+                                        {/* Temporary TimeStamp field */}
+                                        <br/>
+                                        <label>TimeStamp: </label><br/>
+                                        <input type="text" name = "videoTimestamp" onChange={handleChange} ></input>
+                                        <br/><br/>
+                                        <label>Note: </label><br/>
+                                        <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input>
+                                        <br/>
+                                        {/* <TextareaAutosize aria-label="minimum height" rowsMin={3} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        style={{ minWidth: 400, maxHeight: 200, overflow: 'auto'}}/> */}
+                                        <br/>
+                                        <input className="note-record" type="submit"></input>
+                                        <br/>
+
+                                    </form>
+                                    <br/>
+                                    <br/>
+
+                                </Grid>
+
+                            </Grid>
+
+                            {/* 2/2 Large Grid */}
+                            <Grid className="Grid" 
+                            container spacing={3}
+                            item xs={12} 
+                            container direction="column"
+                            justify="center" 
+                            alignItems="center">
+
+                                <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: 'white'}}>
+                                    
+                                    <List className="List">
+    
+                                        {allNotes.map((note)=>{
+                                            return (
+                                                <ListItem className="ListItem"
+                                                alignItems="center">
+
+                                                    <Grid item xs={3} className="notes-grid">
+
+                                                        <div className="individual-note">
+                                                            <div className="note-buttons">
+                                                                
+                                                                <div className="edit-note">
+                                                                    <Button onClick = {() => editNote(fakeObject)} >
+                                                                    {/* <Button onClick={onClickEdit}> */}
+
+                                                                            <IconButton aria-label="create" disabled color="secondary">
+                                                                                <CreateIcon />
+                                                                            </IconButton>
+                                                                    </Button>
+                                                                    {/* <button onClick = {() => editNote(fakeObject)}>{note.noteRecord}</button> */}
+                                                                </div>
+
+                                                                <div className="delete-note">
+                                                                    <Button onClick = {() => deleteNote(note.id)} id = {note.id}>
+                                                                        <IconButton aria-label="delete" disabled color="primary">
+                                                                            <DeleteIcon />
+                                                                        </IconButton>
+                                                                    </Button>
+                                                                    {/* <button onClick = {() => deleteNote(note.id)} id = {note.id}>Delete {note.noteRecord}</button> */}
+                                                                </div>
+                                                            </div>
+                                                            <div className="note-record">
+                                                                <p>{note.noteRecord}</p>
+                                                            </div>
+                                                        </div>
+
+                                                    </Grid>
+
+                                                </ListItem>
+
+                                                )
+                                            })} 
+                                            {/* end of .map function */}
+                                    
+                                    </List>
+                                </Paper>
+
+                            </Grid>
+                    </Grid>
+
                 </Tablet>
 
                 {/* RESPONSIVE MOBILE VIEW */}
