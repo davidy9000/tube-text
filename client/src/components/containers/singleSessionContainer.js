@@ -9,8 +9,11 @@ class SingleSessionContainer extends Component {
         this.state = {
             studySessionId: 0,
             videoTimestamp: 0,
-            noteRecord: ""
+            noteRecord: "",
+            editNoteState: false,
+            editId: null
         }
+        this.playerInterval = null;
     }
 
     handleChange=(event)=>{
@@ -25,8 +28,22 @@ class SingleSessionContainer extends Component {
     //make handleSubmit function
     //take the state and pass it to the thunk in this function
 
+    onClickEdit=(noteId) => {
+        
+        this.setState({
+            editNoteState: !this.state.editNoteState,
+            editId: noteId
+        })
+
+        
+
+        console.log("editnote state!" + this.state.editNoteState);
+        console.log("editId" + this.state.editId);
+    }
+
     handleSubmit=(event)=>{
         event.preventDefault();
+        console.log(this.playerInterval)
         let note = {
             studySessionId: this.props.currStudySession.id,
             videoTimestamp: this.state.videoTimestamp,
@@ -36,26 +53,49 @@ class SingleSessionContainer extends Component {
         this.props.addNotesThunk(note);
     }
 
-    videoOnReady (event) {
+    // videoOnReady (event) {
+    //     // access to player in all event handlers via event.target
+    //     // event.target.playVideoAt(50) // 50 seconds
+    //     const player = event.target
+    //     // player.seekTo(50)
+    //     // console.log(event.target)
+
+    //     //   if(videotime !== oldTime) {
+    //     //     onProgress(videotime);
+    //     //   }
+    // }
+    
+    videoOnPlay = (event) => {
         // access to player in all event handlers via event.target
         // event.target.playVideoAt(50) // 50 seconds
         const player = event.target
-        this.setState({
-          playerObj: player
-        })
-        player.seekTo(50)
-        console.log(event.target)
-    }
-    videoOnPlay (event) {
-        // access to player in all event handlers via event.target
-        // event.target.playVideoAt(50) // 50 seconds
-        const player = event.target
+        player.playVideo()
         /// console.log(player.getCurrentTime())
+        
+        this.playerInterval = setInterval( () => {
+            // console.log(player.getCurrentTime());
+            this.setState({
+                videoTimestamp: player.getCurrentTime()
+            })
+        }, 750)
+
+        // console.log("vid on play, state: ", player.getPlayerState())
     }
-    videoStateChange (event) {
+
+    videoOnPause = (event) => {
         const player = event.target
-        console.log(player.getCurrentTime())
+        // console.log("pausing")
+        player.pauseVideo()
+        clearInterval(this.playerInterval);
+        // console.log("vid on pause, state: ", player.getPlayerState())
+        // console.log(this.playerInterval)
+        // clearInterval(this.state.videoTimestamp)
     }
+
+    // videoStateChange (event) {
+    //     const player = event.target
+    //     // console.log(player.getCurrentTime())
+    // }
     
     componentDidMount(){
         // console.log("I am mounted");
@@ -63,19 +103,23 @@ class SingleSessionContainer extends Component {
     }
 
     render() {
-        const opts = {
-            height: '390',
-            width: '640',
-            playerVars: { // https://developers.google.com/youtube/player_parameters
-              autoplay: 1
-            }
-        }
+        // const opts = {
+        //     height: '390',
+        //     width: '640',
+        //     playerVars: { // https://developers.google.com/youtube/player_parameters
+        //       autoplay: 1
+        //     }
+        // }
 
         return(
             <SingleSessionView allNotes = {this.props.allNotes} 
             // addNotesThunk = {this.props.addNotesThunk} 
             handleChange = {this.handleChange} 
             handleSubmit={this.handleSubmit}
+            onClickEdit={this.onClickEdit}
+            editNoteState={this.state.editNoteState}
+            
+
             deleteNote = {this.props.deleteNoteThunk}
             editNote = {this.props.editNoteThunk}
 
@@ -83,6 +127,7 @@ class SingleSessionContainer extends Component {
             videoOnReady = {this.videoOnReady}
             videoOnPlay = {this.videoOnPlay}
             videoStateChange = {this.videoStateChange}
+            videoOnPause = {this.videoOnPause}
             />
         )
     }

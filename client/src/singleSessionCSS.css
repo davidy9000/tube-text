@@ -1,7 +1,22 @@
+/* Overall Container */
+.overall-container {
+    /* background-color: #11153e; */
+    color: white;
+    width: 100vw;
+}
+
+.Container {
+    /* border: 1px solid white; */
+}
+
+.Box {
+    /* border: 1px solid white; */
+}
 
 /* For the notes */
 .individual-note {
-    border: 1px solid black;
+    border: 1px solid #cddc39;
+    border-radius: 4px;
     padding: 0px 0px 0px 0px;
     width: 575px;
     background-color: white;
@@ -40,26 +55,11 @@
     border: 1px solid green;
 }
 
-/* Overall Container */
-.overall-container {
-    background-color: #11153e;
-    color: white;
-    height: 100vh;
-    width: 100vw;
-}
-
-.Container {
-    /* border: 1px solid white; */
-}
-
-.Box {
-    /* border: 1px solid white; */
-}
-
 /* Grid */
 
 .main-grid {
     height: 100vh;
+    /* border: 1px solid white; */
 }
 
 .Grid {
@@ -70,6 +70,7 @@
     /* border: 1px solid green; */
     /* margin: 0 auto;
     width: 300px; */
+    
 }
 
 .form-grid {
