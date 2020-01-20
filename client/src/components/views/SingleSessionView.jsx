@@ -93,9 +93,10 @@ const SingleSessionView = (props) => {
                                             alignItems="center">
                                                 <Grid item xs={3} className="notes-grid">
                                                     <div className="individual-note">
-                                                        <p>{note.noteRecord}</p>
                                                         <button onClick = {() => deleteNote(note.id)} id = {note.id}>Delete {note.noteRecord}</button>
                                                         <button onClick = {() => editNote(fakeObject)}>{note.noteRecord}</button>
+                                                        <p>{note.noteRecord}</p>
+                                                        
                                                     </div>
                                                 </Grid>
                                             </ListItem>
