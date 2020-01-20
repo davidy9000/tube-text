@@ -7,7 +7,7 @@ export default (state = [], action) => {
         case type.ADD_NOTE:
             return [...state, action.payload];
         case type.DELETE_NOTE:
-            return state.filter((note) => note.id!=action.payload);
+            return state.filter((note) => note.id!==action.payload);
         case type.EDIT_NOTE:
             return state.map((note) => {
                 if (note.id === action.payload.id) {
