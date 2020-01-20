@@ -39,7 +39,7 @@ const fakeObject = {
 
 const SingleSessionView = (props) => {
     const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl,
-    opts, videoOnReady, videoOnPlay, videoStateChange, editNoteState, onClickEdit } = props;
+    opts, videoOnReady, videoOnPlay, videoStateChange, videoOnPause, editNoteState, onClickEdit } = props;
     // console.log("The Hangle Change is: ", handleChange);
     return (
         <div className="overall-container">
@@ -67,9 +67,10 @@ const SingleSessionView = (props) => {
                                     
                                         <Youtube
                                             videoId = {videoUrl}
-                                            opts={opts}
+                                            // opts={opts}
                                             // onReady={videoOnReady}
                                             onPlay={videoOnPlay}
+                                            onPause={videoOnPause}
                                             onStateChange={videoStateChange}
                                         />
                                     
@@ -154,7 +155,6 @@ const SingleSessionView = (props) => {
                                     
                                     </List>
                                 </Paper>
-
                             </Grid>
                     </Grid>
 
@@ -179,6 +179,7 @@ const SingleSessionView = (props) => {
                             justify="center"
                             alignItems="center" 
                             >
+
                                 <Grid item xs={6}>
                                     
                                         <Youtube
@@ -212,6 +213,7 @@ const SingleSessionView = (props) => {
                                     <br/>
                                     <br/>
 
+                              
                                 </Grid>
 
                             </Grid>
