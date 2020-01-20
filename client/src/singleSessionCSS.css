@@ -1,0 +1,39 @@
+.individual-note {
+    border: 1px solid white;
+    padding: 20px;
+    width: 250px;
+}
+
+.fake-video {
+    width: 400px;
+    height: 250px;
+    border: 1px solid green;
+}
+
+.overall-container {
+    background-color: #191970;
+    color: white;
+    height: 100vh;
+    width: 100vw;
+}
+
+.Container {
+    border: 1px solid white;
+}
+
+.Box {
+    border: 1px solid white;
+}
+
+.main-grid {
+    height: 100vh;
+}
+
+.Grid {
+    border: 1px solid white;
+}
+
+form {
+    text-align: center;
+}
+

@@ -14,12 +14,12 @@ class App extends Component {
             <div>
 				<Router>
 					<Switch>
-						<div className="App">
-							<div className="App-header">
+						{/* <div className="App">
+							<div className="App-header"> */}
 								<Route exact path="/" render={SingleUserComponent}/>
 								<Route exact path="/study_sessions/:sessionId" render={SingleStudySessionComponent}/>
-							</div>
-						</div>
+							{/* </div>
+						</div> */}
 					</Switch>
 				</Router>
 			</div>
