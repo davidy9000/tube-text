@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import axios from 'axios';
 
 // ACTION CREATOR;
