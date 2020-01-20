@@ -54,13 +54,11 @@ const SingleSessionView = (props) => {
                     justify="center"
                     alignItems="center" 
                     > 
-
                             {/* 1/2 Large Grid */}
                             <Grid className="Grid" 
                             container direction="column"
                             item xs={6} 
-                        >
-
+                            >
                                 <Grid item xs={6}>
                                     
                                         <Youtube
@@ -73,12 +71,8 @@ const SingleSessionView = (props) => {
                                     
                                 </Grid>
 
-
-
                                 <Grid item xs={12} className="form-grid"
-                                
-                                
-                                >
+                                     >
                                     <form onSubmit={handleSubmit}>
                                         {/* Temporary TimeStamp field */}
                                         <br/>
@@ -94,7 +88,9 @@ const SingleSessionView = (props) => {
                                         <input className="note-record" type="submit"></input>
 
                                     </form>
+
                                 </Grid>
+
                             </Grid>
 
                             {/* 2/2 Large Grid */}
@@ -105,16 +101,17 @@ const SingleSessionView = (props) => {
                             justify="center" 
                             alignItems="center">
 
-                                {/* <div className="notes-wrapper"> */}
                                 <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: 'white'}}>
+                                    
                                     <List className="List">
-
     
                                         {allNotes.map((note)=>{
                                             return (
                                                 <ListItem className="ListItem"
                                                 alignItems="center">
+
                                                     <Grid item xs={3} className="notes-grid">
+
                                                         <div className="individual-note">
                                                             <div className="note-buttons">
                                                                 
@@ -142,10 +139,14 @@ const SingleSessionView = (props) => {
                                                                 <p>{note.noteRecord}</p>
                                                             </div>
                                                         </div>
+
                                                     </Grid>
+
                                                 </ListItem>
+
                                                 )
-                                            })}
+                                            })} 
+                                            {/* end of .map function */}
                                     
                                     </List>
                                 </Paper>
