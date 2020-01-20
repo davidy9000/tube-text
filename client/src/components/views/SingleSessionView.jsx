@@ -27,8 +27,8 @@ import Youtube from 'react-youtube';
 
 //Responsive functionality
 const Desktop = props => <Responsive {...props} minWidth={1275} />;
-const Tablet = props => <Responsive {...props} minWidth={768} maxWidth={1274} />;
-const Mobile = props => <Responsive {...props} maxWidth={767} />;
+const Tablet = props => <Responsive {...props} maxWidth={1274} />;
+// const Mobile = props => <Responsive {...props} maxWidth={767} />;
 
 //TEMPORARY FOR EDIT TESTING
 const fakeObject = {
@@ -279,10 +279,10 @@ const SingleSessionView = (props) => {
 
                 </Tablet>
 
-                {/* RESPONSIVE MOBILE VIEW */}
+                {/* RESPONSIVE MOBILE VIEW
                 <Mobile>
                 <div>Mobile ?????</div>
-                </Mobile>
+                </Mobile> */}
 
             </Fragment>
         </div>
