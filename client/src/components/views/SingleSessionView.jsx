@@ -79,11 +79,6 @@ const SingleSessionView = (props) => {
                                 <Grid item xs={12} className="form-grid"
                                      >
                                     <form onSubmit={handleSubmit}>
-                                        {/* Temporary TimeStamp field */}
-                                        <br/>
-                                        <label>TimeStamp: </label><br/>
-                                        <input type="text" name = "videoTimestamp" onChange={handleChange} ></input>
-                                        <br/><br/>
                                         <label>Note: </label><br/>
                                         <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input>
                                         <br/>
@@ -141,6 +136,7 @@ const SingleSessionView = (props) => {
                                                                 </div>
                                                             </div>
                                                             <div className="note-record">
+                                                                <p>{note.videoTimestamp}</p>
                                                                 <p>{note.noteRecord}</p>
                                                             </div>
                                                         </div>
@@ -182,24 +178,20 @@ const SingleSessionView = (props) => {
 
                                 <Grid item xs={6}>
                                     
-                                        <Youtube
-                                            videoId = {videoUrl}
-                                            opts={opts}
-                                            // onReady={videoOnReady}
-                                            onPlay={videoOnPlay}
-                                            onStateChange={videoStateChange}
-                                        />
+                                    <Youtube
+                                        videoId = {videoUrl}
+                                        // opts={opts}
+                                        // onReady={videoOnReady}
+                                        onPlay={videoOnPlay}
+                                        onPause={videoOnPause}
+                                        onStateChange={videoStateChange}
+                                    />
                                     
                                 </Grid>
 
                                 <Grid item xs={12} className="form-grid"
                                      >
                                     <form onSubmit={handleSubmit}>
-                                        {/* Temporary TimeStamp field */}
-                                        <br/>
-                                        <label>TimeStamp: </label><br/>
-                                        <input type="text" name = "videoTimestamp" onChange={handleChange} ></input>
-                                        <br/><br/>
                                         <label>Note: </label><br/>
                                         <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input>
                                         <br/>
@@ -261,6 +253,7 @@ const SingleSessionView = (props) => {
                                                                 </div>
                                                             </div>
                                                             <div className="note-record">
+                                                                <p>{note.videoTimestamp}</p>
                                                                 <p>{note.noteRecord}</p>
                                                             </div>
                                                         </div>

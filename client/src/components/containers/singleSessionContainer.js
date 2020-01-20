@@ -47,17 +47,17 @@ class SingleSessionContainer extends Component {
         this.props.addNotesThunk(note);
     }
 
-    videoOnReady (event) {
-        // access to player in all event handlers via event.target
-        // event.target.playVideoAt(50) // 50 seconds
-        const player = event.target
-        // player.seekTo(50)
-        // console.log(event.target)
+    // videoOnReady (event) {
+    //     // access to player in all event handlers via event.target
+    //     // event.target.playVideoAt(50) // 50 seconds
+    //     const player = event.target
+    //     // player.seekTo(50)
+    //     // console.log(event.target)
 
-        //   if(videotime !== oldTime) {
-        //     onProgress(videotime);
-        //   }
-    }
+    //     //   if(videotime !== oldTime) {
+    //     //     onProgress(videotime);
+    //     //   }
+    // }
     
     videoOnPlay = (event) => {
         // access to player in all event handlers via event.target
@@ -86,10 +86,10 @@ class SingleSessionContainer extends Component {
         // clearInterval(this.state.videoTimestamp)
     }
 
-    videoStateChange (event) {
-        const player = event.target
-        // console.log(player.getCurrentTime())
-    }
+    // videoStateChange (event) {
+    //     const player = event.target
+    //     // console.log(player.getCurrentTime())
+    // }
     
     componentDidMount(){
         // console.log("I am mounted");
