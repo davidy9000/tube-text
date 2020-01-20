@@ -16,12 +16,12 @@ const seedDatabase = async () => {
 	const stud_sess = await Promise.all([
 		StudySession.create({
 			videoUrl: "https://youtube.com/",
-			studySessionName: "Some test",
+			studySessionName: "Session 1 of User 1",
 			studySessionDescription: "Some description"
 		}),
 		StudySession.create({
 			videoUrl: "https://google.com/",
-			studySessionName: "Some test Google",
+			studySessionName: "Session 2 of User 1",
 			studySessionDescription: "Some description Google"
 		})
 	]);
@@ -58,7 +58,7 @@ const seedDatabase = async () => {
 
 	const randStudSess = await StudySession.create({
 		videoUrl: "https://facebook.com/",
-		studySessionName: "Some test facebook",
+		studySessionName: "Session 1 of User 2",
 		studySessionDescription: "Some description facebook"
 	})
 	await randStudSess.setUser(2);

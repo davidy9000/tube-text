@@ -14,7 +14,7 @@ class SingleSessionContainer extends Component {
     }
 
     handleChange=(event)=>{
-        console.log("I am changing input", [event.target.name], event.target.value)
+        // console.log("I am changing input", [event.target.name], event.target.value)
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -28,17 +28,17 @@ class SingleSessionContainer extends Component {
     handleSubmit=(event)=>{
         event.preventDefault();
         let note = {
-            studySessionId: this.state.studySessionId,
+            studySessionId: this.props.currStudySession.id,
             videoTimestamp: this.state.videoTimestamp,
             noteRecord: this.state.noteRecord
         }
-        console.log("I am handling submit: ", note)
+        // console.log("I am handling submit: ", note)
         this.props.addNotesThunk(note);
     }
     
     componentDidMount(){
-        console.log("I am mounted");
-        this.props.fetchNotesThunk();
+        // console.log("I am mounted");
+        this.props.fetchNotesThunk(this.props.currStudySession.id);
     }
 
     render() {
@@ -55,16 +55,17 @@ class SingleSessionContainer extends Component {
 }
 
 const mapState = (state) => {
-    console.log("I am in state");
+    // console.log("I am in state");
     return({
-        allNotes: state.allNotes
+        allNotes: state.allNotes,
+        currStudySession: state.currentStudySession
     })
 }
 
 const mapDispatch = (dispatch) => {
-    console.log("I am in dipsathc");
+    // console.log("I am in dipsathc");
     return({
-        fetchNotesThunk: () => dispatch(fetchNotesThunk()),
+        fetchNotesThunk: (stud_sess_id) => dispatch(fetchNotesThunk(stud_sess_id)),
         addNotesThunk: (note) => dispatch(addNotesThunk(note)),
         deleteNoteThunk: (note_id) => dispatch(deleteNoteThunk(note_id)),
         editNoteThunk: (note) => dispatch(editNoteThunk(note))

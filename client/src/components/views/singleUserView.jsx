@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SingleUserView = (props) => {
-    const {sessions, handleChange, handleSubmit } = props;
+    const {sessions, handleChange, handleSubmit , currentStudySession } = props;
     return (
         <div className="App">
             {sessions.map((session)=>{
-            return <p>{session.studySessionName}</p>
+                return <div className = "all-study-sessions" onClick={() => currentStudySession(session)}>
+                    <Link to={`/study_sessions/${session.id}`}>{session.studySessionName}</Link>
+                </div>
             })}
           
             <form onSubmit={handleSubmit}>
