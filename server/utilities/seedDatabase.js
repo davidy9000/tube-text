@@ -15,14 +15,14 @@ const seedDatabase = async () => {
 
 	const stud_sess = await Promise.all([
 		StudySession.create({
-			videoUrl: "https://youtube.com/",
+			videoUrl: "54_XRjHhZzI",
 			studySessionName: "Session 1 of User 1",
-			studySessionDescription: "Some description"
+			studySessionDescription: "Calculus 1"
 		}),
 		StudySession.create({
-			videoUrl: "https://google.com/",
+			videoUrl: "93p3LxR9xfM",
 			studySessionName: "Session 2 of User 1",
-			studySessionDescription: "Some description Google"
+			studySessionDescription: "Redux React"
 		})
 	]);
 

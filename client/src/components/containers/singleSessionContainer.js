@@ -42,6 +42,7 @@ class SingleSessionContainer extends Component {
     }
 
     render() {
+
         return(
             <SingleSessionView allNotes = {this.props.allNotes} 
             // addNotesThunk = {this.props.addNotesThunk} 
@@ -49,6 +50,7 @@ class SingleSessionContainer extends Component {
             handleSubmit={this.handleSubmit}
             deleteNote = {this.props.deleteNoteThunk}
             editNote = {this.props.editNoteThunk}
+
             videoUrl = {this.props.currStudySession.videoUrl}
             />
         )
