@@ -159,7 +159,7 @@ const SingleSessionView = (props) => {
                                                                         aria-controls="panel1a-content"
                                                                         id="panel1a-header"
                                                                         >
-                                                                        <Typography>{(note.noteRecord).substring(0, 20) + "..."}</Typography>
+                                                                        <Typography style={{fontWeight: 'bold'}}>{(note.noteRecord).substring(0, 20) + "..."}</Typography>
                                                                         </ExpansionPanelSummary>
                                                                         <ExpansionPanelDetails>
                                                                         <Typography style={{maxWidth: 575, overflow: 'auto'}}>
