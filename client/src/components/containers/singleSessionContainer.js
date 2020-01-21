@@ -84,7 +84,7 @@ class SingleSessionContainer extends Component {
         // console.log(this.thePlayer.current.getCurrentTime())
         
         this.playerInterval = setInterval( () => {
-            console.log("current time: ",this.thePlayer.current.getCurrentTime());
+            // console.log("current time: ",this.thePlayer.current.getCurrentTime());
             this.setState({
                 videoTimestamp: this.thePlayer.current.getCurrentTime()
             })
