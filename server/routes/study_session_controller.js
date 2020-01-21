@@ -23,7 +23,7 @@ router.post('/add', addStudySession);
 /************* Get functions ****************/
 //  Get Study Session by Id
 function getStudySession(req, res, next) {
-    StudySession.findById(req.params.id)
+    StudySession.findByPk(req.params.id)
         .then(sess => res.json(sess))
         .catch(err => next(err));
 };
