@@ -165,7 +165,7 @@ const SingleUserView = (props) => {
                 style={{minWidth: '80%'}}
                 
                 >
-                    <Paper style={{minHeight: '80%', maxHeight:'80%', minWidth: '100%', maxWidth: '100%', overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
+                    <Paper style={{minHeight: 900, maxHeight:900, minWidth: '100%', maxWidth: '100%', overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
 
                         <List className="List">
                             {sessions.map((session)=> {
