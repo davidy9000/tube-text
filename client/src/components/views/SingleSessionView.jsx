@@ -65,7 +65,7 @@ const SingleSessionView = (props) => {
     const classes = useStyles();
     const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl,
             videoOnPlay, videoOnPause, thePlayer, videoSeek,
-            editNoteState, onClickEdit, mustEdit,handleEditSubmit ,handleEditChange } = props;
+            editNoteState, onClickEdit, mustEdit,handleEditSubmit ,handleEditChange, onClickNull } = props;
     // console.log("The Hangle Change is: ", handleChange);
     return (
         <div className="overall-container">
@@ -113,6 +113,7 @@ const SingleSessionView = (props) => {
                                         <br/>
                                         <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
                                         style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
+                                        <br/>
                                         <br/>
                                         <input className="note-record" type="submit"></input>
 
@@ -186,6 +187,7 @@ const SingleSessionView = (props) => {
                                                                         <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder={note.noteRecord} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}/>
                                                                         {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
                                                                         <input className="note-record" type="submit"></input>
+                                                                        <button onClick={onClickNull}>Cancel</button>
                                                                     </form>
                                                                     : <ExpansionPanel>
                                                                         <ExpansionPanelSummary
@@ -256,6 +258,8 @@ const SingleSessionView = (props) => {
                                     />
                                     
                                 </Grid>
+                                
+                                <br/>
 
                                 <Grid item xs={12} className="form-grid"
                                      >
@@ -265,6 +269,7 @@ const SingleSessionView = (props) => {
                                         <br/>
                                         <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
                                         style={{ minWidth: 600, overflow: 'auto'}}/>
+                                        <br/>
                                         <br/>
                                         <input className="note-record" type="submit"></input>
                                         <br/>
@@ -283,6 +288,7 @@ const SingleSessionView = (props) => {
                                         <DescriptionIcon />
                                     </Badge>
                                 </Grid>
+                                <br/>
                                 <br/>
 
                             </Grid>
