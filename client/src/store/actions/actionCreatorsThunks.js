@@ -52,6 +52,13 @@ const currentStudySession = (study_session) => {
     }
 }
 
+const fetchCurrentVideo = (videoUrl) => {
+    return {
+        type: types.CURRENT_VIDEO,
+        payload: videoUrl
+    }
+}
+
 //THUNKS
 
 //SESSIONS
@@ -89,15 +96,16 @@ export const currStudySessionThunk = (study_session) => (dispatch) => {
 
 export const fetchNotesThunk = (stud_sess_id) => (dispatch) => {
     axios.get(`http://localhost:1234/api/notes/studysessions/${stud_sess_id}`)
-    .then((response) => {
-        dispatch(fetchNotes(response.data));
-    })
+    .then((response) => dispatch(fetchNotes(response.data)))
     .then((error)=>{
         console.log(error);
     });
+    // console.log("fetch notes thunk");   
+}
 
-    // console.log("fetch notes thunk");
-    
+export const fetchCurrentVideoThunk = (stud_sess_id) => (dispatch) => {
+    axios.get(`http://localhost:1234/api/studysessions/${stud_sess_id}`)
+    .then((response)=> dispatch(fetchCurrentVideo(response.data.videoUrl)))
 }
 
 //Tony and Billie's comments - in the UI we need to make sure user input is valid before we allow it to go to backend

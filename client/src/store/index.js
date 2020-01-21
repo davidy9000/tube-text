@@ -15,6 +15,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import userSessions from './reducers/userSessions';
 import allNotes from './reducers/allNotes';
 import currentStudySession from './reducers/currentStudySession';
+import currentVideo from './reducers/currentVideo';
 
 /**
  * Creating rootReducer that will have all the functionality of our SPA
@@ -22,7 +23,7 @@ import currentStudySession from './reducers/currentStudySession';
  * Creating a middleware to handle async calls
  * Creating the store that houses our state (single-source-of-truth)
  */
-const rootReducer = combineReducers({userSessions, allNotes, currentStudySession});
+const rootReducer = combineReducers({userSessions, allNotes, currentStudySession, currentVideo});
 const logger = createLogger({ collapsed: true });
 const middleware = composeWithDevTools(applyMiddleware(thunkMiddleware, logger));
 const store = createStore(rootReducer, middleware);
