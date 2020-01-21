@@ -41,6 +41,12 @@ class SingleSessionContainer extends Component {
         // console.log("editId: " + this.state.editId);
     }
 
+    onClickNull= () => {
+        this.setState({
+            editId: null
+        })
+    };
+
     handleEditSubmit=(event)=>{
         event.preventDefault();
         let note = {
@@ -111,6 +117,7 @@ class SingleSessionContainer extends Component {
             onClickEdit={this.onClickEdit}
             mustEdit = {this.state.editId}
             handleEditSubmit = {this.handleEditSubmit}
+            onClickNull={this.onClickNull}
             // editNoteState={this.state.editNoteState}
             handleEditChange = {this.handleEditChange}
             // currentNote = {this.state.noteRecord}

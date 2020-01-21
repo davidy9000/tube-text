@@ -65,7 +65,7 @@ const SingleSessionView = (props) => {
     const classes = useStyles();
     const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl,
             videoOnPlay, videoOnPause, thePlayer, videoSeek,
-            editNoteState, onClickEdit, mustEdit,handleEditSubmit ,handleEditChange } = props;
+            editNoteState, onClickEdit, mustEdit,handleEditSubmit ,handleEditChange, onClickNull } = props;
     // console.log("The Hangle Change is: ", handleChange);
     return (
         <div className="overall-container">
@@ -187,6 +187,7 @@ const SingleSessionView = (props) => {
                                                                         <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder={note.noteRecord} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}/>
                                                                         {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
                                                                         <input className="note-record" type="submit"></input>
+                                                                        <button onClick={onClickNull}>Cancel</button>
                                                                     </form>
                                                                     : <ExpansionPanel>
                                                                         <ExpansionPanelSummary
