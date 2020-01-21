@@ -26,23 +26,23 @@ const NewStudySessionView = (props) => {
             <div className="new-session-box">
                 <div class = 'title'>New Session</div>
                 <form onSubmit={handleSubmit}>
-                <label style= {{color:'#11153e'}}>Video URL: </label>
+                <label style= {{color:'#11153e', fontWeight: 'bold'}}>Video URL: </label>
                 <input type="text" name = "videoUrl" onChange ={handleChange} ></input>
                 <br/>
                 <br/>
 
-                <label style= {{color:'#11153e'}}>Study Session Name: </label>
+                <label style= {{color:'#11153e', fontWeight: 'bold'}}>Study Session Name: </label>
                 <input type="text" name = "studySessionName" onChange={handleChange} ></input>
                 <br/>
                 <br/>
 
 
-                <label style= {{color:'#11153e'}}>Study Session Description: </label>
+                <label style= {{color:'#11153e', fontWeight: 'bold'}}>Study Session Description: </label>
                 <input id="description" type="text" name = "studySessionDescription" onChange={handleChange} ></input>
                 <br/>
                 <br/>
 
-                <label style= {{color:'#11153e'}}>User Id: </label>
+                <label style= {{color:'#11153e', fontWeight: 'bold'}}>User Id: </label>
                 <input type="text" name = "userId" onChange={handleChange} ></input>
                 <br/>
                 <br/>

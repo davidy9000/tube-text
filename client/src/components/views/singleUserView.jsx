@@ -9,9 +9,10 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-// import List from '@material-ui/core/List';
-// import ListItem from '@material-ui/core/ListItem';
-// import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Grid from '@material-ui/core/Grid';
 
 
 
@@ -88,7 +89,7 @@ const useStyles = makeStyles(theme => ({
     card: {
         // display: 'flex',
         minWidth: 200,
-        width: '50%',
+        width: '100%',
         textAlign: 'center',
         // justifyContent: 'center'
         // position: 'center',
@@ -152,33 +153,57 @@ const SingleUserView = (props) => {
                     </Link>
                 </div>
             })} */}
+            <Grid
+                container
+                
+               
+                justify="center"
+                alignItems="center" 
+            >
+                <Grid 
+                item
+                style={{minWidth: '80%'}}
+                
+                >
+                    <Paper style={{minHeight: '80%', maxHeight:'80%', minWidth: '100%', maxWidth: '100%', overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
 
-            {sessions.map((session)=> {
-                return (
-                    <div className = "study-session" onClick={() => currentStudySession(session)}>
-                        {/* <List>
-                            <ListItem alignItems= 'center'> */}
-                                <Card className={classes.card}>
-                                    <CardContent>
-                                        <Typography className={classes.cardTitle} color="textSecondary" gutterBottom>
-                                        {session.studySessionName}
-                                        </Typography>
-                                        <Typography>
-                                            {session.studySessionDescription}
-                                        </Typography>
-                                    </CardContent>
-                                    <CardActions>
-                                        <Link style = { style } to={`/study_sessions/${session.id}`}>
-                                            <Button className = {classes.customViewSession}>View Session</Button>
-                                        </Link>
-                                    </CardActions>
-                                </Card>
-                            {/* </ListItem>
-                        </List> */}
-                        <br></br>
-                    </div>
-                )
-            })}
+                        <List className="List">
+                            {sessions.map((session)=> {
+                                return (
+                                    <ListItem className = "study-session" onClick={() => currentStudySession(session)}
+                                    alignItems='center'
+                                    >
+                                    {/* <div className = "study-session" onClick={() => currentStudySession(session)}> */}
+                                        {/* <List>
+                                            <ListItem alignItems= 'center'> */}
+
+                                        
+                                                <Card className={classes.card}>
+                                                    <CardContent>
+                                                        <Typography className={classes.cardTitle} color="textSecondary" gutterBottom>
+                                                        {session.studySessionName}
+                                                        </Typography>
+                                                        <Typography>
+                                                            {session.studySessionDescription}
+                                                        </Typography>
+                                                    </CardContent>
+                                                    <CardActions>
+                                                        <Link style = { style } to={`/study_sessions/${session.id}`}>
+                                                            <Button className = {classes.customViewSession}>View Session</Button>
+                                                        </Link>
+                                                    </CardActions>
+                                                </Card>
+                                        <br/>
+                                        <br/>
+                                    {/* </div> */}
+                                    </ListItem>
+                                            
+                                )
+                            })}
+                        </List>
+                    </Paper>
+                </Grid>
+            </Grid>
 {/* 
             // return (
             //     <Card className={classes.card}>
