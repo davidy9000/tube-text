@@ -114,6 +114,7 @@ const SingleSessionView = (props) => {
                                         <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
                                         style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
                                         <br/>
+                                        <br/>
                                         <input className="note-record" type="submit"></input>
 
                                     </form>
@@ -256,6 +257,8 @@ const SingleSessionView = (props) => {
                                     />
                                     
                                 </Grid>
+                                
+                                <br/>
 
                                 <Grid item xs={12} className="form-grid"
                                      >
@@ -265,6 +268,7 @@ const SingleSessionView = (props) => {
                                         <br/>
                                         <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
                                         style={{ minWidth: 600, overflow: 'auto'}}/>
+                                        <br/>
                                         <br/>
                                         <input className="note-record" type="submit"></input>
                                         <br/>
@@ -283,6 +287,7 @@ const SingleSessionView = (props) => {
                                         <DescriptionIcon />
                                     </Badge>
                                 </Grid>
+                                <br/>
                                 <br/>
 
                             </Grid>
