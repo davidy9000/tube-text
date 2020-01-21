@@ -46,8 +46,9 @@ p{
     text-align: center;
     padding-top: 12px;
     padding-bottom: 12px;
-    font-size: 15px;
-    font-family: clab;
+    font-size: 20px;
+    /* font-family: clab; */
+    font-weight: bold;
 }
 
 input #description {
