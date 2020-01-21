@@ -44,6 +44,12 @@ class SingleSessionContainer extends Component {
         // console.log("editId: " + this.state.editId);
     }
 
+    onClickNull= () => {
+        this.setState({
+            editId: null
+        })
+    };
+
     handleEditSubmit=(event)=>{
         event.preventDefault();
         let note = {
@@ -81,11 +87,11 @@ class SingleSessionContainer extends Component {
         // console.log(this.thePlayer.current.getCurrentTime())
         
         this.playerInterval = setInterval( () => {
-            console.log(this.thePlayer.current.getCurrentTime());
+            // console.log("current time: ",this.thePlayer.current.getCurrentTime());
             this.setState({
                 videoTimestamp: this.thePlayer.current.getCurrentTime()
             })
-        }, 750)
+        }, 1000)
     }
 
     videoOnPause = () => {
@@ -93,6 +99,11 @@ class SingleSessionContainer extends Component {
         clearInterval(this.playerInterval);
         // console.log(this.playerInterval)
         // clearInterval(this.state.videoTimestamp)
+    }
+
+    videoSeek = (desiredTime) => {
+        this.thePlayer.current.seekTo(desiredTime)
+        // console.log('seeking', desiredTime)
     }
     
     componentDidMount(){
@@ -114,6 +125,7 @@ class SingleSessionContainer extends Component {
             onClickEdit={this.onClickEdit}
             mustEdit = {this.state.editId}
             handleEditSubmit = {this.handleEditSubmit}
+            onClickNull={this.onClickNull}
             // editNoteState={this.state.editNoteState}
             handleEditChange = {this.handleEditChange}
             // currentNote = {this.state.noteRecord}
@@ -122,10 +134,10 @@ class SingleSessionContainer extends Component {
             // editNote = {this.props.editNoteThunk}
 
             videoUrl = {this.props.currentVideo}
-            // videoUrl = {this.allNotes[0].studySession.videoUrl}
-            videoOnReady = {this.videoOnReady}
+
             videoOnPlay = {this.videoOnPlay}
             videoOnPause = {this.videoOnPause}
+            videoSeek = {this.videoSeek}
 
             thePlayer = {this.thePlayer}
             />

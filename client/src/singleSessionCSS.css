@@ -68,10 +68,14 @@
 .main-grid {
     height: 100vh;
     /* border: 1px solid white; */
+    
+    /* background-color: white; */
 }
 
 .Grid {
     /* border: 1px solid white; */
+    /* background-color: white; */
+    
 }
 
 .notes-grid {

@@ -61,11 +61,28 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+function str_pad_left(string,pad,length) {
+    return (new Array(length+1).join(pad)+string).slice(-length);
+}
+
+function convertToHumanReadable(aTimestamp){
+    var sec_num = parseInt(aTimestamp, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+   
+    return hours+':'+minutes+':'+seconds;
+}
+
 const SingleSessionView = (props) => {
     const classes = useStyles();
     const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl,
-            videoOnReady, videoOnPlay, videoOnPause, thePlayer, 
-            editNoteState, onClickEdit, mustEdit,handleEditSubmit ,handleEditChange } = props;
+            videoOnPlay, videoOnPause, thePlayer, videoSeek,
+            editNoteState, onClickEdit, mustEdit,handleEditSubmit ,handleEditChange, onClickNull } = props;
     // console.log("The Hangle Change is: ", handleChange);
     return (
         <div className="overall-container">
@@ -74,6 +91,7 @@ const SingleSessionView = (props) => {
                 {/* Responsive Desktop View */}
                 <Desktop>
 
+                    <br/>
                     {/* Divides first two grids to be rows */}
                     <Grid className="main-grid"
                     container 
@@ -97,6 +115,7 @@ const SingleSessionView = (props) => {
                                             onPlay={videoOnPlay}
                                             onPause={videoOnPause}
                                             controls = {true}
+                                            onSeek = {videoSeek}
                                         />
                                     
                                 </Grid>
@@ -112,11 +131,22 @@ const SingleSessionView = (props) => {
                                         <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
                                         style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
                                         <br/>
+                                        <br/>
                                         <input className="note-record" type="submit"></input>
 
                                     </form>
 
                                 </Grid>
+
+                                <br/>
+                                <br/>
+
+                                <Grid item>
+                                    <Badge badgeContent={allNotes.length} color="error">
+                                        <DescriptionIcon />
+                                    </Badge>
+                                </Grid>
+                                <br/>
 
                             </Grid>
 
@@ -126,16 +156,7 @@ const SingleSessionView = (props) => {
                             item xs={6} 
                             container direction="column"
                             justify="center" 
-                            alignItems="center">
-                                    <br/>
-
-                                    <Grid item>
-                                        <div className="Badge">
-                                        <Badge badgeContent={allNotes.length} color="error">
-                                            <DescriptionIcon />
-                                        </Badge>
-                                        </div>
-                                    </Grid>
+                            alignItems="center">   
 
                                 <Paper style={{minHeight: 650, minWidth: 600, maxHeight: 650, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
 
@@ -163,7 +184,7 @@ const SingleSessionView = (props) => {
                                                                 </div>
 
                                                                 <div className="timestamp-note">
-                                                                    <a href="https://www.youtube.com/watch?v=ZS_kXvOeQ5Y&feature=emb_rel_pause"><p>{note.videoTimestamp}</p></a>
+                                                                    <Button onClick = {() => videoSeek(note.videoTimestamp)}>{convertToHumanReadable(note.videoTimestamp)}</Button>
                                                                 </div>
 
                                                                 <div className="delete-note">
@@ -183,6 +204,7 @@ const SingleSessionView = (props) => {
                                                                         <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder={note.noteRecord} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}/>
                                                                         {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
                                                                         <input className="note-record" type="submit"></input>
+                                                                        <button onClick={onClickNull}>Cancel</button>
                                                                     </form>
                                                                     : <ExpansionPanel>
                                                                         <ExpansionPanelSummary
@@ -224,6 +246,7 @@ const SingleSessionView = (props) => {
                 {/* RESPONSIVE TABLET VIEW */}
                 <Tablet>
                     
+                    <br/>
                     {/* Divides first two grids to be rows */}
                     <Grid className="main-grid"
                     container 
@@ -248,9 +271,14 @@ const SingleSessionView = (props) => {
                                         onPlay={videoOnPlay}
                                         onPause={videoOnPause}
                                         controls = {true}
+                                        onSeek = {videoSeek}
+                                        width={400}
+                                        height={300}
                                     />
                                     
                                 </Grid>
+                                
+                                <br/>
 
                                 <Grid item xs={12} className="form-grid"
                                      >
@@ -260,6 +288,7 @@ const SingleSessionView = (props) => {
                                         <br/>
                                         <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
                                         style={{ minWidth: 600, overflow: 'auto'}}/>
+                                        <br/>
                                         <br/>
                                         <input className="note-record" type="submit"></input>
                                         <br/>
@@ -271,6 +300,16 @@ const SingleSessionView = (props) => {
                               
                                 </Grid>
 
+                                <br/>
+
+                                <Grid item>
+                                    <Badge badgeContent={allNotes.length} color="error">
+                                        <DescriptionIcon />
+                                    </Badge>
+                                </Grid>
+                                <br/>
+                                <br/>
+
                             </Grid>
 
                             {/* 2/2 Large Grid */}
@@ -280,10 +319,7 @@ const SingleSessionView = (props) => {
                             container direction="column"
                             justify="center" 
                             alignItems="center">
-                                <Badge badgeContent={allNotes.length} color="error">
-                                    <DescriptionIcon />
-                                </Badge>
-                                <br/>
+                                
                                 <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
                                     
                                     <List className="List">
@@ -310,7 +346,7 @@ const SingleSessionView = (props) => {
                                                                 </div>
 
                                                                 <div className="timestamp-note">
-                                                                    <a href="https://www.youtube.com/watch?v=ZS_kXvOeQ5Y&feature=emb_rel_pause"><p>{note.videoTimestamp}</p></a>
+                                                                    <Button onClick = {() => videoSeek(note.videoTimestamp)}>{note.videoTimestamp}</Button>
                                                                 </div>
 
                                                                 <div className="delete-note">
