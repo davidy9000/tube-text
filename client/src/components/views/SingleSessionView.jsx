@@ -61,6 +61,18 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+function str_pad_left(string,pad,length) {
+    return (new Array(length+1).join(pad)+string).slice(-length);
+}
+
+function convertToHumanReadable(aTimestamp){
+    let minutes = Math.floor(aTimestamp / 60);
+    let seconds = aTimestamp - minutes * 60;
+    
+    let finalTime = str_pad_left(minutes,'0',2)+':'+str_pad_left(seconds,'0',2);
+    return finalTime;
+}
+
 const SingleSessionView = (props) => {
     const classes = useStyles();
     const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl,
@@ -167,7 +179,7 @@ const SingleSessionView = (props) => {
                                                                 </div>
 
                                                                 <div className="timestamp-note">
-                                                                    <Button onClick = {() => videoSeek(note.videoTimestamp)}>{note.videoTimestamp}</Button>
+                                                                    <Button onClick = {() => videoSeek(note.videoTimestamp)}>{convertToHumanReadable(note.videoTimestamp)}</Button>
                                                                 </div>
 
                                                                 <div className="delete-note">
