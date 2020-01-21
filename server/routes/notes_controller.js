@@ -30,7 +30,7 @@ router.put('/edit/:id', editNote);
 /*********************** Get functions *******************/
 //  Get note by Id
 function getNote(req, res, next) {
-    Note.findById(req.params.id)
+    Note.findByPk(req.params.id)
         .then(note => res.json(note))
         .catch(err => next(err));
 };
