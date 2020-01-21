@@ -2,14 +2,14 @@ const { User, StudySession, Note } = require('../database/models');
 
 const seedDatabase = async () => {
 	const JohnDoe = await User.create({
-		userName: "johndoe19",
-		pass: "1234",
+		username: "johndoe19",
+		password: "1234",
 		email: "john.doe@gmail.com"
 	});
 
 	const JaneDoe = await User.create({
-		userName: "doejane",
-		pass: "idsnofio",
+		username: "doejane",
+		password: "hello",
 		email: "idk@janedoe.com"
 	});
 

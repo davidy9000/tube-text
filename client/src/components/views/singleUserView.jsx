@@ -13,7 +13,8 @@ import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Grid from '@material-ui/core/Grid';
-
+import IconButton from '@material-ui/core/IconButton';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 
 // import IconButton from '@material-ui/core/IconButton';
@@ -126,7 +127,7 @@ const SingleUserView = (props) => {
     const classes = useStyles();
     // const bull = <span className={classes.bullet}>•</span>;
 
-    const {sessions, handleChange, handleSubmit ,currentStudySession } = props;
+    const {sessions, handleLogout,currentStudySession } = props;
     return (
         <div className="App">
             {/* <AppBar position="static" className = {classes.customizeAppBar}>
@@ -140,32 +141,30 @@ const SingleUserView = (props) => {
                     <Button className = {classes.customNavButton}>Sign Out</Button>
                 </Toolbar>
             </AppBar> */}
+           
 
-            <Link style = { style } to={`/study_sessions/add_session`}>
-                <Button className = {classes.customNewSession} >New Study Session</Button>
-            </Link>
-            {/* {sessions.map((session)=>{
-                return <div className = "study-session" onClick={() => currentStudySession(session)}>
-                    { <button onClick={() => currentStudySession(session)}>View Session</button> }
-                    <p>{session.studySessionName}</p>
-                    <Link style = { style } to={`/study_sessions/${session.id}`}>
-                        <Button >View Session</Button>
-                    </Link>
-                </div>
-            })} */}
+            <br/>
             <Grid
                 container
-                
-               
+                container direction="column"
+                container spacing = {3}
                 justify="center"
                 alignItems="center" 
             >
+                <Grid item>
+                    <Link style = { style } to={`/study_sessions/add_session`}>            
+                        <Button variant="contained" color="primary">
+                            New Study Session
+                        </Button>
+                    </Link>
+                    <button onClick={handleLogout}>Logout</button>
+                </Grid>
                 <Grid 
                 item
                 style={{minWidth: '80%'}}
                 
                 >
-                    <Paper style={{minHeight: '80%', maxHeight:'80%', minWidth: '100%', maxWidth: '100%', overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
+                    <Paper style={{minHeight: 900, maxHeight:900, minWidth: '100%', maxWidth: '100%', overflow: 'auto', backgroundColor: 'white', border: '1px solid white'}}>
 
                         <List className="List">
                             {sessions.map((session)=> {
@@ -173,12 +172,11 @@ const SingleUserView = (props) => {
                                     <ListItem className = "study-session" onClick={() => currentStudySession(session)}
                                     alignItems='center'
                                     >
-                                    {/* <div className = "study-session" onClick={() => currentStudySession(session)}> */}
-                                        {/* <List>
-                                            <ListItem alignItems= 'center'> */}
 
                                         
-                                                <Card className={classes.card}>
+                                                <Card className={classes.card}
+                                                style={{backgroundColor:'#a3a3c2'}}
+                                                >
                                                     <CardContent>
                                                         <Typography className={classes.cardTitle} color="textSecondary" gutterBottom>
                                                         {session.studySessionName}
@@ -204,51 +202,7 @@ const SingleUserView = (props) => {
                     </Paper>
                 </Grid>
             </Grid>
-{/* 
-            // return (
-            //     <Card className={classes.card}>
-            //     <CardContent>
-            //         <Typography className={classes.cardTitle} color="textSecondary" gutterBottom>
-            //         Word of the Day
-            //         </Typography>
-            //         <Typography variant="h5" component="h2">
-            //         be{bull}nev{bull}o{bull}lent
-            //         </Typography>
-            //         <Typography className={classes.pos} color="textSecondary">
-            //         adjective
-            //         </Typography>
-            //         <Typography variant="body2" component="p">
-            //         well meaning and kindly.
-            //         <br />
-            //         {'"a benevolent smile"'}
-            //         </Typography>
-            //     </CardContent>
-            //     <CardActions>
-            //         <Button size="small">Learn More</Button>
-            //     </CardActions>
-            //     </Card>
-            // ) */}
-          
-            {/* <form onSubmit={handleSubmit}>
-                <label>Video URL: </label>
-                <input type="text" name = "videoUrl" onChange ={handleChange} ></input>
-                <br/>
 
-                <label>Study Session Name: </label>
-                <input type="text" name = "studySessionName" onChange={handleChange} ></input>
-                <br/>
-
-                <label>Study Session Description: </label>
-                <input type="text" name = "studySessionDescription" onChange={handleChange} ></input>
-                <br/>
-                <br/>
-
-                <label>User Id: </label>
-                <input type="text" name = "userId" onChange={handleChange} ></input>
-                <br/>
-
-                <input type="submit"></input>
-            </form>  */}
         </div>
     )
 }
