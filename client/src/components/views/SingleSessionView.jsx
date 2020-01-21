@@ -272,6 +272,8 @@ const SingleSessionView = (props) => {
                                         onPause={videoOnPause}
                                         controls = {true}
                                         onSeek = {videoSeek}
+                                        width={400}
+                                        height={300}
                                     />
                                     
                                 </Grid>
