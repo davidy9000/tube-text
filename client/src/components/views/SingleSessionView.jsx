@@ -19,7 +19,9 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
-
+import Badge from '@material-ui/core/Badge';
+import MailIcon from '@material-ui/icons/Mail';
+import DescriptionIcon from '@material-ui/icons/Description';
 
 // import { palette, spacing, typography } from '@material-ui/system';
 // import styled from 'styled-components';
@@ -126,9 +128,18 @@ const SingleSessionView = (props) => {
                             container direction="column"
                             justify="center" 
                             alignItems="center">
+                                    <br/>
 
-                                <Paper style={{minHeight: 700, minWidth: 600, maxHeight: 700, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
-                                    
+                                    <Grid item>
+                                        <div className="Badge">
+                                        <Badge badgeContent={allNotes.length} color="error">
+                                            <DescriptionIcon />
+                                        </Badge>
+                                        </div>
+                                    </Grid>
+
+                                <Paper style={{minHeight: 650, minWidth: 600, maxHeight: 650, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
+
                                     <List className="List">
     
                                         {allNotes.map((note)=>{
@@ -180,7 +191,7 @@ const SingleSessionView = (props) => {
                                                                         aria-controls="panel1a-content"
                                                                         id="panel1a-header"
                                                                         >
-                                                                        <Typography>{(note.noteRecord).substring(0, 20) + "..."}</Typography>
+                                                                        <Typography style={{fontWeight: 'bold'}}>{(note.noteRecord).substring(0, 20) + "..."}</Typography>
                                                                         </ExpansionPanelSummary>
                                                                         <ExpansionPanelDetails>
                                                                         <Typography style={{maxWidth: 575, overflow: 'auto'}}>
@@ -247,10 +258,10 @@ const SingleSessionView = (props) => {
                                      >
                                     <form onSubmit={handleSubmit}>
                                         <label>Note: </label><br/>
-                                        <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input>
+                                        
                                         <br/>
-                                        {/* <TextareaAutosize aria-label="minimum height" rowsMin={3} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
-                                        style={{ minWidth: 400, maxHeight: 200, overflow: 'auto'}}/> */}
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        style={{ minWidth: 600, overflow: 'auto'}}/>
                                         <br/>
                                         <input className="note-record" type="submit"></input>
                                         <br/>
@@ -271,7 +282,10 @@ const SingleSessionView = (props) => {
                             container direction="column"
                             justify="center" 
                             alignItems="center">
-
+                                <Badge badgeContent={allNotes.length} color="error">
+                                    <DescriptionIcon />
+                                </Badge>
+                                <br/>
                                 <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
                                     
                                     <List className="List">
@@ -297,6 +311,10 @@ const SingleSessionView = (props) => {
                                                                     {/* <button onClick = {() => editNote(fakeObject)}>{note.noteRecord}</button> */}
                                                                 </div>
 
+                                                                <div className="timestamp-note">
+                                                                    <a href="https://www.youtube.com/watch?v=ZS_kXvOeQ5Y&feature=emb_rel_pause"><p>{note.videoTimestamp}</p></a>
+                                                                </div>
+
                                                                 <div className="delete-note">
                                                                     <Button onClick = {() => deleteNote(note.id)} id = {note.id}>
                                                                         <IconButton aria-label="delete" disabled color="primary">
@@ -307,8 +325,20 @@ const SingleSessionView = (props) => {
                                                                 </div>
                                                             </div>
                                                             <div className="note-record">
-                                                                <p>{note.videoTimestamp}</p>
-                                                                <p>{note.noteRecord}</p>
+                                                                    <ExpansionPanel>
+                                                                        <ExpansionPanelSummary
+                                                                        expandIcon={<ExpandMoreIcon />}
+                                                                        aria-controls="panel1a-content"
+                                                                        id="panel1a-header"
+                                                                        >
+                                                                        <Typography style={{fontWeight: 'bold'}}>{(note.noteRecord).substring(0, 20) + "..."}</Typography>
+                                                                        </ExpansionPanelSummary>
+                                                                        <ExpansionPanelDetails>
+                                                                        <Typography style={{maxWidth: 575, overflow: 'auto'}}>
+                                                                            {note.noteRecord}
+                                                                        </Typography>
+                                                                        </ExpansionPanelDetails>
+                                                                    </ExpansionPanel>
                                                             </div>
                                                         </div>
 
