@@ -31,7 +31,7 @@ import '../../singleSessionCSS.css';
 
 // const Box = styled.div`${palette}${spacing}${typography}`;
 
-import Youtube from 'react-youtube';
+import ReactPlayer from 'react-player';
 
 
 //Responsive functionality
@@ -64,8 +64,8 @@ const useStyles = makeStyles(theme => ({
 const SingleSessionView = (props) => {
     const classes = useStyles();
     const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl,
-    opts, videoOnReady, videoOnPlay, videoStateChange, videoOnPause, editNoteState, 
-    onClickEdit, mustEdit,handleEditSubmit ,handleEditChange} = props;
+            videoOnReady, videoOnPlay, videoOnPause, thePlayer, 
+            editNoteState, onClickEdit, mustEdit,handleEditSubmit ,handleEditChange } = props;
     // console.log("The Hangle Change is: ", handleChange);
     return (
         <div className="overall-container">
@@ -91,13 +91,12 @@ const SingleSessionView = (props) => {
                             >
                                 <Grid item xs={12}>
                                     
-                                        <Youtube
-                                            videoId = {videoUrl}
-                                            // opts={opts}
-                                            // onReady={videoOnReady}
+                                        <ReactPlayer
+                                            ref = {thePlayer}
+                                            url = {videoUrl}
                                             onPlay={videoOnPlay}
                                             onPause={videoOnPause}
-                                            onStateChange={videoStateChange}
+                                            controls = {true}
                                         />
                                     
                                 </Grid>
@@ -243,13 +242,12 @@ const SingleSessionView = (props) => {
 
                                 <Grid item xs={6}>
                                     
-                                    <Youtube
-                                        videoId = {videoUrl}
-                                        // opts={opts}
-                                        // onReady={videoOnReady}
+                                    <ReactPlayer
+                                        ref = {thePlayer}
+                                        url = {videoUrl}
                                         onPlay={videoOnPlay}
                                         onPause={videoOnPause}
-                                        onStateChange={videoStateChange}
+                                        controls = {true}
                                     />
                                     
                                 </Grid>
