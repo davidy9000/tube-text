@@ -128,11 +128,14 @@ const SingleSessionView = (props) => {
                                         <label>Note: </label><br/>
                                         {/* <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input> */}
                                         <br/>
-                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={6} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
                                         style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
                                         <br/>
                                         <br/>
-                                        <input className="note-record" type="submit"></input>
+                                        <Button variant="contained" color="primary" type="submit">
+                                            Submit
+                                        </Button>
+                                        {/* <input className="note-record" type="submit"></input> */}
 
                                     </form>
 
@@ -158,7 +161,7 @@ const SingleSessionView = (props) => {
                             justify="center" 
                             alignItems="center">   
 
-                                <Paper style={{minHeight: 650, minWidth: 600, maxHeight: 650, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
+                                <Paper style={{minHeight: 650, minWidth: 600, maxHeight: 650, overflow: 'auto', backgroundColor: '#f0f0f5', border: '1px solid white'}}>
 
                                     <List className="List">
     
@@ -201,7 +204,7 @@ const SingleSessionView = (props) => {
                                                                     (mustEdit === note.id)
                                                                     ? 
                                                                     <form onSubmit={handleEditSubmit}>
-                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder={note.noteRecord} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}/>
+                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={6} placeholder={note.noteRecord} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}/>
                                                                         {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
                                                                         <input className="note-record" type="submit"></input>
                                                                         <button onClick={onClickNull}>Cancel</button>
@@ -286,7 +289,7 @@ const SingleSessionView = (props) => {
                                         <label>Note: </label><br/>
                                         
                                         <br/>
-                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={6} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
                                         style={{ minWidth: 600, overflow: 'auto'}}/>
                                         <br/>
                                         <br/>
@@ -320,7 +323,7 @@ const SingleSessionView = (props) => {
                             justify="center" 
                             alignItems="center">
                                 
-                                <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
+                                <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: '#f0f0f5', border: '1px solid white'}}>
                                     
                                     <List className="List">
     
@@ -363,7 +366,7 @@ const SingleSessionView = (props) => {
                                                                     (mustEdit === note.id)
                                                                     ? 
                                                                     <form onSubmit={handleEditSubmit}>
-                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder={note.noteRecord} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}/>
+                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={6} placeholder={note.noteRecord} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}/>
                                                                         {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
                                                                         <input className="note-record" type="submit"></input>
                                                                     </form>
