@@ -78,7 +78,7 @@ class SingleSessionContainer extends Component {
         // console.log(this.thePlayer.current.getCurrentTime())
         
         this.playerInterval = setInterval( () => {
-            console.log(this.thePlayer.current.getCurrentTime());
+            // console.log(this.thePlayer.current.getCurrentTime());
             this.setState({
                 videoTimestamp: this.thePlayer.current.getCurrentTime()
             })
@@ -90,6 +90,11 @@ class SingleSessionContainer extends Component {
         clearInterval(this.playerInterval);
         // console.log(this.playerInterval)
         // clearInterval(this.state.videoTimestamp)
+    }
+
+    videoSeek = (desiredTime) => {
+        this.thePlayer.current.seekTo(desiredTime)
+        // console.log('seeking', desiredTime)
     }
     
     componentDidMount(){
@@ -114,9 +119,9 @@ class SingleSessionContainer extends Component {
             // editNote = {this.props.editNoteThunk}
 
             videoUrl = {this.props.currStudySession.videoUrl}
-            videoOnReady = {this.videoOnReady}
             videoOnPlay = {this.videoOnPlay}
             videoOnPause = {this.videoOnPause}
+            videoSeek = {this.videoSeek}
 
             thePlayer = {this.thePlayer}
             />
