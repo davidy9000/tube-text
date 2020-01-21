@@ -15,11 +15,11 @@
 
 /* For the notes */
 .individual-note {
-    border: 1px solid #cddc39;
+    /* border: 1px solid #cddc39; */
     border-radius: 4px;
     padding: 0px 0px 0px 0px;
     width: 575px;
-    background-color: white;
+    background-color: #a3a3c2;
     color: black;
     
 }
