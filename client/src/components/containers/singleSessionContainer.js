@@ -33,9 +33,30 @@ class SingleSessionContainer extends Component {
         this.setState({
             // editNoteState: !this.state.editNoteState,
             editId: noteId
-        }, () => editNoteThunk(this.state.editId));
+        });
+        // () => editNoteThunk(this.state.editId)
         // console.log("editnote state!" + this.state.editNoteState);
         // console.log("editId: " + this.state.editId);
+    }
+
+    handleEditSubmit=(event)=>{
+        event.preventDefault();
+        let note = {
+            studySessionId: this.props.currStudySession.id,
+            videoTimestamp: this.state.videoTimestamp,
+            noteRecord: this.state.noteRecord,
+            id: this.state.editId
+        }
+        this.setState({
+            editId: null
+        })
+        this.props.editNoteThunk(note);
+    }
+
+    handleEditChange=(event)=>{
+        this.setState({
+            [event.target.name]: event.target.value
+        }, () => console.log("the note: ", this.state.noteRecord));
     }
 
     handleSubmit=(event)=>{
@@ -93,7 +114,7 @@ class SingleSessionContainer extends Component {
     //     const player = event.target
     //     // console.log(player.getCurrentTime())
     // }
-    
+
     componentDidMount(){
         // console.log("I am mounted");
         this.props.fetchNotesThunk(this.props.currStudySession.id);
@@ -114,7 +135,10 @@ class SingleSessionContainer extends Component {
             handleChange = {this.handleChange} 
             handleSubmit={this.handleSubmit}
             onClickEdit={this.onClickEdit}
+            mustEdit = {this.state.editId}
+            handleEditSubmit = {this.handleEditSubmit}
             // editNoteState={this.state.editNoteState}
+            handleEditChange = {this.handleEditChange}
             
 
             deleteNote = {this.props.deleteNoteThunk}
