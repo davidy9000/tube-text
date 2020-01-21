@@ -10,7 +10,7 @@ class SingleSessionContainer extends Component {
             studySessionId: 0,
             videoTimestamp: 0,
             noteRecord: "",
-            editNoteState: false,
+            // editNoteState: false,
             editId: null
         }
         this.playerInterval = null;
@@ -139,7 +139,7 @@ class SingleSessionContainer extends Component {
             handleEditSubmit = {this.handleEditSubmit}
             // editNoteState={this.state.editNoteState}
             handleEditChange = {this.handleEditChange}
-            
+            // currentNote = {this.state.noteRecord}
 
             deleteNote = {this.props.deleteNoteThunk}
             // editNote = {this.props.editNoteThunk}
