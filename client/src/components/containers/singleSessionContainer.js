@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import SingleSessionView from '../views/SingleSessionView';
 import { connect } from 'react-redux';
-import { fetchNotesThunk, addNotesThunk, deleteNoteThunk, editNoteThunk } from '../../store/actions/actionCreatorsThunks';
+import { fetchNotesThunk, addNotesThunk, deleteNoteThunk, editNoteThunk, fetchCurrentVideoThunk } from '../../store/actions/actionCreatorsThunks';
+//need to handle refresh issue
+import {withRouter} from 'react-router-dom';
+import { compose } from 'redux';
 
 class SingleSessionContainer extends Component {
     constructor(props){
@@ -94,7 +97,12 @@ class SingleSessionContainer extends Component {
     
     componentDidMount(){
         // console.log("I am mounted");
-        this.props.fetchNotesThunk(this.props.currStudySession.id);
+        console.log(this.props);
+        //use history to get the sessionID based on the route, and this way
+        //on refresh we do not lose the notes
+        this.props.fetchNotesThunk(this.props.match.params.sessionId);
+        this.props.fetchCurrentVideoThunk(this.props.match.params.sessionId);
+
     }
 
     render() {
@@ -113,7 +121,8 @@ class SingleSessionContainer extends Component {
             deleteNote = {this.props.deleteNoteThunk}
             // editNote = {this.props.editNoteThunk}
 
-            videoUrl = {this.props.currStudySession.videoUrl}
+            videoUrl = {this.props.currentVideo}
+            // videoUrl = {this.allNotes[0].studySession.videoUrl}
             videoOnReady = {this.videoOnReady}
             videoOnPlay = {this.videoOnPlay}
             videoOnPause = {this.videoOnPause}
@@ -128,7 +137,8 @@ const mapState = (state) => {
     // console.log("I am in state");
     return({
         allNotes: state.allNotes,
-        currStudySession: state.currentStudySession
+        currStudySession: state.currentStudySession,
+        currentVideo: state.currentVideo,
     })
 }
 
@@ -138,8 +148,14 @@ const mapDispatch = (dispatch) => {
         fetchNotesThunk: (stud_sess_id) => dispatch(fetchNotesThunk(stud_sess_id)),
         addNotesThunk: (note) => dispatch(addNotesThunk(note)),
         deleteNoteThunk: (note_id) => dispatch(deleteNoteThunk(note_id)),
-        editNoteThunk: (note) => dispatch(editNoteThunk(note))
+        editNoteThunk: (note) => dispatch(editNoteThunk(note)),
+        fetchCurrentVideoThunk: (stud_sess_id) => dispatch(fetchCurrentVideoThunk(stud_sess_id)),
     })
 }
 
-export default connect(mapState, mapDispatch)(SingleSessionContainer);
+// export default connect(mapState, mapDispatch)(SingleSessionContainer);
+
+export default compose(
+    withRouter,
+    connect(mapState, mapDispatch)
+)(SingleSessionContainer);
