@@ -15,7 +15,8 @@ const seedDatabase = async () => {
 
 	const stud_sess = await Promise.all([
 		StudySession.create({
-			videoUrl: "r-yxNNO1EI8",
+			// videoUrl: "r-yxNNO1EI8",
+			videoUrl: "https://www.youtube.com/watch?v=SVSf8fNp_kg",
 			studySessionName: "Session 1 of User 1",
 			studySessionDescription: "Calculus 1"
 		}),
