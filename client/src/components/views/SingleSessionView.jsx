@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
 const SingleSessionView = (props) => {
     const classes = useStyles();
     const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl,
-            videoOnReady, videoOnPlay, videoOnPause, thePlayer, 
+            videoOnPlay, videoOnPause, thePlayer, videoSeek,
             editNoteState, onClickEdit, mustEdit,handleEditSubmit ,handleEditChange } = props;
     // console.log("The Hangle Change is: ", handleChange);
     return (
@@ -97,6 +97,7 @@ const SingleSessionView = (props) => {
                                             onPlay={videoOnPlay}
                                             onPause={videoOnPause}
                                             controls = {true}
+                                            onSeek = {videoSeek}
                                         />
                                     
                                 </Grid>
@@ -163,7 +164,7 @@ const SingleSessionView = (props) => {
                                                                 </div>
 
                                                                 <div className="timestamp-note">
-                                                                    <a href="https://www.youtube.com/watch?v=ZS_kXvOeQ5Y&feature=emb_rel_pause"><p>{note.videoTimestamp}</p></a>
+                                                                    <Button onClick = {() => videoSeek(note.videoTimestamp)}>{note.videoTimestamp}</Button>
                                                                 </div>
 
                                                                 <div className="delete-note">
@@ -248,6 +249,7 @@ const SingleSessionView = (props) => {
                                         onPlay={videoOnPlay}
                                         onPause={videoOnPause}
                                         controls = {true}
+                                        onSeek = {videoSeek}
                                     />
                                     
                                 </Grid>
@@ -310,7 +312,7 @@ const SingleSessionView = (props) => {
                                                                 </div>
 
                                                                 <div className="timestamp-note">
-                                                                    <a href="https://www.youtube.com/watch?v=ZS_kXvOeQ5Y&feature=emb_rel_pause"><p>{note.videoTimestamp}</p></a>
+                                                                    <Button onClick = {() => videoSeek(note.videoTimestamp)}>{note.videoTimestamp}</Button>
                                                                 </div>
 
                                                                 <div className="delete-note">
