@@ -18,6 +18,9 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Badge from '@material-ui/core/Badge';
+import MailIcon from '@material-ui/icons/Mail';
+import DescriptionIcon from '@material-ui/icons/Description';
 
 // import { palette, spacing, typography } from '@material-ui/system';
 // import styled from 'styled-components';
@@ -107,9 +110,18 @@ const SingleSessionView = (props) => {
                             container direction="column"
                             justify="center" 
                             alignItems="center">
+                                    <br/>
 
-                                <Paper style={{minHeight: 700, minWidth: 600, maxHeight: 700, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
-                                    
+                                    <Grid item>
+                                        <div className="Badge">
+                                        <Badge badgeContent={allNotes.length} color="error">
+                                            <DescriptionIcon />
+                                        </Badge>
+                                        </div>
+                                    </Grid>
+
+                                <Paper style={{minHeight: 650, minWidth: 600, maxHeight: 650, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
+
                                     <List className="List">
     
                                         {allNotes.map((note)=>{
@@ -246,7 +258,10 @@ const SingleSessionView = (props) => {
                             container direction="column"
                             justify="center" 
                             alignItems="center">
-
+                                <Badge badgeContent={allNotes.length} color="error">
+                                    <DescriptionIcon />
+                                </Badge>
+                                <br/>
                                 <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
                                     
                                     <List className="List">
