@@ -21,7 +21,7 @@ router.get('/:id', findUser);
 /************************ Get function *****************/
 //	Get User by Id
 function findUser(req, res, next) {
-	User.findById(req.params.id)
+	User.findByPk(req.params.id)
 		.then(user => res.json(user))
 		.catch(err => next(err));
 };
