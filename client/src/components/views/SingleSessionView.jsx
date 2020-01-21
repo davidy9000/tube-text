@@ -222,10 +222,10 @@ const SingleSessionView = (props) => {
                                      >
                                     <form onSubmit={handleSubmit}>
                                         <label>Note: </label><br/>
-                                        <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input>
+                                        
                                         <br/>
-                                        {/* <TextareaAutosize aria-label="minimum height" rowsMin={3} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
-                                        style={{ minWidth: 400, maxHeight: 200, overflow: 'auto'}}/> */}
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        style={{ minWidth: 600, overflow: 'auto'}}/>
                                         <br/>
                                         <input className="note-record" type="submit"></input>
                                         <br/>
@@ -272,6 +272,10 @@ const SingleSessionView = (props) => {
                                                                     {/* <button onClick = {() => editNote(fakeObject)}>{note.noteRecord}</button> */}
                                                                 </div>
 
+                                                                <div className="timestamp-note">
+                                                                    <a href="https://www.youtube.com/watch?v=ZS_kXvOeQ5Y&feature=emb_rel_pause"><p>{note.videoTimestamp}</p></a>
+                                                                </div>
+
                                                                 <div className="delete-note">
                                                                     <Button onClick = {() => deleteNote(note.id)} id = {note.id}>
                                                                         <IconButton aria-label="delete" disabled color="primary">
@@ -282,8 +286,20 @@ const SingleSessionView = (props) => {
                                                                 </div>
                                                             </div>
                                                             <div className="note-record">
-                                                                <p>{note.videoTimestamp}</p>
-                                                                <p>{note.noteRecord}</p>
+                                                                    <ExpansionPanel>
+                                                                        <ExpansionPanelSummary
+                                                                        expandIcon={<ExpandMoreIcon />}
+                                                                        aria-controls="panel1a-content"
+                                                                        id="panel1a-header"
+                                                                        >
+                                                                        <Typography style={{fontWeight: 'bold'}}>{(note.noteRecord).substring(0, 20) + "..."}</Typography>
+                                                                        </ExpansionPanelSummary>
+                                                                        <ExpansionPanelDetails>
+                                                                        <Typography style={{maxWidth: 575, overflow: 'auto'}}>
+                                                                            {note.noteRecord}
+                                                                        </Typography>
+                                                                        </ExpansionPanelDetails>
+                                                                    </ExpansionPanel>
                                                             </div>
                                                         </div>
 
