@@ -16,7 +16,7 @@ const Note = db.define("note", {
     },
 
     noteRecord: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false
     }
 });
