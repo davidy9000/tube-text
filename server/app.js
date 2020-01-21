@@ -57,9 +57,10 @@ const syncDatabase = () => {
 const app = express();
 
 //auth
-passport.serializeUser((User,done) => done(null, User.id));
+passport.serializeUser((user,done) => done(null, user.id));
 passport.deserializeUser(async(id,done) => {
   try {
+    console.log(id);
     const user = await db.models.User.findByPk(id);
     done(null,user);
   }

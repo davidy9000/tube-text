@@ -12,3 +12,8 @@ export const EDIT_NOTE = 'EDIT_NOTE';
 // export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 // export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 // export const LOG_OUT = 'LOG_OUT';
+
+//AUTH
+export const GET_USER = "GET_USER";
+export const REMOVE_USER = "REMOVE_USER";
+

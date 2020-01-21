@@ -9,7 +9,7 @@ const seedDatabase = async () => {
 
 	const JaneDoe = await User.create({
 		username: "doejane",
-		password: "idsnofio",
+		password: "hello",
 		email: "idk@janedoe.com"
 	});
 
