@@ -74,6 +74,7 @@ const SingleSessionView = (props) => {
                 {/* Responsive Desktop View */}
                 <Desktop>
 
+                    <br/>
                     {/* Divides first two grids to be rows */}
                     <Grid className="main-grid"
                     container 
@@ -118,6 +119,16 @@ const SingleSessionView = (props) => {
 
                                 </Grid>
 
+                                <br/>
+                                <br/>
+
+                                <Grid item>
+                                    <Badge badgeContent={allNotes.length} color="error">
+                                        <DescriptionIcon />
+                                    </Badge>
+                                </Grid>
+                                <br/>
+
                             </Grid>
 
                             {/* 2/2 Large Grid */}
@@ -126,16 +137,7 @@ const SingleSessionView = (props) => {
                             item xs={6} 
                             container direction="column"
                             justify="center" 
-                            alignItems="center">
-                                    <br/>
-
-                                    <Grid item>
-                                        <div className="Badge">
-                                        <Badge badgeContent={allNotes.length} color="error">
-                                            <DescriptionIcon />
-                                        </Badge>
-                                        </div>
-                                    </Grid>
+                            alignItems="center">   
 
                                 <Paper style={{minHeight: 650, minWidth: 600, maxHeight: 650, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
 
@@ -224,6 +226,7 @@ const SingleSessionView = (props) => {
                 {/* RESPONSIVE TABLET VIEW */}
                 <Tablet>
                     
+                    <br/>
                     {/* Divides first two grids to be rows */}
                     <Grid className="main-grid"
                     container 
@@ -271,6 +274,15 @@ const SingleSessionView = (props) => {
                               
                                 </Grid>
 
+                                <br/>
+
+                                <Grid item>
+                                    <Badge badgeContent={allNotes.length} color="error">
+                                        <DescriptionIcon />
+                                    </Badge>
+                                </Grid>
+                                <br/>
+
                             </Grid>
 
                             {/* 2/2 Large Grid */}
@@ -280,10 +292,7 @@ const SingleSessionView = (props) => {
                             container direction="column"
                             justify="center" 
                             alignItems="center">
-                                <Badge badgeContent={allNotes.length} color="error">
-                                    <DescriptionIcon />
-                                </Badge>
-                                <br/>
+                                
                                 <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
                                     
                                     <List className="List">
