@@ -18,6 +18,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { makeStyles } from '@material-ui/core/styles';
+
 
 // import { palette, spacing, typography } from '@material-ui/system';
 // import styled from 'styled-components';
@@ -42,9 +44,26 @@ const fakeObject = {
     noteRecord: "NEWEST TEST"
 }
 
+const useStyles = makeStyles(theme => ({
+    editButton:{
+        "&:hover": {
+            backgroundColor: '#cddc39',
+            color: '#11153e',
+        },
+        textTransform: 'none',
+        fontSize: '11px',
+        borderRadius: 100,
+        height: '20px',
+        // width: '20px'
+        
+    }
+}));
+
 const SingleSessionView = (props) => {
+    const classes = useStyles();
     const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl,
-    opts, videoOnReady, videoOnPlay, videoStateChange, videoOnPause, editNoteState, onClickEdit } = props;
+    opts, videoOnReady, videoOnPlay, videoStateChange, videoOnPause, editNoteState, 
+    onClickEdit, mustEdit,handleEditSubmit ,handleEditChange} = props;
     // console.log("The Hangle Change is: ", handleChange);
     return (
         <div className="overall-container">
@@ -90,7 +109,7 @@ const SingleSessionView = (props) => {
                                         {/* <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input> */}
                                         <br/>
                                         <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
-                                        style={{ minWidth: 600, overflow: 'auto'}}/>
+                                        style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
                                         <br/>
                                         <input className="note-record" type="submit"></input>
 
@@ -147,13 +166,15 @@ const SingleSessionView = (props) => {
                                                                 </div>
                                                             </div>
                                                             <div className="note-record">
-                                                                
-                                                                {/* <Paper style={{maxHeight: 100, maxWidth: 575, overflow: 'auto'}}>
-                                                                        <p>{note.noteRecord}</p>
-                                                                    </Paper> */}
-
-
-                                                                    <ExpansionPanel>
+                                                                {
+                                                                    (mustEdit === note.id)
+                                                                    ? 
+                                                                    <form onSubmit={handleEditSubmit}>
+                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 600, overflow: 'auto'}}/>
+                                                                        {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
+                                                                        <input className="note-record" type="submit"></input>
+                                                                    </form>
+                                                                    : <ExpansionPanel>
                                                                         <ExpansionPanelSummary
                                                                         expandIcon={<ExpandMoreIcon />}
                                                                         aria-controls="panel1a-content"
@@ -166,7 +187,11 @@ const SingleSessionView = (props) => {
                                                                             {note.noteRecord}
                                                                         </Typography>
                                                                         </ExpansionPanelDetails>
-                                                                    </ExpansionPanel>
+                                                                      </ExpansionPanel>
+                                                                }
+                                                                {/* <Paper style={{maxHeight: 100, maxWidth: 575, overflow: 'auto'}}>
+                                                                        <p>{note.noteRecord}</p>
+                                                                    </Paper> */}
                                                             </div>
                                                         </div>
 
