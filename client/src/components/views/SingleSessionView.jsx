@@ -201,7 +201,7 @@ const SingleSessionView = (props) => {
                                                                     (mustEdit === note.id)
                                                                     ? 
                                                                     <form onSubmit={handleEditSubmit}>
-                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder={note.noteRecord} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}/>
+                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}>{note.noteRecord}</TextareaAutosize>
                                                                         {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
                                                                         <input className="note-record" type="submit"></input>
                                                                         <button onClick={onClickNull}>Cancel</button>
@@ -363,7 +363,7 @@ const SingleSessionView = (props) => {
                                                                     (mustEdit === note.id)
                                                                     ? 
                                                                     <form onSubmit={handleEditSubmit}>
-                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder={note.noteRecord} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}/>
+                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}>{note.noteRecord}</TextareaAutosize>
                                                                         {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
                                                                         <input className="note-record" type="submit"></input>
                                                                     </form>
