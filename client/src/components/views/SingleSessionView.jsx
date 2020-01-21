@@ -132,7 +132,10 @@ const SingleSessionView = (props) => {
                                         style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
                                         <br/>
                                         <br/>
-                                        <input className="note-record" type="submit"></input>
+                                        <Button variant="contained" color="primary" type="submit">
+                                            Submit
+                                        </Button>
+                                        {/* <input className="note-record" type="submit"></input> */}
 
                                     </form>
 
