@@ -66,11 +66,16 @@ function str_pad_left(string,pad,length) {
 }
 
 function convertToHumanReadable(aTimestamp){
-    let minutes = Math.floor(aTimestamp / 60);
-    let seconds = aTimestamp - minutes * 60;
-    
-    let finalTime = str_pad_left(minutes,'0',2)+':'+str_pad_left(seconds,'0',2);
-    return finalTime;
+    var sec_num = parseInt(aTimestamp, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+   
+    return hours+':'+minutes+':'+seconds;
 }
 
 const SingleSessionView = (props) => {
