@@ -180,7 +180,7 @@ const SingleSessionView = (props) => {
                                                                     (mustEdit === note.id)
                                                                     ? 
                                                                     <form onSubmit={handleEditSubmit}>
-                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 600, overflow: 'auto'}}/>
+                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder={note.noteRecord} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}/>
                                                                         {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
                                                                         <input className="note-record" type="submit"></input>
                                                                     </form>
@@ -323,7 +323,15 @@ const SingleSessionView = (props) => {
                                                                 </div>
                                                             </div>
                                                             <div className="note-record">
-                                                                    <ExpansionPanel>
+                                                            {
+                                                                    (mustEdit === note.id)
+                                                                    ? 
+                                                                    <form onSubmit={handleEditSubmit}>
+                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder={note.noteRecord} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}/>
+                                                                        {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
+                                                                        <input className="note-record" type="submit"></input>
+                                                                    </form>
+                                                                    : <ExpansionPanel>
                                                                         <ExpansionPanelSummary
                                                                         expandIcon={<ExpandMoreIcon />}
                                                                         aria-controls="panel1a-content"
@@ -336,7 +344,8 @@ const SingleSessionView = (props) => {
                                                                             {note.noteRecord}
                                                                         </Typography>
                                                                         </ExpansionPanelDetails>
-                                                                    </ExpansionPanel>
+                                                                      </ExpansionPanel>
+                                                                }
                                                             </div>
                                                         </div>
 
