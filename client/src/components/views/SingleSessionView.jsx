@@ -18,6 +18,10 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { makeStyles } from '@material-ui/core/styles';
+import Badge from '@material-ui/core/Badge';
+import MailIcon from '@material-ui/icons/Mail';
+import DescriptionIcon from '@material-ui/icons/Description';
 
 // import { palette, spacing, typography } from '@material-ui/system';
 // import styled from 'styled-components';
@@ -42,9 +46,26 @@ const fakeObject = {
     noteRecord: "NEWEST TEST"
 }
 
+const useStyles = makeStyles(theme => ({
+    editButton:{
+        "&:hover": {
+            backgroundColor: '#cddc39',
+            color: '#11153e',
+        },
+        textTransform: 'none',
+        fontSize: '11px',
+        borderRadius: 100,
+        height: '20px',
+        // width: '20px'
+        
+    }
+}));
+
 const SingleSessionView = (props) => {
+    const classes = useStyles();
     const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl,
-    videoOnReady, videoOnPlay, videoOnPause, editNoteState, onClickEdit, thePlayer } = props;
+            videoOnReady, videoOnPlay, videoOnPause, thePlayer, 
+            editNoteState, onClickEdit, mustEdit,handleEditSubmit ,handleEditChange } = props;
     // console.log("The Hangle Change is: ", handleChange);
     return (
         <div className="overall-container">
@@ -89,7 +110,7 @@ const SingleSessionView = (props) => {
                                         {/* <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input> */}
                                         <br/>
                                         <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
-                                        style={{ minWidth: 600, overflow: 'auto'}}/>
+                                        style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
                                         <br/>
                                         <input className="note-record" type="submit"></input>
 
@@ -106,9 +127,18 @@ const SingleSessionView = (props) => {
                             container direction="column"
                             justify="center" 
                             alignItems="center">
+                                    <br/>
 
-                                <Paper style={{minHeight: 700, minWidth: 600, maxHeight: 700, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
-                                    
+                                    <Grid item>
+                                        <div className="Badge">
+                                        <Badge badgeContent={allNotes.length} color="error">
+                                            <DescriptionIcon />
+                                        </Badge>
+                                        </div>
+                                    </Grid>
+
+                                <Paper style={{minHeight: 650, minWidth: 600, maxHeight: 650, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
+
                                     <List className="List">
     
                                         {allNotes.map((note)=>{
@@ -146,26 +176,32 @@ const SingleSessionView = (props) => {
                                                                 </div>
                                                             </div>
                                                             <div className="note-record">
-                                                                
-                                                                {/* <Paper style={{maxHeight: 100, maxWidth: 575, overflow: 'auto'}}>
-                                                                        <p>{note.noteRecord}</p>
-                                                                    </Paper> */}
-
-
-                                                                    <ExpansionPanel>
+                                                                {
+                                                                    (mustEdit === note.id)
+                                                                    ? 
+                                                                    <form onSubmit={handleEditSubmit}>
+                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 600, overflow: 'auto'}}/>
+                                                                        {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
+                                                                        <input className="note-record" type="submit"></input>
+                                                                    </form>
+                                                                    : <ExpansionPanel>
                                                                         <ExpansionPanelSummary
                                                                         expandIcon={<ExpandMoreIcon />}
                                                                         aria-controls="panel1a-content"
                                                                         id="panel1a-header"
                                                                         >
-                                                                        <Typography>{(note.noteRecord).substring(0, 20) + "..."}</Typography>
+                                                                        <Typography style={{fontWeight: 'bold'}}>{(note.noteRecord).substring(0, 20) + "..."}</Typography>
                                                                         </ExpansionPanelSummary>
                                                                         <ExpansionPanelDetails>
                                                                         <Typography style={{maxWidth: 575, overflow: 'auto'}}>
                                                                             {note.noteRecord}
                                                                         </Typography>
                                                                         </ExpansionPanelDetails>
-                                                                    </ExpansionPanel>
+                                                                      </ExpansionPanel>
+                                                                }
+                                                                {/* <Paper style={{maxHeight: 100, maxWidth: 575, overflow: 'auto'}}>
+                                                                        <p>{note.noteRecord}</p>
+                                                                    </Paper> */}
                                                             </div>
                                                         </div>
 
@@ -220,10 +256,10 @@ const SingleSessionView = (props) => {
                                      >
                                     <form onSubmit={handleSubmit}>
                                         <label>Note: </label><br/>
-                                        <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input>
+                                        
                                         <br/>
-                                        {/* <TextareaAutosize aria-label="minimum height" rowsMin={3} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
-                                        style={{ minWidth: 400, maxHeight: 200, overflow: 'auto'}}/> */}
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        style={{ minWidth: 600, overflow: 'auto'}}/>
                                         <br/>
                                         <input className="note-record" type="submit"></input>
                                         <br/>
@@ -244,7 +280,10 @@ const SingleSessionView = (props) => {
                             container direction="column"
                             justify="center" 
                             alignItems="center">
-
+                                <Badge badgeContent={allNotes.length} color="error">
+                                    <DescriptionIcon />
+                                </Badge>
+                                <br/>
                                 <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: '#0d0514', border: '1px solid white'}}>
                                     
                                     <List className="List">
@@ -270,6 +309,10 @@ const SingleSessionView = (props) => {
                                                                     {/* <button onClick = {() => editNote(fakeObject)}>{note.noteRecord}</button> */}
                                                                 </div>
 
+                                                                <div className="timestamp-note">
+                                                                    <a href="https://www.youtube.com/watch?v=ZS_kXvOeQ5Y&feature=emb_rel_pause"><p>{note.videoTimestamp}</p></a>
+                                                                </div>
+
                                                                 <div className="delete-note">
                                                                     <Button onClick = {() => deleteNote(note.id)} id = {note.id}>
                                                                         <IconButton aria-label="delete" disabled color="primary">
@@ -280,8 +323,20 @@ const SingleSessionView = (props) => {
                                                                 </div>
                                                             </div>
                                                             <div className="note-record">
-                                                                <p>{note.videoTimestamp}</p>
-                                                                <p>{note.noteRecord}</p>
+                                                                    <ExpansionPanel>
+                                                                        <ExpansionPanelSummary
+                                                                        expandIcon={<ExpandMoreIcon />}
+                                                                        aria-controls="panel1a-content"
+                                                                        id="panel1a-header"
+                                                                        >
+                                                                        <Typography style={{fontWeight: 'bold'}}>{(note.noteRecord).substring(0, 20) + "..."}</Typography>
+                                                                        </ExpansionPanelSummary>
+                                                                        <ExpansionPanelDetails>
+                                                                        <Typography style={{maxWidth: 575, overflow: 'auto'}}>
+                                                                            {note.noteRecord}
+                                                                        </Typography>
+                                                                        </ExpansionPanelDetails>
+                                                                    </ExpansionPanel>
                                                             </div>
                                                         </div>
 
