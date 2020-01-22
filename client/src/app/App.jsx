@@ -165,6 +165,7 @@ const App = () => {
 								instead of the actual path wanted */}
 								<Route exact path ="/study_sessions/add_session" render={NewStudySessionComponent}/>
 								<Route exact path="/study_sessions/:sessionId" render={SingleStudySessionComponent}/>
+                                <Route exact path="/pdf" render={<pdfView/>}/>
 							{/* </div>
 						</div> */}
 					</Switch>
