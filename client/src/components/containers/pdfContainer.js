@@ -44,40 +44,21 @@ class pdfContainer extends Component {
     //     }
     // }
 
-    componentDidMount() {
-        this.convertSvgToImage(this.iconsToConvert);
-    }
+    // componentDidMount() {
+    //     this.convertSvgToImage(this.iconsToConvert);
+    // }
 
     render() {
         return (
             <div style={{ height: '100vh', width: '100vw', paddingTop: 20, backgroundColor: 'gray' }}>
-                {!this.canvLoaded && <canvas ref="canvas" style={{ display: 'none' }}>
-                </canvas>}
-                <div style={{ textAlign: 'center', marginBottom: 10 }}><button onClick={this.exportPDF} style={{ margin: 'auto' }}>download</button></div>
-                <PDFExport paperSize={'Letter'}
-                    fileName="_____.pdf"
-                    title=""
-                    subject=""
-                    keywords=""
-                    ref={(r) => this.resume = r}>
-                    <div style={{
-                        height: 792,
-                        width: 612,
-                        padding: 'none',
-                        backgroundColor: 'white',
-                        boxShadow: '5px 5px 5px black',
-                        margin: 'auto',
-                        overflowX: 'hidden',
-                        overflowY: 'hidden'
-                    }}>Hi!
-                    {this.canvLoaded && this.iconsToConvert.map((iconObject, index) => {
-                            return <img src={iconObject.icon} key={'img-' + index} alt={iconObject.alt} style={{ height: 25, width: 25 }} />
-                        })}
-                    </div>
-                </PDFExport>
+                 <h1>HELLO</h1>
+                
             </div>
         );
     }
-}
+} 
 
 export default pdfContainer;
+
+
+

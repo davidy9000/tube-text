@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import SingleUserContainer from '../components/containers/singleUserContainer'
+import SingleUserContainer from '../components/containers/singleUserContainer';
 import SingleSessionContainer from '../components/containers/singleSessionContainer';
 import NewStudySessionContainer from '../components/containers/newStudySessionContainer';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
