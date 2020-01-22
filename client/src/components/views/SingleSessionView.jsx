@@ -290,14 +290,14 @@ const SingleSessionView = (props) => {
                                 <Grid item xs={12} className="form-grid"
                                      >
                                     <form onSubmit={handleSubmit}>
-                                        <label>Note: </label><br/>
-                                        
                                         <br/>
-                                        <TextareaAutosize aria-label="minimum height" rowsMin={6} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
-                                        style={{ minWidth: 600, overflow: 'auto'}}/>
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={8} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
                                         <br/>
                                         <br/>
-                                        <input className="note-record" type="submit"></input>
+                                        <Button variant="contained" color="primary" type="submit">
+                                            Add Note
+                                        </Button>
                                         <br/>
 
                                     </form>
