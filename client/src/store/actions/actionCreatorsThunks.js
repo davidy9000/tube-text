@@ -96,7 +96,10 @@ export const currStudySessionThunk = (study_session) => (dispatch) => {
 
 export const fetchNotesThunk = (stud_sess_id) => (dispatch) => {
     axios.get(`http://localhost:1234/api/notes/studysessions/${stud_sess_id}`)
-    .then((response) => dispatch(fetchNotes(response.data)))
+    .then((response) => {
+        const myData = [].concat(response.data).sort((a,b) => a.videoTimestamp - b.videoTimestamp);
+        dispatch(fetchNotes(myData));
+    })
     .then((error)=>{
         console.log(error);
     });
