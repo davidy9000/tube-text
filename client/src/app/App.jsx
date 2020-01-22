@@ -49,6 +49,8 @@ const useStyles = makeStyles(theme => ({
     title: {
       flexGrow: 1,
       textAlign: 'left',
+      fontSize: '40px',
+      fontFamily: 'Brush Script MT, sans-serif'
     //   minHeight: 1,
     //   height: 30,
     },
@@ -142,7 +144,7 @@ const App = () => {
                         {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                             <MenuIcon />
                         </IconButton> */}
-                        <Typography variant="h6" className={classes.title} color = "inherit">
+                        <Typography variant="h6" className={classes.title} color = "inherit" style={{fontWeight: 'bold'}}>
                             TubeText
                         </Typography>
                         <Button className = {classes.customNavButton}>Sign Out</Button>

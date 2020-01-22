@@ -125,15 +125,15 @@ const SingleSessionView = (props) => {
                                 <Grid item xs={12} className="form-grid"
                                      >
                                     <form onSubmit={handleSubmit}>
-                                        <label>Note: </label><br/>
+                                        {/* <label>Note: </label><br/> */}
                                         {/* <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input> */}
-                                        <br/>
-                                        <TextareaAutosize aria-label="minimum height" rowsMin={6} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        {/* <br/> */}
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={8} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
                                         style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
                                         <br/>
                                         <br/>
                                         <Button variant="contained" color="primary" type="submit">
-                                            Submit
+                                            Add Note
                                         </Button>
                                         {/* <input className="note-record" type="submit"></input> */}
 
@@ -188,7 +188,7 @@ const SingleSessionView = (props) => {
 
                                                                 <div className="timestamp-note">
                                                                     {/* <Button onClick = {() => videoSeek(note.videoTimestamp)}>{convertToHumanReadable(note.videoTimestamp)}</Button> */}
-                                                                    <Button variant="contained" color="primary" onClick = {() => videoSeek(note.videoTimestamp)}>
+                                                                    <Button variant="contained" color="primary" onClick = {() => videoSeek(note.videoTimestamp)} className="timestamp-button">
                                                                         {convertToHumanReadable(note.videoTimestamp)}
                                                                     </Button>
                                                                 </div>
@@ -290,14 +290,14 @@ const SingleSessionView = (props) => {
                                 <Grid item xs={12} className="form-grid"
                                      >
                                     <form onSubmit={handleSubmit}>
-                                        <label>Note: </label><br/>
-                                        
                                         <br/>
-                                        <TextareaAutosize aria-label="minimum height" rowsMin={6} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
-                                        style={{ minWidth: 600, overflow: 'auto'}}/>
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={8} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
                                         <br/>
                                         <br/>
-                                        <input className="note-record" type="submit"></input>
+                                        <Button variant="contained" color="primary" type="submit">
+                                            Add Note
+                                        </Button>
                                         <br/>
 
                                     </form>
@@ -353,7 +353,10 @@ const SingleSessionView = (props) => {
                                                                 </div>
 
                                                                 <div className="timestamp-note">
-                                                                    <Button onClick = {() => videoSeek(note.videoTimestamp)}>{note.videoTimestamp}</Button>
+                                                                    {/* <Button onClick = {() => videoSeek(note.videoTimestamp)}>{note.videoTimestamp}</Button> */}
+                                                                    <Button variant="contained" color="primary" onClick = {() => videoSeek(note.videoTimestamp)} className="timestamp-button">
+                                                                        {convertToHumanReadable(note.videoTimestamp)}
+                                                                    </Button>
                                                                 </div>
 
                                                                 <div className="delete-note">
