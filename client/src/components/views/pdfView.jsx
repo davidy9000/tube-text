@@ -30,3 +30,5 @@ const pdfView = () => (
     </Page>
   </Document>
 );
+
+export default pdfView;

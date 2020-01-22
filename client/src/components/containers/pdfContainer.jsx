@@ -15,3 +15,5 @@ const pdfContainer = () => (
 
 // ReactPDF.render(<MyDocument />, `${__dirname}/example.pdf`);
 ReactDOM.render(<pdfContainer />, document.getElementById('root'));
+
+export default pdfContainer;
