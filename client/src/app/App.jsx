@@ -5,6 +5,7 @@ import SingleSessionContainer from '../components/containers/singleSessionContai
 import NewStudySessionContainer from '../components/containers/newStudySessionContainer';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import pdfContainer from '../components/containers/pdfContainer';
+import ReactDOM from 'react-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -136,6 +137,7 @@ const App = () => {
 		const SingleUserComponent = () => <SingleUserContainer/>
         const SingleStudySessionComponent = () => <SingleSessionContainer />
 		const NewStudySessionComponent = () => <NewStudySessionContainer/>
+        const pdfContainerComponent = () => <pdfContainer/>
 
         return (
             <div>
@@ -154,9 +156,6 @@ const App = () => {
                 </div>
                 <br/>
 
-                <pdfContainer/>
-                  
-                {/* <div className="separate-nav" style={{backgroundColor: "white"}}></div> */}
 
 				<Router>
 					<Switch>
@@ -168,7 +167,7 @@ const App = () => {
 								instead of the actual path wanted */}
 								<Route exact path ="/study_sessions/add_session" render={NewStudySessionComponent}/>
 								<Route exact path="/study_sessions/:sessionId" render={SingleStudySessionComponent}/>
-                                {/* <Route exact path="/pdf" render={<pdfContainer/>}/> */}
+                                <Route exact path="/pdf" render={pdfContainerComponent}/>
 							{/* </div>
 						</div> */}
 					</Switch>
