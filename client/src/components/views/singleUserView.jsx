@@ -127,7 +127,7 @@ const SingleUserView = (props) => {
     const classes = useStyles();
     // const bull = <span className={classes.bullet}>•</span>;
 
-    const {sessions, handleLogout,currentStudySession } = props;
+    const {sessions, handleChange, handleSubmit ,currentStudySession } = props;
     return (
         <div className="App">
             {/* <AppBar position="static" className = {classes.customizeAppBar}>
@@ -157,7 +157,6 @@ const SingleUserView = (props) => {
                             New Study Session
                         </Button>
                     </Link>
-                    <button onClick={handleLogout}>Logout</button>
                 </Grid>
                 <Grid 
                 item
