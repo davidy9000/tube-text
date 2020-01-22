@@ -22,6 +22,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 import DescriptionIcon from '@material-ui/icons/Description';
+// import Popover from '@material-ui/core/Popover';
+
+// import { PDFExport } from '@progress/kendo-react-pdf';
 
 // import { palette, spacing, typography } from '@material-ui/system';
 // import styled from 'styled-components';
@@ -78,12 +81,31 @@ function convertToHumanReadable(aTimestamp){
     return hours+':'+minutes+':'+seconds;
 }
 
+//For Popover Function
+ 
+   
+
 const SingleSessionView = (props) => {
     const classes = useStyles();
     const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl,
             videoOnPlay, videoOnPause, thePlayer, videoSeek,
             editNoteState, onClickEdit, mustEdit,handleEditSubmit ,handleEditChange, onClickNull } = props;
     // console.log("The Hangle Change is: ", handleChange);
+
+    //For Popover
+    // const [anchorEl, setAnchorEl] = React.useState(null);
+  
+    // const handleClick = event => {
+    //   setAnchorEl(event.currentTarget);
+    // };
+  
+    // const handleClose = () => {
+    //   setAnchorEl(null);
+    // };
+  
+    // const open = Boolean(anchorEl);
+    // const id = open ? 'simple-popover' : undefined;
+
     return (
         <div className="overall-container">
             <Fragment>
@@ -244,6 +266,50 @@ const SingleSessionView = (props) => {
                                     
                                     </List>
                                 </Paper>
+
+                                <br/>
+                                
+                                {/* <Button aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+                                        Open Popover
+                                    </Button>
+                                    <Popover
+                                        id={id}
+                                        open={open}
+                                        anchorEl={anchorEl}
+                                        onClose={handleClose}
+                                        anchorOrigin={{
+                                        vertical: 'bottom',
+                                        horizontal: 'center',
+                                        }}
+                                        transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'center',
+                                        }}
+                                    >
+                                        
+                                        <PDFExport paperSize={'Letter'}
+                                            fileName="_____.pdf"
+                                            title=""
+                                            subject=""
+                                            keywords=""
+                                            ref={(r) => this.resume = r}>
+                                                <div style={{
+                                                    height: 792,
+                                                    width: 612,
+                                                    padding: 'none',
+                                                    backgroundColor: 'white',
+                                                    boxShadow: '5px 5px 5px black',
+                                                    margin: 'auto',
+                                                    overflowX: 'hidden',
+                                                    overflowY: 'hidden'}}>
+                                                        <div style={{backgroundColor: 'black', color: 'white'}}>
+                                                        content
+                                                        </div>
+                                                </div>
+                                        </PDFExport>
+
+                                    </Popover> */}
+
                             </Grid>
                     </Grid>
 
@@ -328,10 +394,11 @@ const SingleSessionView = (props) => {
                             justify="center" 
                             alignItems="center">
                                 
+                                
                                 <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: '#f0f0f5', border: '1px solid white'}}>
                                     
                                     <List className="List">
-    
+
                                         {allNotes.map((note)=>{
                                             return (
                                                 <ListItem className="ListItem"
