@@ -5,8 +5,6 @@ import './index.css';
 import App from './app/App';
 import * as serviceWorker from './serviceWorker';
 
-import { BrowserRouter } from 'react-router-dom';
-
 /**
  * This is the Provider Component that is needed in order to
  * provide the store to our app component that will have our 
@@ -21,9 +19,7 @@ import store from './store/index';
 
 ReactDOM.render(
     <Provider store={store}>
-    <BrowserRouter>
         <App />
-       </BrowserRouter>
     </Provider>, document.getElementById('root')
 );
 

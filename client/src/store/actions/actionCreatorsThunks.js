@@ -3,20 +3,6 @@ import * as types from './actionTypes';
 import axios from 'axios';
 
 // ACTION CREATOR;
-
-//action creators for auth
-const getUser = user => {
-    return {
-        type: types.GET_USER,
-        payload: user
-    }
-}
-const removeUser = () => {
-    return {
-        type: types.REMOVE_USER
-    }
-}
-
 const fetchNotes = (all_notes) => {
     return {
         type: types.FETCH_NOTES,
@@ -156,45 +142,3 @@ export const editNoteThunk = (note) => (dispatch) => {
     .catch((error) => {console.log(error)})
     
 }
-
-//auth thunks
-
-export const me = () => async dispatch => {
-    try {
-        const res = await axios.get("/auth/me", { withCredentials: true});
-        dispatch(getUser(res.data || {}));
-    }
-    catch(err) {
-        console.error(err);
-    }
-};
-
-export const auth = (username, password, method, history) => async dispatch => {
-    let res;
-    try {
-        res = await axios.post(`/auth/${method}`, { username, password }, { withCredentials: true });
-        history.push('/');
-    }
-    catch (authError) {
-        return dispatch(getUser({ error: authError}));
-    }
-    try {
-        dispatch(getUser(res.data));
-    }
-    catch (dispatchOrHistoryErr) {
-        console.error(dispatchOrHistoryErr);
-    }
-};
-
-export const logout = () => async dispatch => {
-    try {
-        await axios.delete("/auth/logout", { withCredentials: true });
-        dispatch(removeUser());
-    }
-    catch (err) {
-        console.error(err);
-    }
-};
-
-
-
