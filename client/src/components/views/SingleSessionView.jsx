@@ -188,7 +188,7 @@ const SingleSessionView = (props) => {
 
                                                                 <div className="timestamp-note">
                                                                     {/* <Button onClick = {() => videoSeek(note.videoTimestamp)}>{convertToHumanReadable(note.videoTimestamp)}</Button> */}
-                                                                    <Button variant="contained" color="primary" onClick = {() => videoSeek(note.videoTimestamp)}>
+                                                                    <Button variant="contained" color="primary" onClick = {() => videoSeek(note.videoTimestamp)} className="timestamp-button">
                                                                         {convertToHumanReadable(note.videoTimestamp)}
                                                                     </Button>
                                                                 </div>
@@ -353,7 +353,10 @@ const SingleSessionView = (props) => {
                                                                 </div>
 
                                                                 <div className="timestamp-note">
-                                                                    <Button onClick = {() => videoSeek(note.videoTimestamp)}>{note.videoTimestamp}</Button>
+                                                                    {/* <Button onClick = {() => videoSeek(note.videoTimestamp)}>{note.videoTimestamp}</Button> */}
+                                                                    <Button variant="contained" color="primary" onClick = {() => videoSeek(note.videoTimestamp)} className="timestamp-button">
+                                                                        {convertToHumanReadable(note.videoTimestamp)}
+                                                                    </Button>
                                                                 </div>
 
                                                                 <div className="delete-note">
