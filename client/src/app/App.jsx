@@ -5,6 +5,7 @@ import SingleSessionContainer from '../components/containers/singleSessionContai
 import NewStudySessionContainer from '../components/containers/newStudySessionContainer';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
+
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -165,7 +166,7 @@ const App = () => {
 								instead of the actual path wanted */}
 								<Route exact path ="/study_sessions/add_session" render={NewStudySessionComponent}/>
 								<Route exact path="/study_sessions/:sessionId" render={SingleStudySessionComponent}/>
-                                <Route exact path="/pdf" render={<pdfView/>}/>
+                                <Route exact path="/pdf" render={<pdfContainer/>}/>
 							{/* </div>
 						</div> */}
 					</Switch>
