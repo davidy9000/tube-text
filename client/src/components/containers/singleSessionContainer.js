@@ -80,6 +80,8 @@ class SingleSessionContainer extends Component {
         }
         // console.log("I am handling submit: ", note)
         this.props.addNotesThunk(note);
+        // console.log("The Value: ", event.target.reset())
+        event.target.reset();
     }
     
     videoOnPlay = () => {
