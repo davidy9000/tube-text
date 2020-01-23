@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SingleSessionView from '../views/SingleSessionView';
+import PdfView from '../views/pdfView';
 import { connect } from 'react-redux';
 import { fetchNotesThunk, addNotesThunk, deleteNoteThunk, editNoteThunk, fetchCurrentVideoThunk } from '../../store/actions/actionCreatorsThunks';
 //need to handle refresh issue
@@ -80,8 +81,6 @@ class SingleSessionContainer extends Component {
         }
         // console.log("I am handling submit: ", note)
         this.props.addNotesThunk(note);
-        // console.log("The Value: ", event.target.reset())
-        event.target.reset();
     }
     
     videoOnPlay = () => {
@@ -121,29 +120,33 @@ class SingleSessionContainer extends Component {
 
     render() {
         return(
-            <SingleSessionView allNotes = {this.props.allNotes} 
-            // addNotesThunk = {this.props.addNotesThunk} 
-            handleChange = {this.handleChange} 
-            handleSubmit={this.handleSubmit}
-            onClickEdit={this.onClickEdit}
-            mustEdit = {this.state.editId}
-            handleEditSubmit = {this.handleEditSubmit}
-            onClickNull={this.onClickNull}
-            // editNoteState={this.state.editNoteState}
-            handleEditChange = {this.handleEditChange}
-            // currentNote = {this.state.noteRecord}
+            <div>
+                
+                {/* <PdfView/> */}
+                <SingleSessionView allNotes = {this.props.allNotes} 
+                // addNotesThunk = {this.props.addNotesThunk} 
+                handleChange = {this.handleChange} 
+                handleSubmit={this.handleSubmit}
+                onClickEdit={this.onClickEdit}
+                mustEdit = {this.state.editId}
+                handleEditSubmit = {this.handleEditSubmit}
+                onClickNull={this.onClickNull}
+                // editNoteState={this.state.editNoteState}
+                handleEditChange = {this.handleEditChange}
+                // currentNote = {this.state.noteRecord}
 
-            deleteNote = {this.props.deleteNoteThunk}
-            // editNote = {this.props.editNoteThunk}
+                deleteNote = {this.props.deleteNoteThunk}
+                // editNote = {this.props.editNoteThunk}
 
-            videoUrl = {this.props.currentVideo}
+                videoUrl = {this.props.currentVideo}
 
-            videoOnPlay = {this.videoOnPlay}
-            videoOnPause = {this.videoOnPause}
-            videoSeek = {this.videoSeek}
+                videoOnPlay = {this.videoOnPlay}
+                videoOnPause = {this.videoOnPause}
+                videoSeek = {this.videoSeek}
 
-            thePlayer = {this.thePlayer}
-            />
+                thePlayer = {this.thePlayer}
+                />
+            </div>
         )
     }
 }

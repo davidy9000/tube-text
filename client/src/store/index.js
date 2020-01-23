@@ -13,6 +13,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
  */
 // import allNotes from "./reducers/allNotes";
 import userSessions from './reducers/userSessions';
+import userAuth from './reducers/userAuth';
 import allNotes from './reducers/allNotes';
 import currentStudySession from './reducers/currentStudySession';
 import currentVideo from './reducers/currentVideo';
@@ -23,7 +24,7 @@ import currentVideo from './reducers/currentVideo';
  * Creating a middleware to handle async calls
  * Creating the store that houses our state (single-source-of-truth)
  */
-const rootReducer = combineReducers({userSessions, allNotes, currentStudySession, currentVideo});
+const rootReducer = combineReducers({userSessions, allNotes, currentStudySession, currentVideo, userAuth});
 const logger = createLogger({ collapsed: true });
 const middleware = composeWithDevTools(applyMiddleware(thunkMiddleware, logger));
 const store = createStore(rootReducer, middleware);
