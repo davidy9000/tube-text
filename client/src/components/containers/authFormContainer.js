@@ -20,7 +20,8 @@ class AuthFormContainer extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const formName = event.target.name;
-    this.props.loginOrSignup(this.state.username, this.state.password, formName, this.props.history);
+    console.log(this.props.userId);
+    this.props.loginOrSignup(this.state.username, this.state.password, formName, this.props.history,this.props.userId);
   }
 
   render() {
@@ -40,12 +41,14 @@ class AuthFormContainer extends Component {
 
 // Map state to props;
 const mapLogin = state => {
+  console.log(state);
   return {
     name: "login",
     displayName: "Login",
     error: state.userAuth.error,
     isLoggedIn: !!state.userAuth.id,
-    userName: state.userAuth.username
+    userName: state.userAuth.username,
+    userId: state.userAuth.id
   };
 };
 
@@ -56,14 +59,15 @@ const mapSignup = state => {
     displayName: "Signup",
     error: state.userAuth.error,
     isLoggedIn: !!state.userAuth.id,
-    userName: state.userAuth.username
+    userName: state.userAuth.username,
+    userId: state.userAuth.id
   };
 };
 
 // Map dispatch to props;
 const mapDispatch = dispatch => {
   return {
-    loginOrSignup: (username, password, formName, history) => dispatch(auth(username, password, formName, history))
+    loginOrSignup: (username, password, formName, history, id) => dispatch(auth(username, password, formName, history, id))
   }
 };
 

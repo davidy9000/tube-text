@@ -121,7 +121,7 @@ const RoutesView = (props) => {
                 <br/>
         <Router>
           <Switch>
-                <Route exact path="/" render={SingleUserComponent}/>
+                <Route exact path="/study_session/:userId" render={SingleUserComponent}/>
                 {/* Be sure to put add_session before the :sessionId becasue :sessionId is a wildcard
                 and basically anything that has study_sessions/ ... will lead to the single session component
                 instead of the actual path wanted */}

@@ -39,7 +39,7 @@ const syncDatabase = () => {
   }
   else {
     console.log('As a reminder, the forced synchronization option is on');
-    db.sync({ force: true })
+    db.sync()//{force:true}
       .then(() => seedDatabase())
       .catch(err => {
         if (err.name === 'SequelizeConnectionError') {
@@ -61,7 +61,7 @@ passport.serializeUser((user,done) => done(null, user.id));
 passport.deserializeUser(async(id,done) => {
   try {
     console.log(id);
-    const user = await db.models.User.findByPk(id);
+    const user = await db.models.user.findByPk(id);
     done(null,user);
   }
   catch(err) {
