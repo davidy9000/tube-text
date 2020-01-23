@@ -22,17 +22,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 import DescriptionIcon from '@material-ui/icons/Description';
-
-// import { palette, spacing, typography } from '@material-ui/system';
-// import styled from 'styled-components';
-// import { unstable_Box as Box } from '@material-ui/core/Box';
-
 import '../../singleSessionCSS.css';
-
-// const Box = styled.div`${palette}${spacing}${typography}`;
-
 import ReactPlayer from 'react-player';
-
 
 //Responsive functionality
 const Desktop = props => <Responsive {...props} minWidth={1275} />;
@@ -125,15 +116,15 @@ const SingleSessionView = (props) => {
                                 <Grid item xs={12} className="form-grid"
                                      >
                                     <form onSubmit={handleSubmit}>
-                                        {/* <label>Note: </label><br/> */}
+                                        <label>Note: </label><br/>
                                         {/* <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input> */}
-                                        {/* <br/> */}
-                                        <TextareaAutosize aria-label="minimum height" rowsMin={8} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
-                                        style={{ minWidth: 400, width:400, overflow: 'auto'}} />
+                                        <br/>
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={6} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
                                         <br/>
                                         <br/>
                                         <Button variant="contained" color="primary" type="submit">
-                                            Add Note
+                                            Submit
                                         </Button>
                                         {/* <input className="note-record" type="submit"></input> */}
 
@@ -187,10 +178,7 @@ const SingleSessionView = (props) => {
                                                                 </div>
 
                                                                 <div className="timestamp-note">
-                                                                    {/* <Button onClick = {() => videoSeek(note.videoTimestamp)}>{convertToHumanReadable(note.videoTimestamp)}</Button> */}
-                                                                    <Button variant="contained" color="primary" onClick = {() => videoSeek(note.videoTimestamp)} className="timestamp-button">
-                                                                        {convertToHumanReadable(note.videoTimestamp)}
-                                                                    </Button>
+                                                                    <Button onClick = {() => videoSeek(note.videoTimestamp)}>{convertToHumanReadable(note.videoTimestamp)}</Button>
                                                                 </div>
 
                                                                 <div className="delete-note">
@@ -207,8 +195,7 @@ const SingleSessionView = (props) => {
                                                                     (mustEdit === note.id)
                                                                     ? 
                                                                     <form onSubmit={handleEditSubmit}>
-                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}>{note.noteRecord}</TextareaAutosize>
-
+                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={6} placeholder={note.noteRecord} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}/>
                                                                         {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
                                                                         <input className="note-record" type="submit"></input>
                                                                         <button onClick={onClickNull}>Cancel</button>
@@ -290,20 +277,19 @@ const SingleSessionView = (props) => {
                                 <Grid item xs={12} className="form-grid"
                                      >
                                     <form onSubmit={handleSubmit}>
+                                        <label>Note: </label><br/>
+                                        
                                         <br/>
-                                        <TextareaAutosize aria-label="minimum height" rowsMin={8} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
-                                        style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={6} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        style={{ minWidth: 600, overflow: 'auto'}}/>
                                         <br/>
                                         <br/>
-                                        <Button variant="contained" color="primary" type="submit">
-                                            Add Note
-                                        </Button>
+                                        <input className="note-record" type="submit"></input>
                                         <br/>
 
                                     </form>
                                     <br/>
                                     <br/>
-
 
                               
                                 </Grid>
@@ -354,10 +340,7 @@ const SingleSessionView = (props) => {
                                                                 </div>
 
                                                                 <div className="timestamp-note">
-                                                                    {/* <Button onClick = {() => videoSeek(note.videoTimestamp)}>{note.videoTimestamp}</Button> */}
-                                                                    <Button variant="contained" color="primary" onClick = {() => videoSeek(note.videoTimestamp)} className="timestamp-button">
-                                                                        {convertToHumanReadable(note.videoTimestamp)}
-                                                                    </Button>
+                                                                    <Button onClick = {() => videoSeek(note.videoTimestamp)}>{note.videoTimestamp}</Button>
                                                                 </div>
 
                                                                 <div className="delete-note">
@@ -374,10 +357,9 @@ const SingleSessionView = (props) => {
                                                                     (mustEdit === note.id)
                                                                     ? 
                                                                     <form onSubmit={handleEditSubmit}>
-                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={10} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}>{note.noteRecord}</TextareaAutosize>
+                                                                        <TextareaAutosize aria-label="minimum height" rowsMin={6} placeholder={note.noteRecord} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}/>
                                                                         {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
                                                                         <input className="note-record" type="submit"></input>
-                                                                        <button onClick={onClickNull}>Cancel</button>
                                                                     </form>
                                                                     : <ExpansionPanel>
                                                                         <ExpansionPanelSummary
