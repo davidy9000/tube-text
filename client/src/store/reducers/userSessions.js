@@ -9,6 +9,8 @@ export default(state = [], action) =>{
             return (action.payload);
         case (type.ADD_STUDY_SESSION):
             return [...state, action.payload];
+        case (type.DELETE_STUDY_SESSION):
+            return state.filter((session) => session.id!==action.payload);
         default:
             return state; 
     }

@@ -113,6 +113,7 @@ class SingleSessionContainer extends Component {
         console.log(this.props);
         //use history to get the sessionID based on the route, and this way
         //on refresh we do not lose the notes
+        console.log()
         this.props.fetchNotesThunk(this.props.match.params.sessionId);
         this.props.fetchCurrentVideoThunk(this.props.match.params.sessionId);
 

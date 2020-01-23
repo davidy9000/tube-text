@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SingleUserView from '../views/singleUserView';
 import { connect } from 'react-redux';
-import { fetchSessionsThunk , addStudySessionThunk , currStudySessionThunk } from '../../store/actions/actionCreatorsThunks';
+import { fetchSessionsThunk , addStudySessionThunk , currStudySessionThunk, deleteStudySessionThunk } from '../../store/actions/actionCreatorsThunks';
 
 // import AppBar from '@material-ui/core/AppBar'
 // import Toolbar from '@material-ui/core/Toolbar'
@@ -53,6 +53,7 @@ class SingleUserContainer extends Component {
                     // handleChange = {this.handleChange} 
                     // handleSubmit={this.handleSubmit}
                     currentStudySession={this.props.currStudySessionThunk}
+                    deleteStudySession={this.props.deleteStudySessionThunk}
                 />
             </div>
         )
@@ -69,7 +70,8 @@ const mapDispatch = (dispatch) => {
     return({
         fetchSessionsThunk: () => dispatch(fetchSessionsThunk()),
         // addStudySessionThunk: (study_sess) => dispatch(addStudySessionThunk(study_sess)),
-        currStudySessionThunk: (study_sess) => dispatch(currStudySessionThunk(study_sess))
+        currStudySessionThunk: (study_sess) => dispatch(currStudySessionThunk(study_sess)),
+        deleteStudySessionThunk: (study_sess) => dispatch(deleteStudySessionThunk(study_sess)),
     })
 }
 
