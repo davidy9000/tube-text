@@ -364,7 +364,7 @@ const SingleSessionView = (props) => {
                                         <Button variant="contained" color="primary" type="submit">
                                             Add Note
                                         </Button>
-                                        <Link to="/pdf">View PDF</Link>
+                                        
                                         <br/>
 
                                     </form>
@@ -382,6 +382,9 @@ const SingleSessionView = (props) => {
                                         <DescriptionIcon />
                                     </Badge>
                                 </Grid>
+                                <br/>
+                                <br/>
+                                <Link to="/pdf">View PDF</Link>
                                 <br/>
                                 <br/>
 
