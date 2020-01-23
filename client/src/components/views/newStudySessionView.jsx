@@ -32,7 +32,12 @@ const NewStudySessionView = (props) => {
                 <br/>
                 <br/>
 
-                <Button type = 'submit'>submit</Button> 
+                <Button variant="contained" color="primary" type="submit">
+                    Submit
+                </Button>
+                <br/>
+                <br/>
+
             </form>
             </div>
         </div>
