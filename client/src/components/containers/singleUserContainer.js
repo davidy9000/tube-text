@@ -36,9 +36,7 @@ class SingleUserContainer extends Component {
     // }
 
     componentDidMount() {
-        //pass in current user id
-        this.props.fetchSessionsThunk(this.props.userAuth.id);
-        //this.props.fetchSessionsThunk(this.props.match.params.userId)
+        this.props.fetchSessionsThunk();
     }
     render(){
         return(
@@ -63,14 +61,13 @@ class SingleUserContainer extends Component {
 
 const mapState = (state) => {
     return({
-        userAuth: state.userAuth,
         userSessions: state.userSessions,
     })
 }
 
 const mapDispatch = (dispatch) => {
     return({
-        fetchSessionsThunk: (id) => dispatch(fetchSessionsThunk(id)),
+        fetchSessionsThunk: () => dispatch(fetchSessionsThunk()),
         // addStudySessionThunk: (study_sess) => dispatch(addStudySessionThunk(study_sess)),
         currStudySessionThunk: (study_sess) => dispatch(currStudySessionThunk(study_sess))
     })

@@ -32,7 +32,7 @@ class NewStudySessionContainer extends Component {
             userId: this.state.userId
         }
         this.props.addStudySessionThunk(study_sess);
-        this.props.history.push("/studysession/1");
+        this.props.history.push("/");
 
     }
 
