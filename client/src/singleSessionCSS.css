@@ -53,14 +53,8 @@
     width: 200px; 
     float: left;
     position: relative;
-    margin: 10px 50px 0px 0px;
+    margin: 0px 50px 0px 0px;
 }
-
-/* .timestamp-button {
-    margin: 10px 0px 0px 0px;
-    padding: 50px;
-
-} */
 
 /* For the Video */
 .fake-video {
