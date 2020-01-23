@@ -73,9 +73,17 @@ const fetchCurrentVideo = (videoUrl) => {
     }
 }
 
+const deleteStudySession = (session) => {
+    return {
+        type: types.DELETE_STUDY_SESSION,
+        payload: session,
+    }
+}
+
 //THUNKS
 
 //SESSIONS
+
 //need to change this so that it gets the sessions of whoever is logged in
 export const fetchSessionsThunk = (id) => (dispatch) => {
     axios.get(`/api/studysessions/users/${id}`)
@@ -111,7 +119,10 @@ export const currStudySessionThunk = (study_session) => (dispatch) => {
 
 export const fetchNotesThunk = (stud_sess_id) => (dispatch) => {
     axios.get(`/api/notes/studysessions/${stud_sess_id}`)
-    .then((response) => dispatch(fetchNotes(response.data)))
+    .then((response) => {
+        const myData = [].concat(response.data).sort((a,b) => a.videoTimestamp - b.videoTimestamp);
+        dispatch(fetchNotes(myData));
+    })
     .then((error)=>{
         console.log(error);
     });
@@ -158,6 +169,21 @@ export const editNoteThunk = (note) => (dispatch) => {
     
 }
 
+export const deleteStudySessionThunk = (session) => (dispatch) => {
+    // console.log("the session id is: ", session.id);
+    // axios.get(`/api/notes/studysessions/${session.id}`)
+    // .then((response) => {
+    //     console.log ("The session notes are: ", response.data);
+    //     for(let i = 0; i < response.data.length; i++){
+    //         // axios.delete(`/api/notes/delete/${response.data[i].id}`)
+    //         console.log ("the note is: ", response.data[i], " and the id is: ", response.data[i].id)
+    //     }
+    // })
+    // .then(
+        
+    (axios.delete(`/api/studysessions/delete/${session.id}`))
+    .then(() => dispatch(deleteStudySession(session.id)));
+}
 //auth thunks
 
 export const me = () => async dispatch => {
@@ -197,6 +223,5 @@ export const logout = () => async dispatch => {
         console.error(err);
     }
 };
-
 
 

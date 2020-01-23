@@ -104,7 +104,10 @@ const style = {
 
 const SingleUserView = (props) => {
     const classes = useStyles();
-    const {sessions, handleLogout,currentStudySession } = props;
+    // const bull = <span className={classes.bullet}>•</span>;
+
+    const {sessions, handleChange, handleSubmit ,currentStudySession, deleteStudySession, handleLogout } = props;
+
     return (
         <div className="App">
             <br/>
@@ -152,6 +155,7 @@ const SingleUserView = (props) => {
                                                         <Link style = { style } to={`/study_sessions/${session.id}`}>
                                                             <Button className = {classes.customViewSession}>View Session</Button>
                                                         </Link>
+                                                        <Button onClick = {() => deleteStudySession(session)}>Delete Session</Button>
                                                     </CardActions>
                                                 </Card>
                                         <br/>

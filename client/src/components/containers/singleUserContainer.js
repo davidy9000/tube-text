@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import SingleUserView from '../views/singleUserView';
 import { connect } from 'react-redux';
+
 import { withRouter } from "react-router-dom";
-import { fetchSessionsThunk , addStudySessionThunk , currStudySessionThunk, logout } from '../../store/actions/actionCreatorsThunks';
+import { fetchSessionsThunk , addStudySessionThunk , currStudySessionThunk, deleteStudySessionThunk, logout } from '../../store/actions/actionCreatorsThunks';
+
 
 // import AppBar from '@material-ui/core/AppBar'
 // import Toolbar from '@material-ui/core/Toolbar'
@@ -27,6 +29,7 @@ class SingleUserContainer extends Component {
                 <SingleUserView sessions = {this.props.userSessions} handleLogout={this.handleLogout} 
 
                     currentStudySession={this.props.currStudySessionThunk}
+                    deleteStudySession={this.props.deleteStudySessionThunk}
                 />
             </div>
         )
@@ -45,7 +48,9 @@ const mapDispatch = (dispatch) => {
         fetchSessionsThunk: (id) => dispatch(fetchSessionsThunk(id)),
         // addStudySessionThunk: (study_sess) => dispatch(addStudySessionThunk(study_sess)),
         currStudySessionThunk: (study_sess) => dispatch(currStudySessionThunk(study_sess)),
+        deleteStudySessionThunk: (study_sess) => dispatch(deleteStudySessionThunk(study_sess)),
         logout: () => dispatch(logout())
+
     })
 }
 
