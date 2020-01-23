@@ -7,9 +7,6 @@
 
 // Module dependencies;
 const express = require('express');
-const session = require("express-session");
-const passport = require("passport");
-const authRouter = require("./auth");
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -17,17 +14,12 @@ const helmet = require('helmet');
 const compression = require('compression');
 const cors = require('cors');
 
-// Our database instance;
-const db = require('./database');
-
-//auth
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
-const sessionStore = new SequelizeStore({ db });
-
 // Utilities;
 const createLocalDatabase = require('./utilities/createLocalDatabase');
 const seedDatabase = require('./utilities/seedDatabase');
 
+// Our database instance;
+const db = require('./database');
 
 // Our apiRouter;
 const apiRouter = require('./routes/index');
@@ -79,21 +71,6 @@ const configureApp = () => {
   app.use(cookieParser());
   app.use(cors());
 
-  //auth
-  app.use(
-    session({
-      secret: "super secret key to encrypt and sign the cookie",
-      store: sessionStore,
-      resave: false,
-      saveUninitialized: false
-    })
-  );
-  app.use(passport.initialize());
-  app.use(passport.session());
-
-  //mount authRouter
-  app.use("/auth", authRouter);
-
   // Mount our apiRouter;
   app.use('/api', apiRouter);
 
@@ -119,7 +96,6 @@ const configureApp = () => {
 
 // Main function declaration;
 const bootApp = async () => {
-  await sessionStore.sync();
   await syncDatabase();
   await configureApp();
 };

@@ -121,7 +121,6 @@ const SingleUserView = (props) => {
                             New Study Session
                         </Button>
                     </Link>
-                    <button onClick={handleLogout}>Logout</button>
                 </Grid>
                 <Grid 
                 item
@@ -141,7 +140,9 @@ const SingleUserView = (props) => {
                                                 style={{backgroundColor:'#a3a3c2'}}
                                                 >
                                                     <CardContent>
-                                                        <Typography className={classes.cardTitle} color="textSecondary" gutterBottom>
+                                                        <Typography className={classes.cardTitle} color="textSecondary" gutterBottom
+                                                        style={{fontWeight: 'bold'}}
+                                                        >
                                                         {session.studySessionName}
                                                         </Typography>
                                                         <Typography>

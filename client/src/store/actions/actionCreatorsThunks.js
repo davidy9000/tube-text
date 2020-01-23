@@ -3,20 +3,6 @@ import * as types from './actionTypes';
 import axios from 'axios';
 
 // ACTION CREATOR;
-
-//action creators for auth
-const getUser = user => {
-    return {
-        type: types.GET_USER,
-        payload: user
-    }
-}
-const removeUser = () => {
-    return {
-        type: types.REMOVE_USER
-    }
-}
-
 const fetchNotes = (all_notes) => {
     return {
         type: types.FETCH_NOTES,
@@ -111,7 +97,10 @@ export const currStudySessionThunk = (study_session) => (dispatch) => {
 
 export const fetchNotesThunk = (stud_sess_id) => (dispatch) => {
     axios.get(`/api/notes/studysessions/${stud_sess_id}`)
-    .then((response) => dispatch(fetchNotes(response.data)))
+    .then((response) => {
+        const myData = [].concat(response.data).sort((a,b) => a.videoTimestamp - b.videoTimestamp);
+        dispatch(fetchNotes(myData));
+    })
     .then((error)=>{
         console.log(error);
     });
