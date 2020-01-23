@@ -150,7 +150,7 @@ const SingleSessionView = (props) => {
                                         {/* <label>Note: </label><br/> */}
                                         {/* <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input> */}
                                         {/* <br/> */}
-                                        <TextareaAutosize aria-label="minimum height" rowsMin={8} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={5} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
                                         style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
                                         <br/>
                                         <br/>
@@ -171,6 +171,13 @@ const SingleSessionView = (props) => {
                                         <DescriptionIcon />
                                     </Badge>
                                 </Grid>
+                                <br/>
+                                <Grid item>
+                                    <Link to="/pdf"><Button variant="contained" color="primary" className="timestamp-button">
+                                        Generate PDF
+                                    </Button></Link>
+                                </Grid>
+                                <br/>
                                 <br/>
 
                             </Grid>
@@ -357,7 +364,7 @@ const SingleSessionView = (props) => {
                                      >
                                     <form onSubmit={handleSubmit}>
                                         <br/>
-                                        <TextareaAutosize aria-label="minimum height" rowsMin={8} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={5} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
                                         style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
                                         <br/>
                                         <br/>
@@ -384,7 +391,11 @@ const SingleSessionView = (props) => {
                                 </Grid>
                                 <br/>
                                 <br/>
-                                <Link to="/pdf">View PDF</Link>
+                                <Grid item>
+                                    <Link to="/pdf"><Button variant="contained" color="primary" className="timestamp-button">
+                                        Generate PDF
+                                    </Button></Link>
+                                </Grid>
                                 <br/>
                                 <br/>
 
