@@ -89,7 +89,7 @@ class PdfView extends Component {
                             <Grid container>
 
                                 
-                                <Paper style={{minHeight: 792, minWidth: 600, backgroundColor: '#f0f0f5', border: '1px solid white'}}>
+                                <Paper style={{minHeight: 792, minWidth: 600, maxHeight: 792, overflow: 'auto', backgroundColor: '#f0f0f5', border: '1px solid white'}}>
                                     
                                     <List className="List">
 

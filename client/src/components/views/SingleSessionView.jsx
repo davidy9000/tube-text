@@ -136,10 +136,7 @@ const SingleSessionView = (props) => {
                                 <Grid item xs={12} className="form-grid"
                                      >
                                     <form onSubmit={handleSubmit}>
-                                        <label>Note: </label><br/>
-                                        {/* <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input> */}
-
-                                        {/* <br/> */}
+                                        
                                         <TextareaAutosize aria-label="minimum height" rowsMin={5} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
 
                                         style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
@@ -162,6 +159,7 @@ const SingleSessionView = (props) => {
                                         <DescriptionIcon />
                                     </Badge>
                                 </Grid>
+                                <br/>
                                 <br/>
                                 <Grid item>
                                     <Link to="/pdf"><Button variant="contained" color="primary" className="timestamp-button">
@@ -207,7 +205,10 @@ const SingleSessionView = (props) => {
                                                                 </div>
 
                                                                 <div className="timestamp-note">
-                                                                    <Button onClick = {() => videoSeek(note.videoTimestamp)}>{convertToHumanReadable(note.videoTimestamp)}</Button>
+                                                                    {/* <Button onClick = {() => videoSeek(note.videoTimestamp)}>{convertToHumanReadable(note.videoTimestamp)}</Button> */}
+                                                                    <Button variant="contained" color="primary" onClick = {() => videoSeek(note.videoTimestamp)} className="timestamp-button" style={{margin: '10px'}}>
+                                                                        {convertToHumanReadable(note.videoTimestamp)}
+                                                                    </Button>
                                                                 </div>
 
                                                                 <div className="delete-note">
@@ -350,7 +351,6 @@ const SingleSessionView = (props) => {
                                 <Grid item xs={12} className="form-grid"
                                      >
                                     <form onSubmit={handleSubmit}>
-                                        <label>Note: </label><br/>
                                         
                                         <br/>
 
@@ -426,7 +426,10 @@ const SingleSessionView = (props) => {
                                                                 </div>
 
                                                                 <div className="timestamp-note">
-                                                                    <Button onClick = {() => videoSeek(note.videoTimestamp)}>{convertToHumanReadable(note.videoTimestamp)}</Button>
+                                                                    {/* <Button onClick = {() => videoSeek(note.videoTimestamp)}>{convertToHumanReadable(note.videoTimestamp)}</Button> */}
+                                                                    <Button variant="contained" color="primary" onClick = {() => this.props.videoSeek(note.videoTimestamp)} className="timestamp-button" style={{margin: '10px'}}>
+                                                                        {convertToHumanReadable(note.videoTimestamp)}
+                                                                    </Button>
                                                                 </div>
 
                                                                 <div className="delete-note">
@@ -446,6 +449,7 @@ const SingleSessionView = (props) => {
                                                                         <TextareaAutosize aria-label="minimum height" rowsMin={6} placeholder={note.noteRecord} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}/>
                                                                         {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
                                                                         <input className="note-record" type="submit"></input>
+                                                                        <button onClick={onClickNull}>Cancel</button>
                                                                     </form>
                                                                     : <ExpansionPanel>
                                                                         <ExpansionPanelSummary
