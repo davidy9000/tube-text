@@ -48,7 +48,7 @@ class PdfView extends Component {
     }
     
     render () {
-        const {allNotes, videoSeek} = this.props;
+        const {allNotes, videoSeek, currStudySession} = this.props;
     
         return (
             <div>
@@ -67,7 +67,7 @@ class PdfView extends Component {
 
 
                 <PDFExport paperSize={'Letter'}
-                    fileName="_____.pdf"
+                    fileName={"TubeText_Study_Session"+".pdf"}
                     title=""
                     subject=""
                     keywords=""
