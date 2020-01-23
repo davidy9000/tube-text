@@ -52,7 +52,19 @@ class PdfView extends Component {
     
         return (
             <div>
-                <button onClick={this.exportPDF} style={{ margin: 'auto' }}>Download</button>
+                <Grid container
+                    justify="center"
+                    alignItems="center" 
+                    >
+                    <Grid item>
+                        <Button variant="contained" color="primary" onClick={this.exportPDF} className="timestamp-button">
+                            Download
+                        </Button>
+
+                    </Grid>
+                </Grid>
+                <br/>
+
 
                 <PDFExport paperSize={'Letter'}
                     fileName="_____.pdf"
@@ -76,6 +88,7 @@ class PdfView extends Component {
 
                             <Grid container>
 
+                                
                                 <Paper style={{minHeight: 792, minWidth: 600, backgroundColor: '#f0f0f5', border: '1px solid white'}}>
                                     
                                     <List className="List">
