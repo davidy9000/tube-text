@@ -1,6 +1,6 @@
 import React from 'react';
 import {Fragment} from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -364,6 +364,7 @@ const SingleSessionView = (props) => {
                                         <Button variant="contained" color="primary" type="submit">
                                             Add Note
                                         </Button>
+                                        <Link to="/pdf">View PDF</Link>
                                         <br/>
 
                                     </form>

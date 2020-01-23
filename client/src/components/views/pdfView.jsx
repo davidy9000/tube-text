@@ -1,82 +1,111 @@
 import React, { Component } from 'react';
 import { PDFExport } from '@progress/kendo-react-pdf';
-import { faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import canvg from 'canvg';
-import ReactDOMServer from 'react-dom/server';
+
+
+// import Grid from '@material-ui/core/Grid';
+// import Paper from '@material-ui/core/Paper';
+// import List from '@material-ui/core/List';
+// import ListItem from '@material-ui/core/ListItem';
+// import Button from '@material-ui/core/Button';
+// import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+// import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+// import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+// import Typography from '@material-ui/core/Typography';
+// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+// import { makeStyles } from '@material-ui/core/styles';
+// import '../../singleSessionCSS.css';
 
 class PdfView extends Component {
-    // resume;
+    
+    // const {allNotes, videoSeek} = props;
 
-    // constructor() {
-    //     super();
-    //     this.iconsToConvert = [
-    //         {
-    //             icon: faGithub,
-    //             alt: 'github icon'
-    //         },
-    //         {
-    //             icon: faMedium,
-    //             alt: 'medium icon'
-    //         }
-    //     ]
-    //     this.canvLoaded = false;
+    // constructor(props) {
+    //     super(props)
     // }
 
-    // exportPDF = () => {
-    //     this.resume.save();
+    // convertToHumanReadable(aTimestamp){
+    //     var sec_num = parseInt(aTimestamp, 10); // don't forget the second param
+    //     var hours   = Math.floor(sec_num / 3600);
+    //     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    //     var seconds = sec_num - (hours * 3600) - (minutes * 60);
+    
+    //     if (hours   < 10) {hours   = "0"+hours;}
+    //     if (minutes < 10) {minutes = "0"+minutes;}
+    //     if (seconds < 10) {seconds = "0"+seconds;}
+       
+    //     return hours+':'+minutes+':'+seconds;
     // }
 
-    // convertSvgToImage = (arr) => {
-    //     let canv = this.refs.canvas;
-    //     if (!this.canvLoaded) {
-    //         this.canvLoaded = true;
-    //         canv.getContext("2d");
-    //         arr.forEach((d, i) => {
-    //             let htmlString = ReactDOMServer.renderToStaticMarkup(
-    //                 <FontAwesomeIcon icon={d.icon} size={"3x"} style={{ color: '#005696', height: '500px', width: '500px' }} />
-    //             );
-    //             canvg(canv, htmlString);
-    //             d.icon = canv.toDataURL("image/png");
-    //         });
-    //         this.setState({});
-    //     }
-    // }
+    // <Grid container>
 
-    // componentDidMount() {
-    //     this.convertSvgToImage(this.iconsToConvert);
-    // }
+    //                             <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: '#f0f0f5', border: '1px solid white'}}>
+                                    
+    //                                 <List className="List">
 
+    //                                     {this.props.allNotes.map((note)=>{
+    //                                         return (
+    //                                             <ListItem className="ListItem"
+    //                                             alignItems="center">
 
-//     <div style={{ height: '100vh', width: '100vw', paddingTop: 20, backgroundColor: 'gray' }}>
-//     {!this.canvLoaded && <canvas ref="canvas" style={{ display: 'none' }}>
-//     </canvas>}
-//     <div style={{ textAlign: 'center', marginBottom: 10 }}><button onClick={this.exportPDF} style={{ margin: 'auto' }}>download</button></div>
-//     <PDFExport paperSize={'Letter'}
-//         fileName="_____.pdf"
-//         title=""
-//         subject=""
-//         keywords=""
-//         ref={(r) => this.resume = r}>
-//         <div style={{
-//             height: 792,
-//             width: 612,
-//             padding: 'none',
-//             backgroundColor: 'white',
-//             boxShadow: '5px 5px 5px black',
-//             margin: 'auto',
-//             overflowX: 'hidden',
-//             overflowY: 'hidden'
-//         }}>Hi!
-//         {this.canvLoaded && this.iconsToConvert.map((iconObject, index) => {
-//                 return <img src={iconObject.icon} key={'img-' + index} alt={iconObject.alt} style={{ height: 25, width: 25 }} />
-//             })}
-//         </div>
-//     </PDFExport>
-// </div>
+    //                                                 <Grid item xs={3} className="notes-grid">
 
-    render() {
+    //                                                     <div className="individual-note">
+    //                                                         <div className="note-buttons">
+                                                                
+  
+
+    //                                                             <div className="timestamp-note">
+    //                                                                 {/* <Button onClick = {() => videoSeek(note.videoTimestamp)}>{note.videoTimestamp}</Button> */}
+    //                                                                 <Button variant="contained" color="primary" onClick = {() => this.props.videoSeek(note.videoTimestamp)} className="timestamp-button">
+    //                                                                     {this.convertToHumanReadable(note.videoTimestamp)}
+    //                                                                 </Button>
+    //                                                             </div>
+
+                    
+    //                                                         </div>
+    //                                                         <div className="note-record">
+                                                              
+    //                                                             <ExpansionPanel>
+    //                                                                     <ExpansionPanelSummary
+    //                                                                     expandIcon={<ExpandMoreIcon />}
+    //                                                                     aria-controls="panel1a-content"
+    //                                                                     id="panel1a-header"
+    //                                                                     >
+    //                                                                     <Typography style={{fontWeight: 'bold'}}>{(note.noteRecord).substring(0, 20) + "..."}</Typography>
+    //                                                                     </ExpansionPanelSummary>
+    //                                                                     <ExpansionPanelDetails>
+    //                                                                     <Typography style={{maxWidth: 575, overflow: 'auto'}}>
+    //                                                                         {note.noteRecord}
+    //                                                                     </Typography>
+    //                                                                     </ExpansionPanelDetails>
+    //                                                                   </ExpansionPanel>
+                                                                
+    //                                                         </div>
+    //                                                     </div>
+
+    //                                                 </Grid>
+
+    //                                             </ListItem>
+
+    //                                             )
+    //                                         })} 
+    //                                         {/* end of .map function */}
+                                    
+    //                                 </List>
+    //                             </Paper>
+    //                         </Grid>
+
+    renderContent = () => {
+        console.log(this.props.allNotes);
+        return this.props.allNotes.map(note => <div>hello</div>)
+    }
+    
+    render () {
+        const {allNotes} = this.props;
+    
         return (
+            
+
             <PDFExport paperSize={'Letter'}
                 fileName="_____.pdf"
                 title=""
@@ -93,8 +122,10 @@ class PdfView extends Component {
                         overflowX: 'hidden',
                         overflowY: 'hidden'}}>
                             <div style={{backgroundColor: 'black', color: 'white'}}>
-                            content
+                            {this.renderContent()}
                             </div>
+
+
                     </div>
             </PDFExport>
             

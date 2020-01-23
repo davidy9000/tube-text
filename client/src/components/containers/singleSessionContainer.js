@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SingleSessionView from '../views/SingleSessionView';
-import PdfView from '../views/PdfView';
+import PdfView from '../views/pdfView';
 import { connect } from 'react-redux';
 import { fetchNotesThunk, addNotesThunk, deleteNoteThunk, editNoteThunk, fetchCurrentVideoThunk } from '../../store/actions/actionCreatorsThunks';
 //need to handle refresh issue

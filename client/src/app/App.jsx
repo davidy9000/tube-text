@@ -5,7 +5,8 @@ import SingleSessionContainer from '../components/containers/singleSessionContai
 import NewStudySessionContainer from '../components/containers/newStudySessionContainer';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import PdfView from '../components/views/PdfView';
+import PdfView from '../components/views/pdfView';
+import PdfContainer from '../components/containers/pdfContainer';
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -137,7 +138,8 @@ const App = () => {
 		const SingleUserComponent = () => <SingleUserContainer/>
         const SingleStudySessionComponent = () => <SingleSessionContainer />
 		const NewStudySessionComponent = () => <NewStudySessionContainer/>
-        const PdfViewComponent = () => <PdfView/>
+        // const PdfViewComponent = () => <PdfView/>
+        const PdfComponent = () => <PdfContainer/>
         
 
         return (
@@ -171,7 +173,7 @@ const App = () => {
 								instead of the actual path wanted */}
 								<Route exact path ="/study_sessions/add_session" render={NewStudySessionComponent}/>
 								<Route exact path="/study_sessions/:sessionId" render={SingleStudySessionComponent}/>
-                                <Route exact path="/pdf" render={PdfViewComponent}/>
+                                <Route exact path="/pdf" render={PdfComponent}/>
                                 
                             
 							{/* </div>
