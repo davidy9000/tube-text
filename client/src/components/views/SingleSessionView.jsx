@@ -426,7 +426,7 @@ const SingleSessionView = (props) => {
                                                                 </div>
 
                                                                 <div className="timestamp-note">
-                                                                    <Button onClick = {() => videoSeek(note.videoTimestamp)}>{note.videoTimestamp}</Button>
+                                                                    <Button onClick = {() => videoSeek(note.videoTimestamp)}>{convertToHumanReadable(note.videoTimestamp)}</Button>
                                                                 </div>
 
                                                                 <div className="delete-note">
