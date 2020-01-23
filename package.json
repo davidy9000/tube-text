@@ -1,0 +1,29 @@
+{
+  "name": "winter-2020-codefest-submissions-2x-m",
+  "version": "1.0.0",
+  "description": "# Team Info ### Team name: ### Team members (format: GitHub username, last name, first name): - davidy9000, Yuen, David - Suchwinder, Singh, Suchwinder - mtlynch3, Lynch, Melissa - iambcho, Cho, Brittany -  -",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "app-install": "npm i --prefix client && npm -i --prefix",
+    "client": "npm start --prefix client",
+    "server": "npm start --prefix server",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hunter-classes/winter-2020-codefest-submissions-2x-m.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hunter-classes/winter-2020-codefest-submissions-2x-m/issues"
+  },
+  "homepage": "https://github.com/hunter-classes/winter-2020-codefest-submissions-2x-m#readme",
+  "dependencies": {
+    "concurrently": "^5.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
