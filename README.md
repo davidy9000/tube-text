@@ -3,10 +3,10 @@
 # Team Info
 ### Team name:
 ### Team members (format: GitHub username, last name, first name):
-- davidy9000, Yuen, David
-- Suchwinder, Singh, Suchwinder
-- mtlynch3, Lynch, Melissa
-- iambcho, Cho, Brittany
+- `davidy9000`, Yuen, David
+- `Suchwinder`, Singh, Suchwinder
+- `mtlynch3`, Lynch, Melissa
+- `iambcho`, Cho, Brittany
 - 
 - 
 
