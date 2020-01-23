@@ -62,9 +62,8 @@ const fetchCurrentVideo = (videoUrl) => {
 //THUNKS
 
 //SESSIONS
-//need to change this so that it gets the sessions of whoever is logged in
-export const fetchSessionsThunk = (id) => (dispatch) => {
-    axios.get(`/api/studysessions/users/${id}`)
+export const fetchSessionsThunk = () => (dispatch) => {
+    axios.get('http://localhost:1234/api/studysessions/users/1')
     .then((response) =>{
         dispatch(fetchSessions(response.data));
     })
@@ -76,7 +75,7 @@ export const fetchSessionsThunk = (id) => (dispatch) => {
 }
 
 export const addStudySessionThunk = (study_session) => (dispatch) => {
-    axios.post('/api/studysessions/add', study_session)
+    axios.post('http://localhost:1234/api/studysessions/add', study_session)
     .then((response) => {
         // console.log("the study session data is: ", response.data);
         return response.data;
@@ -96,7 +95,7 @@ export const currStudySessionThunk = (study_session) => (dispatch) => {
 //NOTES
 
 export const fetchNotesThunk = (stud_sess_id) => (dispatch) => {
-    axios.get(`/api/notes/studysessions/${stud_sess_id}`)
+    axios.get(`http://localhost:1234/api/notes/studysessions/${stud_sess_id}`)
     .then((response) => {
         const myData = [].concat(response.data).sort((a,b) => a.videoTimestamp - b.videoTimestamp);
         dispatch(fetchNotes(myData));
@@ -108,14 +107,14 @@ export const fetchNotesThunk = (stud_sess_id) => (dispatch) => {
 }
 
 export const fetchCurrentVideoThunk = (stud_sess_id) => (dispatch) => {
-    axios.get(`/api/studysessions/${stud_sess_id}`)
+    axios.get(`http://localhost:1234/api/studysessions/${stud_sess_id}`)
     .then((response)=> dispatch(fetchCurrentVideo(response.data.videoUrl)))
 }
 
 //Tony and Billie's comments - in the UI we need to make sure user input is valid before we allow it to go to backend
 //NOTE: add note to parameter later when we actually implement this
 export const addNotesThunk = (note) => (dispatch) => {
-    axios.post('/api/notes/add', note)
+    axios.post('http://localhost:1234/api/notes/add', note)
     .then((response) => {
         // console.log("the data is: ", response.data);
         return response.data;
@@ -131,7 +130,7 @@ export const addNotesThunk = (note) => (dispatch) => {
 
 export const deleteNoteThunk = (note_id) => (dispatch) =>{
     // console.log("thunk note id:", note_id);
-    axios.delete(`/api/notes/delete/${note_id}`)
+    axios.delete(`http://localhost:1234/api/notes/delete/${note_id}`)
     .then((noteid) => dispatch(deleteNote(note_id)))
     .catch((error) => {console.log(error)})
 
@@ -141,51 +140,8 @@ export const deleteNoteThunk = (note_id) => (dispatch) =>{
 export const editNoteThunk = (note) => (dispatch) => {
     // console.log("edit note thunk");
 
-    axios.put(`/api/notes/edit/${note.id}`, note)
+    axios.put(`http://localhost:1234/api/notes/edit/${note.id}`, note)
     .then(() => dispatch(editNote(note)))
     .catch((error) => {console.log(error)})
     
 }
-
-//auth thunks
-
-export const me = () => async dispatch => {
-    try {
-        const res = await axios.get("/auth/me", { withCredentials: true});
-        console.log(res,"hellooooooo");
-        dispatch(getUser(res.data || {}));
-    }
-    catch(err) {
-        console.error(err);
-    }
-};
-//should put user ID stuff here
-export const auth = (username, password, method, history, id) => async dispatch => {
-    let res;
-    try {
-        res = await axios.post(`/auth/${method}`, { username, password }, { withCredentials: true });
-        history.push(`/study_session/${id}`);
-    }
-    catch (authError) {
-        return dispatch(getUser({ error: authError}));
-    }
-    try {
-        dispatch(getUser(res.data));
-    }
-    catch (dispatchOrHistoryErr) {
-        console.error(dispatchOrHistoryErr);
-    }
-};
-
-export const logout = () => async dispatch => {
-    try {
-        await axios.delete("/auth/logout", { withCredentials: true });
-        dispatch(removeUser());
-    }
-    catch (err) {
-        console.error(err);
-    }
-};
-
-
-
