@@ -31,7 +31,7 @@ const syncDatabase = () => {
   }
   else {
     console.log('As a reminder, the forced synchronization option is on');
-    db.sync({ force: true })
+    db.sync()//{force:true}
       .then(() => seedDatabase())
       .catch(err => {
         if (err.name === 'SequelizeConnectionError') {
@@ -47,6 +47,19 @@ const syncDatabase = () => {
 
 // Instantiate our express application;
 const app = express();
+
+//auth
+passport.serializeUser((user,done) => done(null, user.id));
+passport.deserializeUser(async(id,done) => {
+  try {
+    console.log(id);
+    const user = await db.models.user.findByPk(id);
+    done(null,user);
+  }
+  catch(err) {
+    done(err);
+  }
+});
 
 // A helper function to create our app with configurations and middleware;
 const configureApp = () => {

@@ -22,17 +22,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 import DescriptionIcon from '@material-ui/icons/Description';
-
-// import { palette, spacing, typography } from '@material-ui/system';
-// import styled from 'styled-components';
-// import { unstable_Box as Box } from '@material-ui/core/Box';
-
 import '../../singleSessionCSS.css';
-
-// const Box = styled.div`${palette}${spacing}${typography}`;
-
 import ReactPlayer from 'react-player';
-
 
 //Responsive functionality
 const Desktop = props => <Responsive {...props} minWidth={1275} />;
