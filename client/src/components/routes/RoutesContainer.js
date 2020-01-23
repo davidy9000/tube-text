@@ -2,14 +2,19 @@ import React, { Component } from "react";
 import RoutesView from "./RoutesView";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { me } from '../../store/actions/actionCreatorsThunks';
+import { me, logout } from '../../store/actions/actionCreatorsThunks';
 
 class RoutesContainer extends Component {
   componentDidMount() {
     this.props.loadInitialData();
   }
+
+  handleLogout = () => {
+    this.props.logout();
+    this.props.history.push("/login");
+  }
   render() {
-    return <RoutesView isLoggedIn={this.props.isLoggedIn} />
+    return <RoutesView isLoggedIn={this.props.isLoggedIn} handleLogout={this.handleLogout}/>
   }
 }
 
@@ -21,7 +26,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    loadInitialData: () => dispatch(me())
+    loadInitialData: () => dispatch(me()),
+    logout: () => dispatch(logout())
   }
 }
 
