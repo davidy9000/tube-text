@@ -1,6 +1,6 @@
 import React from 'react';
 import {Fragment} from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -22,6 +22,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 import DescriptionIcon from '@material-ui/icons/Description';
+
 import '../../singleSessionCSS.css';
 import ReactPlayer from 'react-player';
 
@@ -69,12 +70,31 @@ function convertToHumanReadable(aTimestamp){
     return hours+':'+minutes+':'+seconds;
 }
 
+//For Popover Function
+ 
+   
+
 const SingleSessionView = (props) => {
     const classes = useStyles();
     const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl,
             videoOnPlay, videoOnPause, thePlayer, videoSeek,
             editNoteState, onClickEdit, mustEdit,handleEditSubmit ,handleEditChange, onClickNull } = props;
     // console.log("The Hangle Change is: ", handleChange);
+
+    //For Popover
+    // const [anchorEl, setAnchorEl] = React.useState(null);
+  
+    // const handleClick = event => {
+    //   setAnchorEl(event.currentTarget);
+    // };
+  
+    // const handleClose = () => {
+    //   setAnchorEl(null);
+    // };
+  
+    // const open = Boolean(anchorEl);
+    // const id = open ? 'simple-popover' : undefined;
+
     return (
         <div className="overall-container">
             <Fragment>
@@ -118,8 +138,10 @@ const SingleSessionView = (props) => {
                                     <form onSubmit={handleSubmit}>
                                         <label>Note: </label><br/>
                                         {/* <input type="text" name = "noteRecord" onChange={handleChange} style={{ minWidth: 400, minHeight: 50, overflow: 'auto'}} ></input> */}
-                                        <br/>
-                                        <TextareaAutosize aria-label="minimum height" rowsMin={6} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+
+                                        {/* <br/> */}
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={5} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+
                                         style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
                                         <br/>
                                         <br/>
@@ -140,6 +162,13 @@ const SingleSessionView = (props) => {
                                         <DescriptionIcon />
                                     </Badge>
                                 </Grid>
+                                <br/>
+                                <Grid item>
+                                    <Link to="/pdf"><Button variant="contained" color="primary" className="timestamp-button">
+                                        Generate PDF
+                                    </Button></Link>
+                                </Grid>
+                                <br/>
                                 <br/>
 
                             </Grid>
@@ -231,6 +260,50 @@ const SingleSessionView = (props) => {
                                     
                                     </List>
                                 </Paper>
+
+                                <br/>
+                                
+                                {/* <Button aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+                                        Open Popover
+                                    </Button>
+                                    <Popover
+                                        id={id}
+                                        open={open}
+                                        anchorEl={anchorEl}
+                                        onClose={handleClose}
+                                        anchorOrigin={{
+                                        vertical: 'bottom',
+                                        horizontal: 'center',
+                                        }}
+                                        transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'center',
+                                        }}
+                                    >
+                                        
+                                        <PDFExport paperSize={'Letter'}
+                                            fileName="_____.pdf"
+                                            title=""
+                                            subject=""
+                                            keywords=""
+                                            ref={(r) => this.resume = r}>
+                                                <div style={{
+                                                    height: 792,
+                                                    width: 612,
+                                                    padding: 'none',
+                                                    backgroundColor: 'white',
+                                                    boxShadow: '5px 5px 5px black',
+                                                    margin: 'auto',
+                                                    overflowX: 'hidden',
+                                                    overflowY: 'hidden'}}>
+                                                        <div style={{backgroundColor: 'black', color: 'white'}}>
+                                                        content
+                                                        </div>
+                                                </div>
+                                        </PDFExport>
+
+                                    </Popover> */}
+
                             </Grid>
                     </Grid>
 
@@ -280,11 +353,16 @@ const SingleSessionView = (props) => {
                                         <label>Note: </label><br/>
                                         
                                         <br/>
-                                        <TextareaAutosize aria-label="minimum height" rowsMin={6} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
-                                        style={{ minWidth: 600, overflow: 'auto'}}/>
+
+                                        <TextareaAutosize aria-label="minimum height" rowsMin={5} placeholder="Enter Note Here" name = "noteRecord"onChange={handleChange} 
+                                        style={{ minWidth: 400, width:400, overflow: 'auto'}}/>
                                         <br/>
                                         <br/>
-                                        <input className="note-record" type="submit"></input>
+                                        <Button variant="contained" color="primary" type="submit">
+                                            Add Note
+                                        </Button>
+                                        
+
                                         <br/>
 
                                     </form>
@@ -303,6 +381,13 @@ const SingleSessionView = (props) => {
                                 </Grid>
                                 <br/>
                                 <br/>
+                                <Grid item>
+                                    <Link to="/pdf"><Button variant="contained" color="primary" className="timestamp-button">
+                                        Generate PDF
+                                    </Button></Link>
+                                </Grid>
+                                <br/>
+                                <br/>
 
                             </Grid>
 
@@ -314,10 +399,11 @@ const SingleSessionView = (props) => {
                             justify="center" 
                             alignItems="center">
                                 
+                                
                                 <Paper style={{minHeight: 550, minWidth: 600, maxHeight: 550, overflow: 'auto', backgroundColor: '#f0f0f5', border: '1px solid white'}}>
                                     
                                     <List className="List">
-    
+
                                         {allNotes.map((note)=>{
                                             return (
                                                 <ListItem className="ListItem"
