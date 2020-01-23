@@ -3,6 +3,7 @@ import SingleUserContainer from '../containers/singleUserContainer';
 import SingleSessionContainer from '../containers/singleSessionContainer';
 import NewStudySessionContainer from '../containers/newStudySessionContainer';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Login, Signup } from '../containers/authFormContainer';
 
 import PdfContainer from '../containers/pdfContainer';
@@ -13,6 +14,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+
+import { auth } from '../../store/actions/actionCreatorsThunks';
 
 const useStyles = makeStyles(theme => ({
     
@@ -95,7 +98,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const RoutesView = (props) => {
-  const { isLoggedIn } = props;
+  const { isLoggedIn, handleLogout } = props;
   const SingleUserComponent = () => <SingleUserContainer/>
   const SingleStudySessionComponent = () => <SingleSessionContainer />
   const NewStudySessionComponent = () => <NewStudySessionContainer/>
@@ -134,6 +137,16 @@ const RoutesView = (props) => {
                         <Typography variant="h6" className={classes.title} color = "inherit" style={{fontType: 'bold', fontFamily: 'Brush Script MT, sans-serif', fontSize: '50px'}}>
                             TubeText
                         </Typography>
+
+                        <Link to={`/study_session/:userId`}>
+                          <Button variant="contained" color="primary">
+                            All Sessions
+                          </Button>
+                        </Link>
+
+                        <Button variant="contained" color="primary" onClick={handleLogout}>
+                          Sign Out
+                        </Button>
                        
                     </Toolbar>
                   
@@ -163,5 +176,16 @@ const RoutesView = (props) => {
     </Switch>
   );
 }
+
+// const mapState = state => {
+//   userId: state.userAuth.id
+// }
+
+// // Map dispatch to props;
+// const mapDispatch = dispatch => {
+//   return {
+//     loginOrSignup: (username, password, formName, history, id) => dispatch(auth(username, password, formName, history, id))
+//   }
+// };
 
 export default RoutesView;

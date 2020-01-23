@@ -124,7 +124,7 @@ const SingleUserView = (props) => {
                             New Study Session
                         </Button>
                     </Link>
-                    <button onClick={handleLogout}>Logout</button>
+                    {/* <button onClick={handleLogout}>Logout</button> */}
                 </Grid>
                 <Grid 
                 item
