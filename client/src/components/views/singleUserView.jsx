@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -16,25 +14,6 @@ import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
-
-// import IconButton from '@material-ui/core/IconButton';
-// import MenuIcon from '@material-ui/icons/Menu';
-
-// const YourTheme = createMuiTheme({
-//     palette: createPalette({
-//       background: {
-//         appBar: '#000'
-//       }
-//     }),
-//     overrides: {
-//       MuiAppBar: {
-//         root: {
-//           background: '#fff'
-//         }
-//       }
-//     }
-  
-//   });
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -125,24 +104,9 @@ const style = {
 
 const SingleUserView = (props) => {
     const classes = useStyles();
-    // const bull = <span className={classes.bullet}>•</span>;
-
-    const {sessions, handleChange, handleSubmit ,currentStudySession } = props;
+    const {sessions, handleLogout,currentStudySession } = props;
     return (
         <div className="App">
-            {/* <AppBar position="static" className = {classes.customizeAppBar}>
-                <Toolbar className = {classes.customizeToolBar}>
-                    { <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
-                    </IconButton> }
-                    <Typography variant="h6" className={classes.title} color = "inherit">
-                        TubeText
-                    </Typography>
-                    <Button className = {classes.customNavButton}>Sign Out</Button>
-                </Toolbar>
-            </AppBar> */}
-           
-
             <br/>
             <Grid
                 container
@@ -157,11 +121,11 @@ const SingleUserView = (props) => {
                             New Study Session
                         </Button>
                     </Link>
+                    <button onClick={handleLogout}>Logout</button>
                 </Grid>
                 <Grid 
                 item
-                style={{minWidth: '80%'}}
-                
+                style={{minWidth: '80%'}}  
                 >
                     <Paper style={{minHeight: 900, maxHeight:900, minWidth: '100%', maxWidth: '100%', overflow: 'auto', backgroundColor: 'white', border: '1px solid white'}}>
 
@@ -177,9 +141,7 @@ const SingleUserView = (props) => {
                                                 style={{backgroundColor:'#a3a3c2'}}
                                                 >
                                                     <CardContent>
-                                                        <Typography className={classes.cardTitle} color="textSecondary" gutterBottom
-                                                        style={{fontWeight: 'bold'}}
-                                                        >
+                                                        <Typography className={classes.cardTitle} color="textSecondary" gutterBottom>
                                                         {session.studySessionName}
                                                         </Typography>
                                                         <Typography>
