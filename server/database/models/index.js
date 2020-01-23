@@ -5,7 +5,10 @@ const StudySession = require('./StudySession');
 const Note = require('./Note');
 
 Note.belongsTo(StudySession);
-StudySession.hasMany(Note);
+
+//the on delete cascade with hooks true sets the notes association
+// with a session to null (so kind of like deleting but not really)
+StudySession.hasMany(Note, {onDelete: 'cascade', hooks:true});
 
 StudySession.belongsTo(User);
 User.hasMany(StudySession);
