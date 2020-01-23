@@ -377,6 +377,7 @@ const SingleSessionView = (props) => {
                                                                         <TextareaAutosize aria-label="minimum height" rowsMin={10} name = "noteRecord"onChange={handleEditChange} style={{ minWidth: 520, overflow: 'auto'}}>{note.noteRecord}</TextareaAutosize>
                                                                         {/* <Button className = {classes.editButton} onClick={handleEditSubmit}>Submit</Button> */}
                                                                         <input className="note-record" type="submit"></input>
+                                                                        <button onClick={onClickNull}>Cancel</button>
                                                                     </form>
                                                                     : <ExpansionPanel>
                                                                         <ExpansionPanelSummary
