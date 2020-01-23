@@ -5,8 +5,8 @@ import SingleSessionContainer from '../components/containers/singleSessionContai
 import NewStudySessionContainer from '../components/containers/newStudySessionContainer';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import PdfView from '../components/views/pdfView';
 import PdfContainer from '../components/containers/pdfContainer';
+import HomePageContainer from '../components/containers/homePageContainer';
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -140,6 +140,7 @@ const App = () => {
 		const NewStudySessionComponent = () => <NewStudySessionContainer/>
         // const PdfViewComponent = () => <PdfView/>
         const PdfComponent = () => <PdfContainer/>
+        const HomePageComponent = () => <HomePageContainer/>
         
 
         return (
@@ -167,6 +168,7 @@ const App = () => {
 					<Switch>
 						{/* <div className="App">
 							<div className="App-header"> */}
+                                
 								<Route exact path="/" render={SingleUserComponent}/>
 								{/* Be sure to put add_session before the :sessionId becasue :sessionId is a wildcard
 								and basically anything that has study_sessions/ ... will lead to the single session component
@@ -174,6 +176,9 @@ const App = () => {
 								<Route exact path ="/study_sessions/add_session" render={NewStudySessionComponent}/>
 								<Route exact path="/study_sessions/:sessionId" render={SingleStudySessionComponent}/>
                                 <Route exact path="/pdf" render={PdfComponent}/>
+
+                                {/* NOTE: Temporary route until we change the route for Single User - then we should change the path to / */}
+                                <Route exact path="/homepage" render={HomePageComponent}/>
                                 
                             
 							{/* </div>
