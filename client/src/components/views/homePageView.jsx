@@ -164,9 +164,9 @@ const HomePageView = (props) => {
                 }
             </Carousel> */}
 
-            <img src={require('../images/image1.png')} alt="image1"/>
+            {/* <img src={require('../images/image1.png')} alt="image1"/>
             <img src={require('../images/image2.png')} alt="image2"/>
-            <img src={require('../images/image3.png')} alt="image3"/>
+            <img src={require('../images/image3.png')} alt="image3"/> */}
 
         </div>
 

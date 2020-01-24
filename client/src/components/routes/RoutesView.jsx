@@ -122,7 +122,8 @@ const RoutesView = (props) => {
           </AppBar>
       </div> */}
       {/* <Router> */}
-        <Route exact path="/" render={HomePageComponent}/>
+        {/* <Route exact path="/" render={HomePageComponent}/> */}
+        <Route exact path="/" component={Login} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
       {/* </Router> */}
@@ -135,7 +136,7 @@ const RoutesView = (props) => {
                 <div style={{borderBottom: '5px solid white', padding: '10px'}}>
                     <AppBar position="static" className = {classes.customizeAppBar}>
                     <Toolbar className = {classes.customizeToolBar}>
-                        <Typography variant="h6" className={classes.title} color = "inherit" style={{fontType: 'bold', fontFamily: 'Brush Script MT, sans-serif', fontSize: '50px'}}>
+                        <Typography variant="h6" className={classes.title} color = "inherit" style={{fontType: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '35px', color: '#CDDC39'}}>
                             TubeText
                         </Typography>
 
@@ -173,7 +174,7 @@ const RoutesView = (props) => {
       )}
 
       {/* Displays our Login component as a fallback */}
-      {/* <Route component={Login} /> */}
+      <Route component={Login} />
     </Switch>
   );
 }
