@@ -98,7 +98,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const RoutesView = (props) => {
-  const { isLoggedIn, handleLogout, userId } = props;
+  const { isLoggedIn, handleLogout, userId, onClickHandleId } = props;
   const SingleUserComponent = () => <SingleUserContainer/>
   const SingleStudySessionComponent = () => <SingleSessionContainer />
   const NewStudySessionComponent = () => <NewStudySessionContainer/>
@@ -122,6 +122,7 @@ const RoutesView = (props) => {
           </AppBar>
       </div> */}
       {/* <Router> */}
+        <Route exact path="/" render={HomePageComponent}/>
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
       {/* </Router> */}
@@ -138,11 +139,11 @@ const RoutesView = (props) => {
                             TubeText
                         </Typography>
 
-                        <Link to={`/study_session/${userId}`}>
-                          <Button variant="contained" color="primary">
+                        {/* <Link to={`/study_session/${userId}`} > */}
+                          {/* <Button variant="contained" color="primary" onClick={onClickHandleId}>
                             All Sessions
-                          </Button>
-                        </Link>
+                          </Button> */}
+                        {/* </Link> */}
 
                         <Button variant="contained" color="primary" onClick={handleLogout}>
                           Sign Out
@@ -155,7 +156,7 @@ const RoutesView = (props) => {
                 <br/>
         <Router>
           <Switch>
-            <Route exact path="/" render={HomePageComponent}/>
+            {/* <Route exact path="/" render={HomePageComponent}/> */}
                 <Route exact path="/study_session/:userId" render={SingleUserComponent}/>
                 {/* Be sure to put add_session before the :sessionId becasue :sessionId is a wildcard
                 and basically anything that has study_sessions/ ... will lead to the single session component
@@ -172,7 +173,7 @@ const RoutesView = (props) => {
       )}
 
       {/* Displays our Login component as a fallback */}
-      <Route component={Login} />
+      {/* <Route component={Login} /> */}
     </Switch>
   );
 }

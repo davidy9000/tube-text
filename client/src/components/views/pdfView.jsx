@@ -13,6 +13,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 import '../../singleSessionCSS.css';
 
 class PdfView extends Component {
@@ -53,9 +54,22 @@ class PdfView extends Component {
         return (
             <div>
                 <Grid container
+                    container direction="column"
                     justify="center"
                     alignItems="center" 
                     >
+
+                    <Grid item>
+                        <Link to={`/study_sessions/${currStudySession.id}`}>
+                            <Button variant="contained" color="primary" className="timestamp-button">
+                                Back to Previous Study Session
+                            </Button>
+                        </Link>
+
+                    </Grid>
+
+                    <br/>
+
                     <Grid item>
                         <Button variant="contained" color="primary" onClick={this.exportPDF} className="timestamp-button">
                             Download

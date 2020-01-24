@@ -138,6 +138,8 @@ class SingleSessionContainer extends Component {
                 videoSeek = {this.videoSeek}
 
                 thePlayer = {this.thePlayer}
+
+                userId={this.props.userId}
                 />
             </div>
         )
@@ -150,6 +152,7 @@ const mapState = (state) => {
         allNotes: state.allNotes,
         currStudySession: state.currentStudySession,
         currentVideo: state.currentVideo,
+        userId: state.userAuth.id
     })
 }
 
