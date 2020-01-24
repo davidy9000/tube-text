@@ -27,10 +27,10 @@ const NewStudySessionView = (props) => {
                 <br/>
                 <br/>
 
-                <label style= {{color:'#11153e', fontWeight: 'bold'}}>User Id: </label>
+                {/* <label style= {{color:'#11153e', fontWeight: 'bold'}}>User Id: </label>
                 <input type="text" name = "userId" onChange={handleChange} ></input>
                 <br/>
-                <br/>
+                <br/> */}
 
                 <Button variant="contained" color="primary" type="submit">
                     Submit

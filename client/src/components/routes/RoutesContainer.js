@@ -14,13 +14,14 @@ class RoutesContainer extends Component {
     this.props.history.push("/login");
   }
   render() {
-    return <RoutesView isLoggedIn={this.props.isLoggedIn} handleLogout={this.handleLogout}/>
+    return <RoutesView isLoggedIn={this.props.isLoggedIn} handleLogout={this.handleLogout} userId={this.props.userId}/>
   }
 }
 
 const mapState = (state) => {
   return {
-    isLoggedIn: !!state.userAuth.id
+    isLoggedIn: !!state.userAuth.id,
+    userId: state.userAuth.id
   }
 }
 
@@ -28,6 +29,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData: () => dispatch(me()),
     logout: () => dispatch(logout())
+    
   }
 }
 

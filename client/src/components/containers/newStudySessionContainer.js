@@ -13,7 +13,7 @@ class NewStudySessionContainer extends Component {
             videoUrl: "",
             studySessionName: "",
             studySessionDescription: "",
-            userId: 0
+            // userId: 0
         }
     }
 
@@ -29,10 +29,10 @@ class NewStudySessionContainer extends Component {
             videoUrl: this.state.videoUrl,
             studySessionName: this.state.studySessionName,
             studySessionDescription: this.state.studySessionDescription,
-            userId: this.state.userId
+            userId: this.props.userId
         }
         this.props.addStudySessionThunk(study_sess);
-        this.props.history.push("/studysession/1");
+        this.props.history.push(`/study_session/${this.props.userId}`);
 
     }
 
@@ -54,6 +54,7 @@ class NewStudySessionContainer extends Component {
                     // sessions = {this.props.userSessions}
                     handleChange = {this.handleChange} 
                     handleSubmit={this.handleSubmit}
+                    userId={this.props.userId}
                     // currentStudySession={this.props.currStudySessionThunk}
                 />
             </div>
@@ -64,6 +65,7 @@ class NewStudySessionContainer extends Component {
 const mapState = (state) => {
     return({
         userSessions: state.userSessions,
+        userId: state.userAuth.id
     })
 }
 

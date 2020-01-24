@@ -15,7 +15,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-import { auth } from '../../store/actions/actionCreatorsThunks';
+
 
 const useStyles = makeStyles(theme => ({
     
@@ -98,7 +98,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const RoutesView = (props) => {
-  const { isLoggedIn, handleLogout } = props;
+  const { isLoggedIn, handleLogout, userId } = props;
   const SingleUserComponent = () => <SingleUserContainer/>
   const SingleStudySessionComponent = () => <SingleSessionContainer />
   const NewStudySessionComponent = () => <NewStudySessionContainer/>
@@ -138,7 +138,7 @@ const RoutesView = (props) => {
                             TubeText
                         </Typography>
 
-                        <Link to={`/study_session/:userId`}>
+                        <Link to={`/study_session/${userId}`}>
                           <Button variant="contained" color="primary">
                             All Sessions
                           </Button>
@@ -177,15 +177,7 @@ const RoutesView = (props) => {
   );
 }
 
-// const mapState = state => {
-//   userId: state.userAuth.id
-// }
 
-// // Map dispatch to props;
-// const mapDispatch = dispatch => {
-//   return {
-//     loginOrSignup: (username, password, formName, history, id) => dispatch(auth(username, password, formName, history, id))
-//   }
-// };
 
 export default RoutesView;
+
