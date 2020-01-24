@@ -20,6 +20,9 @@ router.get('/:id', getStudySession);
 /******************* Post/Create routes for Note table *******************/
 router.post('/add', addStudySession);
 
+/******************* Delete Router ***************************************/
+router.delete('/delete/:id', deleteStudySession);
+
 /************* Get functions ****************/
 //  Get Study Session by Id
 function getStudySession(req, res, next) {
@@ -58,3 +61,13 @@ function addStudySession(req, res, next) {
 };
 
 module.exports = router;
+
+/******************* Delete Function ************************/
+function deleteStudySession(req, res, next) {
+    // console.log("id: ", req.params.id);
+    StudySession.destroy(
+        {where: {id: req.params.id}}
+        )
+    .then((response) => res.sendStatus(204))
+    .catch((err) => next(err));
+}

@@ -14,7 +14,6 @@ class SingleSessionContainer extends Component {
             studySessionId: 0,
             videoTimestamp: 0,
             noteRecord: "",
-            // editNoteState: false,
             editId: null
         }
 
@@ -23,7 +22,6 @@ class SingleSessionContainer extends Component {
     }
 
     handleChange=(event)=>{
-        // console.log("I am changing input", [event.target.name], event.target.value)
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -37,12 +35,8 @@ class SingleSessionContainer extends Component {
     onClickEdit=(noteId) => {
         console.log("The Note ID is: ", noteId);
         this.setState({
-            // editNoteState: !this.state.editNoteState,
             editId: noteId
         });
-        // () => editNoteThunk(this.state.editId)
-        // console.log("editnote state!" + this.state.editNoteState);
-        // console.log("editId: " + this.state.editId);
     }
 
     onClickNull= () => {
@@ -68,7 +62,7 @@ class SingleSessionContainer extends Component {
     handleEditChange=(event)=>{
         this.setState({
             [event.target.name]: event.target.value
-        }, () => console.log("the note: ", this.state.noteRecord));
+        });
     }
 
     handleSubmit=(event)=>{
@@ -79,7 +73,6 @@ class SingleSessionContainer extends Component {
             videoTimestamp: this.state.videoTimestamp,
             noteRecord: this.state.noteRecord
         }
-        // console.log("I am handling submit: ", note)
         this.props.addNotesThunk(note);
         event.target.reset();
     }
@@ -109,8 +102,7 @@ class SingleSessionContainer extends Component {
     }
     
     componentDidMount(){
-        // console.log("I am mounted");
-        console.log(this.props);
+        // console.log(this.props);
         //use history to get the sessionID based on the route, and this way
         //on refresh we do not lose the notes
         console.log()
