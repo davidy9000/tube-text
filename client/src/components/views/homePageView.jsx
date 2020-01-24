@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import Paper from '@material-ui/core/Paper'
+// import image1 from 'images/image1.png';
+
 
 
 const HomePageView = (props) => {
@@ -12,12 +14,19 @@ const HomePageView = (props) => {
 
     const items = [
         {
-            name: "Random Name #1",
-            description: "Probably the most random thing you have ever seen!"
+            name: "Picture #1",
+            description: "Probably the most random thing you have ever seen!",
+            image: "../images/image1.png"
         },
         {
-            name: "Random Name #2",
-            description: "Hello World!"
+            name: "Picture #2",
+            description: "Hello World!",
+            image: "../images/image2.png"
+        },
+        {
+            name: "Picture #3",
+            description: "Hello World!",
+            image: "../images/image3.png"
         }
     ];
 
@@ -28,11 +37,21 @@ const HomePageView = (props) => {
 
       
         <div>
+
+            
             <Carousel>
                 {
                     items.map((item) => {
                         return(
-                        <div>{item.name}</div>
+                        // <div>{item.name}</div>
+                        <div>
+                            <img src={require('../images/image1.png')} alt="image1"/>
+                            <img src={require('../images/image2.png')} alt="image2"/>
+                            <img src={require('../images/image3.png')} alt="image3"/>
+                        </div>
+                        // <img src={require(`${item.image}`)} alt="image1"/>
+
+                       
                         )
                     })
                 }

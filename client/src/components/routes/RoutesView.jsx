@@ -122,6 +122,7 @@ const RoutesView = (props) => {
           </AppBar>
       </div> */}
       {/* <Router> */}
+        <Route exact path="/" render={HomePageComponent}/>
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
       {/* </Router> */}
@@ -155,7 +156,7 @@ const RoutesView = (props) => {
                 <br/>
         <Router>
           <Switch>
-            <Route exact path="/" render={HomePageComponent}/>
+            {/* <Route exact path="/" render={HomePageComponent}/> */}
                 <Route exact path="/study_session/:userId" render={SingleUserComponent}/>
                 {/* Be sure to put add_session before the :sessionId becasue :sessionId is a wildcard
                 and basically anything that has study_sessions/ ... will lead to the single session component
