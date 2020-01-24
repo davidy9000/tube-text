@@ -36,10 +36,11 @@ const apiRouter = require('./routes/index');
 const syncDatabase = () => {
   if (process.env.NODE_ENV === 'production') {
     db.sync();
+    seedDatabase();
   }
   else {
     console.log('As a reminder, the forced synchronization option is on');
-    db.sync()//{force:true}
+    db.sync({force: true})//{force:true}
       .then(() => seedDatabase())
       .catch(err => {
         if (err.name === 'SequelizeConnectionError') {
