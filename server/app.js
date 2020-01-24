@@ -35,11 +35,11 @@ const apiRouter = require('./routes/index');
 // A helper function to sync our database;
 const syncDatabase = () => {
   if (process.env.NODE_ENV === 'production') {
-    db.sync();
+    db.sync().then(() => seedDatabase());
   }
   else {
     console.log('As a reminder, the forced synchronization option is on');
-    db.sync()//{force:true}
+    db.sync({force: true})//{force:true}
       .then(() => seedDatabase())
       .catch(err => {
         if (err.name === 'SequelizeConnectionError') {
@@ -88,6 +88,7 @@ const configureApp = () => {
       saveUninitialized: false
     })
   );
+  app.use((express.static("../client/build")));
   app.use(passport.initialize());
   app.use(passport.session());
 
@@ -96,6 +97,12 @@ const configureApp = () => {
 
   // Mount our apiRouter;
   app.use('/api', apiRouter);
+
+  app.get('*', (req, res, next) => {
+      console.log(path.resolve(__dirname, "../client", "build/index.html"));
+    res.sendFile(path.resolve(__dirname, "../client", "build/index.html"))
+});
+
 
   // Error handling;
   app.use((req, res, next) => {
