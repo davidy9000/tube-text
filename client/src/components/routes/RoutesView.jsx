@@ -173,7 +173,7 @@ const RoutesView = (props) => {
       )}
 
       {/* Displays our Login component as a fallback */}
-      <Route component={Login} />
+      {/* <Route component={Login} /> */}
     </Switch>
   );
 }
