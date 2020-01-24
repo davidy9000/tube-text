@@ -98,7 +98,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const RoutesView = (props) => {
-  const { isLoggedIn, handleLogout, userId } = props;
+  const { isLoggedIn, handleLogout, userId, onClickHandleId } = props;
   const SingleUserComponent = () => <SingleUserContainer/>
   const SingleStudySessionComponent = () => <SingleSessionContainer />
   const NewStudySessionComponent = () => <NewStudySessionContainer/>
@@ -138,11 +138,11 @@ const RoutesView = (props) => {
                             TubeText
                         </Typography>
 
-                        <Link to={`/study_session/${userId}`}>
-                          <Button variant="contained" color="primary">
+                        {/* <Link to={`/study_session/${userId}`} > */}
+                          {/* <Button variant="contained" color="primary" onClick={onClickHandleId}>
                             All Sessions
-                          </Button>
-                        </Link>
+                          </Button> */}
+                        {/* </Link> */}
 
                         <Button variant="contained" color="primary" onClick={handleLogout}>
                           Sign Out

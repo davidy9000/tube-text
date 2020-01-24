@@ -13,8 +13,18 @@ class RoutesContainer extends Component {
     this.props.logout();
     this.props.history.push("/login");
   }
+
+  // onClickHandleId = () => {
+  //   console.log("WHAT THE  FFFFF");
+  //   this.props.history.push(`/study_session/${this.props.userId}`);
+  // }
+
   render() {
-    return <RoutesView isLoggedIn={this.props.isLoggedIn} handleLogout={this.handleLogout} userId={this.props.userId}/>
+    return <RoutesView 
+            isLoggedIn={this.props.isLoggedIn} 
+            handleLogout={this.handleLogout} 
+            userId={this.props.userId}
+            onClickHandleId={this.onClickHandleId}/>
   }
 }
 

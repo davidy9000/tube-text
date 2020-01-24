@@ -78,7 +78,7 @@ const SingleSessionView = (props) => {
     const classes = useStyles();
     const { allNotes, handleChange, handleSubmit, deleteNote, editNote, videoUrl,
             videoOnPlay, videoOnPause, thePlayer, videoSeek,
-            editNoteState, onClickEdit, mustEdit,handleEditSubmit ,handleEditChange, onClickNull } = props;
+            editNoteState, onClickEdit, mustEdit,handleEditSubmit ,handleEditChange, onClickNull, userId } = props;
     // console.log("The Hangle Change is: ", handleChange);
 
     //For Popover
@@ -117,7 +117,8 @@ const SingleSessionView = (props) => {
                             item xs={6} 
                             justify="center"
                             alignItems="center" 
-                            >
+                            >   
+                                
                                 <Grid item xs={12}>
                                     
                                         <ReactPlayer
@@ -161,13 +162,23 @@ const SingleSessionView = (props) => {
                                 </Grid>
                                 <br/>
                                 <br/>
+                                
+                                <Grid item>
+                                    <Link to={`/study_session/${userId}`} >
+                                    <Button variant="contained" color="primary">
+                                        All Sessions
+                                    </Button>
+                                    </Link>
+                                </Grid>
+
+                                <br/>
+                               
+
                                 <Grid item>
                                     <Link to="/pdf"><Button variant="contained" color="primary" className="timestamp-button">
                                         Generate PDF
                                     </Button></Link>
                                 </Grid>
-                                <br/>
-                                <br/>
 
                             </Grid>
 
@@ -177,7 +188,8 @@ const SingleSessionView = (props) => {
                             item xs={6} 
                             container direction="column"
                             justify="center" 
-                            alignItems="center">   
+                            alignItems="center">
+                                
 
                                 <Paper style={{minHeight: 650, minWidth: 600, maxHeight: 650, overflow: 'auto', backgroundColor: '#f0f0f5', border: '1px solid white'}}>
 
@@ -382,11 +394,21 @@ const SingleSessionView = (props) => {
                                 <br/>
                                 <br/>
                                 <Grid item>
+                                    <Link to={`/study_session/${userId}`} >
+                                    <Button variant="contained" color="primary">
+                                        All Sessions
+                                    </Button>
+                                    </Link>
+                                </Grid>
+
+                                <br/>
+                               
+
+                                <Grid item>
                                     <Link to="/pdf"><Button variant="contained" color="primary" className="timestamp-button">
                                         Generate PDF
                                     </Button></Link>
                                 </Grid>
-                                <br/>
                                 <br/>
 
                             </Grid>
