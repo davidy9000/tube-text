@@ -4,12 +4,11 @@
   "description": "# Team Info ### Team name: ### Team members (format: GitHub username, last name, first name): - davidy9000, Yuen, David - Suchwinder, Singh, Suchwinder - mtlynch3, Lynch, Melissa - iambcho, Cho, Brittany -  -",
   "main": "index.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
-    "start": "cd server; npm i; node bin/www",
-    "server": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "app-install": "npm i --prefix client && npm -i --prefix",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "server": "npm start --prefix server",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
