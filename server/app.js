@@ -88,6 +88,7 @@ const configureApp = () => {
       saveUninitialized: false
     })
   );
+  app.use((express.static("../client/build")));
   app.use(passport.initialize());
   app.use(passport.session());
 
@@ -96,6 +97,12 @@ const configureApp = () => {
 
   // Mount our apiRouter;
   app.use('/api', apiRouter);
+
+  app.get('*', (req, res, next) => {
+      console.log(path.resolve(__dirname, "../client", "build/index.html"));
+    res.sendFile(path.resolve(__dirname, "../client", "build/index.html"))
+});
+
 
   // Error handling;
   app.use((req, res, next) => {
