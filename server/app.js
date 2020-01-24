@@ -35,8 +35,7 @@ const apiRouter = require('./routes/index');
 // A helper function to sync our database;
 const syncDatabase = () => {
   if (process.env.NODE_ENV === 'production') {
-    db.sync();
-    seedDatabase();
+    db.sync().then(() => seedDatabase());
   }
   else {
     console.log('As a reminder, the forced synchronization option is on');
