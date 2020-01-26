@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-// import SingleUserView from '../views/singleUserView';
-import NewStudySessionView from '../views/newStudySessionView'
+import NewStudySessionView from '../views/newStudySessionView';
+import { addStudySessionThunk } from '../../store/actions/actionCreatorsThunks';
+// connect to the store
 import { connect } from 'react-redux';
-import { fetchSessionsThunk , addStudySessionThunk , currStudySessionThunk } from '../../store/actions/actionCreatorsThunks';
+// need withRouter to push userID of the study session into history of SPA
+import { withRouter } from 'react-router-dom';
+// in order to export two things
 import { compose } from 'redux';
-import {withRouter} from 'react-router-dom';
 
 class NewStudySessionContainer extends Component {
     constructor(props){
@@ -13,11 +15,11 @@ class NewStudySessionContainer extends Component {
             videoUrl: "",
             studySessionName: "",
             studySessionDescription: "",
-            // userId: 0
         }
     }
 
     handleChange=(event)=>{
+        // name is directly associated with the key in the back end for a new study session
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -25,6 +27,8 @@ class NewStudySessionContainer extends Component {
 
     handleSubmit=(event)=>{
         event.preventDefault();
+        // creating the approprite object with the appropriate keys 
+        // to push into my database 
         let study_sess = {
             videoUrl: this.state.videoUrl,
             studySessionName: this.state.studySessionName,
@@ -33,29 +37,15 @@ class NewStudySessionContainer extends Component {
         }
         this.props.addStudySessionThunk(study_sess);
         this.props.history.push(`/study_session/${this.props.userId}`);
-
     }
 
-    // componentDidMount() {
-    //     this.props.fetchSessionsThunk();
-    // }
     render(){
         return(
             <div>
-                {/* <AppBar position="static">
-                    <Toolbar>
-                        <Typography variant="title" color="inherit">
-                        React & Material-UI Sample Application
-                        </Typography>
-                    </Toolbar>
-                </AppBar> */}
-
                 <NewStudySessionView 
-                    // sessions = {this.props.userSessions}
                     handleChange = {this.handleChange} 
                     handleSubmit={this.handleSubmit}
                     userId={this.props.userId}
-                    // currentStudySession={this.props.currStudySessionThunk}
                 />
             </div>
         )
@@ -71,9 +61,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
     return({
-        // fetchSessionsThunk: () => dispatch(fetchSessionsThunk()),
         addStudySessionThunk: (study_sess) => dispatch(addStudySessionThunk(study_sess)),
-        // currStudySessionThunk: (study_sess) => dispatch(currStudySessionThunk(study_sess))
     })
 }
 

@@ -15,7 +15,7 @@ class RoutesContainer extends Component {
   }
 
   // onClickHandleId = () => {
-  //   console.log("WHAT THE  FFFFF");
+  //   console.log("WHAT THE ");
   //   this.props.history.push(`/study_session/${this.props.userId}`);
   // }
 

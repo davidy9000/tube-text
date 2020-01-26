@@ -1,13 +1,11 @@
 import * as type from '../actions/actionTypes';
 
-//the sessions for each individual user is stored in an array
-//the action.payload should traverse through all the sessions and
-//output it
+//THe user's sessions are stored in an array
 export default(state = [], action) =>{
     switch(action.type){
         case (type.FETCH_SESSIONS):
             return (action.payload);
-        case (type.ADD_STUDY_SESSION):
+        case (type.ADD_STUDY_SESSION): //we dont sort unlike our notes reducer
             return [...state, action.payload];
         case (type.DELETE_STUDY_SESSION):
             return state.filter((session) => session.id!==action.payload);
@@ -15,9 +13,3 @@ export default(state = [], action) =>{
             return state; 
     }
 }
-/**
- * stretch features:
- * add session
- * edit session
- * delete session
- */

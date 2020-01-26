@@ -25,8 +25,6 @@ const useStyles = makeStyles(theme => ({
     title: {
       flexGrow: 1,
       textAlign: 'center',
-    //   minHeight: 1,
-    //   height: 30,
     },
     customizeAppBar:{
         backgroundColor: '#11153e',
@@ -39,7 +37,6 @@ const useStyles = makeStyles(theme => ({
         height: 35,
     },
     customNavButton:{
-        // backgroundColor: '#d24d4d',
         "&:hover": {
             backgroundColor: '#d24d4d'
         },
@@ -47,7 +44,6 @@ const useStyles = makeStyles(theme => ({
         height: 29,
         minWidth: 70,
         width: 70,
-        // textSizeSmall: 'small',
         color: 'white',
         fontSize: '11px',
         borderRadius: 100,
@@ -59,27 +55,14 @@ const useStyles = makeStyles(theme => ({
             color: '#11153e'
         },
         display: 'flex',
-        // justify: 'flex-end'
-        // flexGrow: 1,
-        // textAlign: 'right',
         textTransform: 'none',
         color: 'white',
-        // justify: 'center',
     },  
     card: {
-        // display: 'flex',
         minWidth: 200,
         width: '100%',
         textAlign: 'center',
-        // justifyContent: 'center'
-        // position: 'center',
-        
     },
-    // bullet: {
-    //     display: 'inline-block',
-    //     margin: '0 2px',
-    //     transform: 'scale(0.8)',
-    // },
     cardTitle: {
         fontSize: 20,
         color: '#11153e',
@@ -97,16 +80,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const style = {
-    // color: 'white',
     textDecoration: 'none'
 };
 
 
 const SingleUserView = (props) => {
     const classes = useStyles();
-    // const bull = <span className={classes.bullet}>•</span>;
-
-    const {sessions, handleChange, handleSubmit ,currentStudySession, deleteStudySession, handleLogout } = props;
+    //destructuring from props 
+    const { sessions, currentStudySession, deleteStudySession, handleLogout } = props;
 
     return (
         <div className="App">
@@ -126,50 +107,37 @@ const SingleUserView = (props) => {
                     </Link>
                     {/* <button onClick={handleLogout}>Logout</button> */}
                 </Grid>
-                <Grid 
-                item
-                style={{minWidth: '80%'}}  
-                >
+                <Grid item style={{minWidth: '80%'}}>
                     <Paper style={{minHeight: 900, maxHeight:900, minWidth: '100%', maxWidth: '100%', overflow: 'auto', backgroundColor: 'white', border: '1px solid white'}}>
-
                         <List className="List">
                             {sessions.map((session)=> {
                                 return (
-                                    <ListItem className = "study-session" onClick={() => currentStudySession(session)}
-                                    alignItems='center'
-                                    >
-
-                                        
-                                                <Card className={classes.card}
-                                                style={{backgroundColor:'#a3a3c2'}}
-                                                >
-                                                    <CardContent>
-                                                        <Typography className={classes.cardTitle} color="textSecondary" gutterBottom>
-                                                        {session.studySessionName}
-                                                        </Typography>
-                                                        <Typography>
-                                                            {session.studySessionDescription}
-                                                        </Typography>
-                                                    </CardContent>
-                                                    <CardActions>
-                                                        <Link style = { style } to={`/study_sessions/${session.id}`}>
-                                                            <Button className = {classes.customViewSession}>View Session</Button>
-                                                        </Link>
-                                                        <Button onClick = {() => deleteStudySession(session)}>Delete Session</Button>
-                                                    </CardActions>
-                                                </Card>
+                                    <ListItem className = "study-session" onClick={() => currentStudySession(session)}alignItems='center'>
+                                        <Card className={classes.card} style={{backgroundColor:'#a3a3c2'}}>
+                                        <CardContent>
+                                            <Typography className={classes.cardTitle} color="textSecondary" gutterBottom>
+                                            {session.studySessionName}
+                                            </Typography>
+                                            <Typography>
+                                                {session.studySessionDescription}
+                                            </Typography>
+                                        </CardContent>
+                                        <CardActions>
+                                            <Link style = { style } to={`/study_sessions/${session.id}`}>
+                                                <Button className = {classes.customViewSession}>View Session</Button>
+                                            </Link>
+                                            <Button onClick = {() => deleteStudySession(session)}>Delete Session</Button>
+                                        </CardActions>
+                                    </Card>
                                         <br/>
                                         <br/>
-                                    {/* </div> */}
-                                    </ListItem>
-                                            
+                                    </ListItem>           
                                 )
                             })}
                         </List>
                     </Paper>
                 </Grid>
             </Grid>
-
         </div>
     )
 }

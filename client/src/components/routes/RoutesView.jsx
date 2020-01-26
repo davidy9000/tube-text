@@ -3,7 +3,6 @@ import SingleUserContainer from '../containers/singleUserContainer';
 import SingleSessionContainer from '../containers/singleSessionContainer';
 import NewStudySessionContainer from '../containers/newStudySessionContainer';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import { Login, Signup } from '../containers/authFormContainer';
 
 import PdfContainer from '../containers/pdfContainer';
@@ -28,8 +27,6 @@ const useStyles = makeStyles(theme => ({
     title: {
       flexGrow: 1,
       textAlign: 'left',
-    //   minHeight: 1,
-    //   height: 30,
     },
     customizeAppBar:{
         backgroundColor: '#11153e',
@@ -42,7 +39,6 @@ const useStyles = makeStyles(theme => ({
         height: 35,
     },
     customNavButton:{
-        // backgroundColor: '#d24d4d',
         "&:hover": {
             backgroundColor: '#d24d4d'
         },
@@ -50,7 +46,6 @@ const useStyles = makeStyles(theme => ({
         height: 29,
         minWidth: 70,
         width: 70,
-        // textSizeSmall: 'small',
         color: 'white',
         fontSize: '11px',
         borderRadius: 100,
@@ -61,26 +56,14 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: '#cddc39'
         },
         display: 'flex',
-        // justify: 'flex-end'
-        // flexGrow: 1,
-        // textAlign: 'right',
         textTransform: 'none',
-        // justify: 'center',
     },  
     card: {
-        // display: 'flex',
         minWidth: 200,
         width: '50%',
         textAlign: 'center',
-        // justifyContent: 'center'
-        // position: 'center',
         
     },
-    // bullet: {
-    //     display: 'inline-block',
-    //     margin: '0 2px',
-    //     transform: 'scale(0.8)',
-    // },
     cardTitle: {
         fontSize: 20,
         color: '#11153e',

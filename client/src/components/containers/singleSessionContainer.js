@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import SingleSessionView from '../views/SingleSessionView';
-import PdfView from '../views/pdfView';
 import { connect } from 'react-redux';
 import { fetchNotesThunk, addNotesThunk, deleteNoteThunk, editNoteThunk, fetchCurrentVideoThunk } from '../../store/actions/actionCreatorsThunks';
 //need to handle refresh issue
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 
 class SingleSessionContainer extends Component {
@@ -16,7 +15,6 @@ class SingleSessionContainer extends Component {
             noteRecord: "",
             editId: null
         }
-
         this.thePlayer = React.createRef();
         this.playerInterval = null;
     }
@@ -26,11 +24,6 @@ class SingleSessionContainer extends Component {
             [event.target.name]: event.target.value
         })
     }
-    //constructor here
-    //hold state for fields here 
-
-    //make handleSubmit function
-    //take the state and pass it to the thunk in this function
 
     onClickEdit=(noteId) => {
         console.log("The Note ID is: ", noteId);
@@ -74,7 +67,7 @@ class SingleSessionContainer extends Component {
             noteRecord: this.state.noteRecord
         }
         this.props.addNotesThunk(note);
-        event.target.reset();
+        event.target.reset(); //to empty the input box
     }
     
     videoOnPlay = () => {
@@ -102,43 +95,34 @@ class SingleSessionContainer extends Component {
     }
     
     componentDidMount(){
-        // console.log(this.props);
         //use history to get the sessionID based on the route, and this way
         //on refresh we do not lose the notes
         console.log()
         this.props.fetchNotesThunk(this.props.match.params.sessionId);
         this.props.fetchCurrentVideoThunk(this.props.match.params.sessionId);
-
     }
 
     render() {
         return(
             <div>
-                
-                {/* <PdfView/> */}
                 <SingleSessionView allNotes = {this.props.allNotes} 
-                // addNotesThunk = {this.props.addNotesThunk} 
                 handleChange = {this.handleChange} 
                 handleSubmit={this.handleSubmit}
+
                 onClickEdit={this.onClickEdit}
                 mustEdit = {this.state.editId}
                 handleEditSubmit = {this.handleEditSubmit}
                 onClickNull={this.onClickNull}
-                // editNoteState={this.state.editNoteState}
                 handleEditChange = {this.handleEditChange}
-                // currentNote = {this.state.noteRecord}
 
                 deleteNote = {this.props.deleteNoteThunk}
-                // editNote = {this.props.editNoteThunk}
 
                 videoUrl = {this.props.currentVideo}
-
                 videoOnPlay = {this.videoOnPlay}
                 videoOnPause = {this.videoOnPause}
                 videoSeek = {this.videoSeek}
 
                 thePlayer = {this.thePlayer}
-
                 userId={this.props.userId}
                 />
             </div>
@@ -147,7 +131,6 @@ class SingleSessionContainer extends Component {
 }
 
 const mapState = (state) => {
-    // console.log("I am in state");
     return({
         allNotes: state.allNotes,
         currStudySession: state.currentStudySession,
@@ -157,7 +140,6 @@ const mapState = (state) => {
 }
 
 const mapDispatch = (dispatch) => {
-    // console.log("I am in dipsathc");
     return({
         fetchNotesThunk: (stud_sess_id) => dispatch(fetchNotesThunk(stud_sess_id)),
         addNotesThunk: (note) => dispatch(addNotesThunk(note)),

@@ -5,13 +5,13 @@
     width: 100vw;
 }
 
-.Container {
-    /* border: 1px solid white; */
-}
+/* .Container {
+     border: 1px solid white; 
+} */
 
-.Box {
-    /* border: 1px solid white; */
-}
+/* .Box {
+     border: 1px solid white; 
+} */
 
 /* For the notes */
 .individual-note {
@@ -72,45 +72,38 @@
     /* background-color: white; */
 }
 
-.Grid {
-    /* border: 1px solid white; */
-    /* background-color: white; */
-    
-}
+/* .Grid {
+    border: 1px solid white; 
+    background-color: white;
+} */
 
-.notes-grid {
-    /* border: 1px solid green; */
-    /* margin: 0 auto;
-    width: 300px; */
-    
-}
+/* .notes-grid {
+    border: 1px solid green;
+    margin: 0 auto;
+    width: 300px;
+} */
 
 .form-grid {
-   
     /* border: 1px solid white; */
     width: 650px;
     margin: 0 auto;
     /* padding: 0px 100px;
      */
-    
-    
 }
 
 /* Form */
-
 form {
     text-align: center;
 }
 
 /* List */
-.List {
+/* .List {
     
-}
+} */
 
-.ListItem {
-    /* border: 1px solid black; */
-   
-}
+/* .ListItem {
+    border: 1px solid black;
+} */
 
 /* .Badge {
     float: left;

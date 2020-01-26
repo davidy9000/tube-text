@@ -2,9 +2,8 @@ import * as types from './actionTypes';
 // import { bindActionCreators } from 'redux';
 import axios from 'axios';
 
-// ACTION CREATOR;
-
-//action creators for auth
+/****************************** ACTION CREATOR ***************************/
+//AUTH ---------
 const getUser = user => {
     return {
         type: types.GET_USER,
@@ -17,6 +16,7 @@ const removeUser = () => {
     }
 }
 
+//NOTES ---------
 const fetchNotes = (all_notes) => {
     return {
         type: types.FETCH_NOTES,
@@ -45,6 +45,7 @@ const editNote = (note) => {
     }
 }
 
+//SESSIONS ---------
 const fetchSessions = (all_sessions) => {
     return{
         type: types.FETCH_SESSIONS,
@@ -79,12 +80,17 @@ const deleteStudySession = (session) => {
         payload: session,
     }
 }
+//-----------------------------------------------------------------------------
 
-//THUNKS
+//******************************** THUNKS *************************************
+// For All thunks we first modify/access the databse and then update the front end
+// with a dispatch 
 
-//SESSIONS
+//SESSIONS ---------
 
-//need to change this so that it gets the sessions of whoever is logged in
+/**This function takes @id, which is the id of the individual user that is logged on
+ * and then it requests from the backend the sessions the user has.
+ */
 export const fetchSessionsThunk = (id) => (dispatch) => {
     axios.get(`/api/studysessions/users/${id}`)
     .then((response) =>{
@@ -92,11 +98,12 @@ export const fetchSessionsThunk = (id) => (dispatch) => {
     })
     .then((error)=>{
         console.log(error);
-    });
-    // console.log("fetch study sessions thunk");
-    
+    });    
 }
 
+/**This function takes @study_session, which is the study session object the user is
+ * creating and it posts this session into our data base
+ */
 export const addStudySessionThunk = (study_session) => (dispatch) => {
     axios.post('/api/studysessions/add', study_session)
     .then((response) => {
@@ -107,39 +114,60 @@ export const addStudySessionThunk = (study_session) => (dispatch) => {
     .catch((error) => {
         console.log(error);
     })
-    // console.log("add study session thunk");
 }
 
+/**This function takes @study_session, as the session the user hover overs and clicks
+ * and then it ensure the current study session state is updated with this object
+ */
 export const currStudySessionThunk = (study_session) => (dispatch) => {
+    //we can do this in one line, instead of storing in a variable I believe
     let resolvedActionObject = currentStudySession(study_session);
     dispatch(resolvedActionObject);
 }
 
-//NOTES
+/**This function takes @session, which is the entire session and it removes it from
+ * our table. Becauase one session has many notes it must also delete the notes.
+ * To do this we added special property called {onDelete: 'cascade', hooks:true} that 
+ * delete notes associated to a session autmatically. ^this snppet is in server/database/models/index,js
+*/
+export const deleteStudySessionThunk = (session) => (dispatch) => {
+    (axios.delete(`/api/studysessions/delete/${session.id}`))
+    .then(() => dispatch(deleteStudySession(session.id)));
+}
 
+//NOTES ---------
+
+/**This function takes @stud_session_id, which is the id of the study session
+ * and it requests the notes associated with this study session (used in refreshing
+ * the page, in order to collect info again)
+ */
 export const fetchNotesThunk = (stud_sess_id) => (dispatch) => {
     axios.get(`/api/notes/studysessions/${stud_sess_id}`)
-    .then((response) => {
+    .then((response) => { //we will sort it in ascending order
         const myData = [].concat(response.data).sort((a,b) => a.videoTimestamp - b.videoTimestamp);
         dispatch(fetchNotes(myData));
     })
     .then((error)=>{
         console.log(error);
     });
-    // console.log("fetch notes thunk");   
 }
 
+/**This function takes @stud_session_id, which is the id of the study session
+ * and it requests the video associated with this study session (used in refreshing
+ * the page, in order to collect info again)
+ */
 export const fetchCurrentVideoThunk = (stud_sess_id) => (dispatch) => {
     axios.get(`/api/studysessions/${stud_sess_id}`)
     .then((response)=> dispatch(fetchCurrentVideo(response.data.videoUrl)))
 }
 
 //Tony and Billie's comments - in the UI we need to make sure user input is valid before we allow it to go to backend
-//NOTE: add note to parameter later when we actually implement this
+/**This function takes @note, which is the note the user created
+ * and adds it to the list of notes that exists fo that individual study session
+ */
 export const addNotesThunk = (note) => (dispatch) => {
     axios.post('/api/notes/add', note)
     .then((response) => {
-        // console.log("the data is: ", response.data);
         return response.data;
     })
     //response.data and note are the same value (b/c of anonymous arrow function)
@@ -147,44 +175,28 @@ export const addNotesThunk = (note) => (dispatch) => {
     .catch((error)=>{
         console.log(error);
     });
-
-    // console.log("add note thunk");
 }
 
+/**This function takes @note_id, which is the note id the user wants to delete
+ * and it deletes it from the table in the database
+ */
 export const deleteNoteThunk = (note_id) => (dispatch) =>{
-    // console.log("thunk note id:", note_id);
     axios.delete(`/api/notes/delete/${note_id}`)
     .then((noteid) => dispatch(deleteNote(note_id)))
     .catch((error) => {console.log(error)})
-
-    // console.log("delete note thunk");
 }
 
+/**This function takes @note, which is the note the user created
+ * and edits it in the list of notes that exists for that individual study session
+ */
 export const editNoteThunk = (note) => (dispatch) => {
-    // console.log("edit note thunk");
-
     axios.put(`/api/notes/edit/${note.id}`, note)
     .then(() => dispatch(editNote(note)))
     .catch((error) => {console.log(error)})
     
 }
 
-export const deleteStudySessionThunk = (session) => (dispatch) => {
-    // console.log("the session id is: ", session.id);
-    // axios.get(`/api/notes/studysessions/${session.id}`)
-    // .then((response) => {
-    //     console.log ("The session notes are: ", response.data);
-    //     for(let i = 0; i < response.data.length; i++){
-    //         // axios.delete(`/api/notes/delete/${response.data[i].id}`)
-    //         console.log ("the note is: ", response.data[i], " and the id is: ", response.data[i].id)
-    //     }
-    // })
-    // .then(
-        
-    (axios.delete(`/api/studysessions/delete/${session.id}`))
-    .then(() => dispatch(deleteStudySession(session.id)));
-}
-//auth thunks
+//AUTH ----------
 
 export const me = () => async dispatch => {
     try {
@@ -196,6 +208,7 @@ export const me = () => async dispatch => {
         console.error(err);
     }
 };
+
 //should put user ID stuff here
 export const auth = (username, password, method, history, id) => async dispatch => {
     let res;
