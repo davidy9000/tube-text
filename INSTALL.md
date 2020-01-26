@@ -1,7 +1,7 @@
-# Heroku link :
+# Heroku link : [TubeText](https://tube-text.herokuapp.com/)
 
 # Getting Started
-- run  `npm run app-install` to install all dependencies
+- run  `npm run client-install` to install all dependencies 
 
 # Contributing to DEVELOPMENT
 - To simultaneously run backend and front end, execute this script in your terminal: `npm run dev`    

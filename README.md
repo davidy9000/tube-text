@@ -1,12 +1,12 @@
 # Hunter CS Winter 2019 CodeFest
 
 # Team Info
-### Team name:
+### Team name: [TubeText](https://tube-text.herokuapp.com/)
 ### Team members (format: GitHub username, last name, first name):
-- `davidy9000`, Yuen, David
-- `Suchwinder`, Singh, Suchwinder
-- `mtlynch3`, Lynch, Melissa
-- `iambcho`, Cho, Brittany
+- [`davidy9000`](https://github.com/davidy9000), Yuen, David
+- [`Suchwinder`](https://github.com/Suchwinder), Singh, Suchwinder
+- [`mtlynch3`](https://github.com/mtlynch3), Lynch, Melissa
+- [`iambcho`](https://github.com/iambcho), Cho, Brittany
 - 
 - 
 
