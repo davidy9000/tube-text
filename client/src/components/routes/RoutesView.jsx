@@ -105,7 +105,7 @@ const RoutesView = (props) => {
           </AppBar>
       </div> */}
       {/* <Router> */}
-        {/* <Route exact path="/" render={HomePageComponent}/> */}
+        <Route exact path="/" render={HomePageComponent}/>
         <Route exact path="/" component={Login} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
@@ -116,7 +116,7 @@ const RoutesView = (props) => {
           {/* Routes placed within this section are only available after
           logging in */}
             <div>
-                <div style={{borderBottom: '5px solid white', padding: '10px'}}>
+                <div style={{borderBottom: '5px solid white', padding: '10px', width: '100%'}}>
                     <AppBar position="static" className = {classes.customizeAppBar}>
                     <Toolbar className = {classes.customizeToolBar}>
                         <Typography variant="h6" className={classes.title} color = "inherit" style={{fontType: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '35px', color: '#CDDC39'}}>

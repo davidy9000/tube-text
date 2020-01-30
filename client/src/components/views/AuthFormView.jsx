@@ -97,7 +97,7 @@ const AuthFormView = props => {
   return (
     <div>
 
-      <div style={{borderBottom: '5px solid white', padding: '10px'}}>
+      <div style={{borderBottom: '5px solid white', padding: '10px', width: '100%'}}>
           <AppBar position="static" className = {classes.customizeAppBar}>
           <Toolbar className = {classes.customizeToolBar}>
               <Typography variant="h6" className={classes.title} color = "inherit" style={{fontType: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '35px', color: '#CDDC39'}}>

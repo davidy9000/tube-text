@@ -123,10 +123,10 @@ const HomePageView = (props) => {
       
         <div>
 
-        <div style={{borderBottom: '5px solid white', padding: '10px'}}>
+        <div style={{borderBottom: '5px solid white', padding: '10px', width: '100%'}}>
           <AppBar position="static" className = {classes.customizeAppBar}>
           <Toolbar className = {classes.customizeToolBar}>
-              <Typography variant="h6" className={classes.title} color = "inherit" style={{fontType: 'bold', fontFamily: 'Brush Script MT, sans-serif', fontSize: '50px'}}>
+              <Typography variant="h6" className={classes.title} color = "inherit" style={{fontType: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '35px', color: '#CDDC39'}}>
                   TubeText
               </Typography>
               
@@ -163,10 +163,17 @@ const HomePageView = (props) => {
                     })
                 }
             </Carousel> */}
-
-            {/* <img src={require('../images/image1.png')} alt="image1"/>
-            <img src={require('../images/image2.png')} alt="image2"/>
-            <img src={require('../images/image3.png')} alt="image3"/> */}
+           
+            <div style={{backgroundColor: 'white', textAlign: 'center', color: 'black', width: '100%', margin: '0px', padding: '10px'}}><h1>Take Timestamped Video Notes in Real Time</h1></div>
+            <img src={require('../images/image1.png')} alt="image1" style={{width: '100%', margin: '0px'}}/>
+            
+            <div style={{backgroundColor: 'white', textAlign: 'center', color: 'black', width: '100%', margin: '0px', padding: '11px'}}><h1>Create Unlimited Study Sessions With Any Video</h1></div>
+            <img src={require('../images/image2.png')} alt="image2" style={{width: '100%'}}/>
+            
+            <div style={{backgroundColor: 'white', textAlign: 'center', color: 'black', width: '100%', margin: '0px', padding: '11px'}}><h1>Generate PDFs of your Notes to Export Anywhere</h1></div>
+            <img src={require('../images/image3.png')} alt="image3" style={{width: '100%'}}/>
+            
+            <div style={{backgroundColor: 'white', textAlign: 'center', color: 'black', width: '100%', margin: '0px', padding: '11px'}}><h1>Log in or Sign up for an Account Today</h1></div>
 
         </div>
 
