@@ -1,6 +1,8 @@
-# This repo is archived
-- This repo is duplicated by [`Suchwinder`](https://github.com/Suchwinder) and all future contributions will be towards that repo
-- The original master repo is deleted by the `hunter-classes` account which was where original ownership was
+# This repo is archived as of 02/01/2020
+- This repo is duplicated by [`Suchwinder`](https://github.com/Suchwinder) and all future contributions will be towards that repo which is under [`Suchwinder`](https://github.com/Suchwinder) ownership
+- The original master repo is deleted by the [`hunter-classes`](https://github.com/hunter-classes) which was where original ownership was
+- To view the latest version repo see my pinned repositories [`davidy9000`](https://github.com/davidy9000)
+
 
 # Hunter CS Winter 2019 CodeFest
 
