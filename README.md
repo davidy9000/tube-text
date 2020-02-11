@@ -1,5 +1,5 @@
 # This repo is archived as of 02/01/2020
-- This repo is duplicated by [`Suchwinder`](https://github.com/Suchwinder) and all future contributions will be towards that repo which is under [`Suchwinder`](https://github.com/Suchwinder) ownership
+- This repo is duplicated by [`Suchwinder`](https://github.com/Suchwinder) and all future contributions will be towards that [repo](https://github.com/Suchwinder/TubeText) which is under [`Suchwinder`](https://github.com/Suchwinder) ownership
 - The original master repo is deleted by the [`hunter-classes`](https://github.com/hunter-classes) which was where original ownership was
 - To view the latest version repo see my pinned repositories [`davidy9000`](https://github.com/davidy9000)
 
